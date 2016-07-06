@@ -1,1 +1,151 @@
-Test
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Firewalld by t-woerner</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Firewalld</h1>
+        <h2>Firewall daemon with D-Bus interface</h2>
+        <a href="https://github.com/t-woerner/firewalld" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p>firewalld provides a dynamically managed firewall with support for network/firewall zones to define the trust level of network connections or interfaces. It has support for IPv4, IPv6 and bridge firewall settings, also for IPSets. There is a separation of the runtime and permanent configuration. It also provides an interface to add iptables, ip6tables and ebtables rules directly for example for services, applications but also advanced users.</p>
+
+<h2>
+<a id="concepts" class="anchor" href="#concepts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Concepts</h2>
+
+<p>firewalld has a two layer design: The core layer and the D-Bus layer on top. The core layer is responsible for handling the configuration and the back ends like iptables, ip6tables, ebtables, ipset and the module loader.</p>
+
+<p>The firewalld D-Bus interface is the primary way to alter and create the firewall configuration. The interface is used by all firewalld provided online tools, like for example firewall-cmd, cirewallctl, firewall-config and firewall-applet. firewall-offline-cmd is not talking to firewalld, but altering and creating firewalld config files directly using the firewalld IO back ends. firewall-offline-cmd can be used while firewalld is running, but it is not recommended as it is only able to alter the permanent configuration.</p>
+
+<p>More information on the firewalld D-Bus API is available <a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.dbus.html">here</a>.</p>
+
+<p>firewalld deoes not depend on NetworkManager, but the use is recommended. If NetworkManager is not used, there are some limitations: firewalld will not get notified about network device renames. If firewalld gets started after the network is already up, the connections and manually created interfaces are not bound to a zone. You can add them to a zone with firewall-cmd [--permanent] --zone=zone --add-interface=interface, but make sure that if there's a /etc/sysconfig/network-scripts/ifcfg-interface, the zone specified there with ZONE=zone is the same (or both are empty/missing for default zone), otherwise the behaviour would be undefined.</p>
+
+<p>firewalld provides support for zones, services, ipsets and icmp types.</p>
+
+<h3>
+<a id="zones" class="anchor" href="#zones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Zones</h3>
+
+<p>A network or firewall zone defines the trust level of the interface used for a connection. There are several pre-defined zones provided by firewalld. Zone configuration options and generic information about zones are described in <a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.zone.html">firewalld.zone</a></p>
+
+<h3>
+<a id="services" class="anchor" href="#services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Services</h3>
+
+<p>A service can be a list of local ports and destinations and additionally also a list of firewall helper modules automatically loaded if a service is enabled. Service configuration options and generic information about services are described in <a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.service.html">firewalld.service</a>. The use of predefined services makes it easier for the user to enable and disable access to a service.</p>
+
+<h3>
+<a id="icmp-types" class="anchor" href="#icmp-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ICMP types</h3>
+
+<p>The Internet Control Message Protocol (ICMP) is used to exchange information and also error messages in the Internet Protocol (IP). ICMP types can be used in firewalld to limit the exchange of these messages. For more information, please have a look at <a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.icmptype.html">firewalld.icmptype</a>.</p>
+
+<h3>
+<a id="ipsets" class="anchor" href="#ipsets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IPSets</h3>
+
+<p>An ipset can be used to group several IP or MAC addresses together. An ipset for IP addresses is either usable for IPv4 or IPv6. This is defined by the family setting of the ipset. It can be either inet (the default) or inet6.</p>
+
+<p>With the use of ipsets, the number of rules for black or white listing for example is reduced to only a few rules for a long list of addresses in the ipset. The numbre of needed rules depends on the use case.</p>
+
+<h3>
+<a id="runtime-configuration" class="anchor" href="#runtime-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Runtime configuration</h3>
+
+<p>Runtime configuration is the actual active configuration and is not permanent. After reload/restart of the service or a system reboot, runtime settings will be gone if they haven't been also in permanent configuration.</p>
+
+<h3>
+<a id="permanent-configuration" class="anchor" href="#permanent-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Permanent configuration</h3>
+
+<p>The permanent configuration is stored in config files and will be loaded and become new runtime configuration with every machine boot or service reload/restart.</p>
+
+<h3>
+<a id="direct-interface" class="anchor" href="#direct-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Direct interface</h3>
+
+<p>The direct interface is mainly used by services or applications to add specific firewall rules. It requires basic knowledge of ip(6)tables concepts (tables, chains, commands, parameters, targets).</p>
+
+<h2>
+<a id="directories" class="anchor" href="#directories" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Directories</h2>
+
+<p>firewalld supports two configuration directories:
+Default/Fallback configuration in /usr/lib/firewalld</p>
+
+<p>This directory contains the default and fallback configuration provided by firewalld for icmptypes, services and zones. The files provided with the firewalld package should not get changed and the changes are gone with an update of the firewalld package. Additional icmptypes, services and zones can be provided with packages or by creating files.
+System configuration settings in /etc/firewalld</p>
+
+<p>The system or user configuration stored here is either created by the system administrator or by customization with the configuration interface of firewalld or by hand. The files will overload the default configuration files.</p>
+
+<p>To manually change settings of pre-defined icmptypes, zones or services, copy the file from the default configuration directory to the corresponding directory in the system configuration directory and change it accordingly.</p>
+
+<p>For more information on icmptypes, please have a look at <a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.icmptype.html">firewalld.icmptype</a>, for services at <a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.service.html">firewalld.service</a> and for zones at <a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.zone.html">firewalld.zone</a>.</p>
+
+<h2>
+<a id="see-also" class="anchor" href="#see-also" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>See Also</h2>
+
+<p><a href="https://twoerner.fedorapeople.org/firewalld/doc/firewall-applet.html">firewall-applet</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewall-cmd.html">firewall-cmd</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewall-config.html">firewall-config</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewallctl.html">firewallctl</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.html">firewalld</a>,
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.conf.html">firewalld.conf</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.dbus.html">firewalld.dbus</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.direct.html">firewalld.direct</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.icmptype.html">firewalld.icmptype</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.lockdown-whitelist.html">firewalld.lockdown-whitelist</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.richlanguage.html">firewalld.richlanguage</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.service.html">firewalld.service</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.zone.html">firewalld.zone</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewalld.zones.html">firewalld.zones</a>, 
+<a href="https://twoerner.fedorapeople.org/firewalld/doc/firewall-offline-cmd.html">firewall-offline-cmd</a></p>
+
+<h3>
+<a id="firewalld-home-page" class="anchor" href="#firewalld-home-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>firewalld home page:</h3>
+
+<pre><code>http://www.firewalld.org 
+</code></pre>
+
+<h3>
+<a id="more-documentation-with-examples" class="anchor" href="#more-documentation-with-examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>More documentation with examples:</h3>
+
+<pre><code>http://fedoraproject.org/wiki/FirewallD 
+</code></pre>
+
+<hr>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/t-woerner/firewalld/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/t-woerner/firewalld/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/t-woerner/firewalld"></a> is maintained by <a href="https://github.com/t-woerner">t-woerner</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
