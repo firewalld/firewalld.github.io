@@ -5,32 +5,32 @@
   href: "/blog/"
 
 - title: "Community"
-  href: "/community/"
+  href: "/community.html"
 
 - title: "Contribute"
-  href: "/contribute/"
+  href: "/contribute.html"
 
 #- title: "Development"
-#  href: "/development/"
+#  href: "/development.html"
 
 - title: "Documentation"
   href: "/documentation/"
 
   subitems:
     - title: "Concepts"
-      href: "/documentation/concepts/"
+      href: "/documentation/concepts.html"
     - title: "Configuration"
-      href: "/documentation/configuration/"
+      href: "/documentation/configuration.html"
     - title: "Service Management"
-      href: "/documentation/service-management/"
+      href: "/documentation/service-management.html"
     - title: "Zones"
-      href: "/documentation/zones/"
+      href: "/documentation/zones.html"
     - title: "Zone bindings"
-      href: "/documentation/zone-bindings/"
+      href: "/documentation/zone-bindings.html"
 
 - title: "Download"
   href: "/download/"
 
   subitems:
     - title: "All Releases"
-      href: "/download/all/"
+      href: "/download/all.html"
