@@ -1,0 +1,21 @@
+---
+layout: page
+title: Download
+---
+
+{% for post in site.posts site.recent_releases %}
+  {% if post.category == 'release' %}
+    <div class="entry">
+      <h2>{{ post.title }}</h2>
+      <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • {{ post.author }}{% endif %}{% if post.meta %} • {{ post.meta }}{% endif %}</p>
+      {{ post.content }}
+    </div>
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<h2>Source Repository</h2>
+
+The source repository for FirewallD is stored in git. Clone the repository by
+    $ git clone https://github.com/t-woerner/firewalld.git
+

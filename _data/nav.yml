@@ -1,0 +1,36 @@
+- title: "Home"
+  href: "/"
+
+- title: "Blog"
+  href: "/blog/"
+
+- title: "Community"
+  href: "/community/"
+
+- title: "Contribute"
+  href: "/contribute/"
+
+#- title: "Development"
+#  href: "/development/"
+
+- title: "Documentation"
+  href: "/documentation/"
+
+  subitems:
+    - title: "Concepts"
+      href: "/documentation/concepts/"
+    - title: "Configuration"
+      href: "/documentation/configuration/"
+    - title: "Service Management"
+      href: "/documentation/service-management/"
+    - title: "Zones"
+      href: "/documentation/zones/"
+    - title: "Zone bindings"
+      href: "/documentation/zone-bindings/"
+
+- title: "Download"
+  href: "/download/"
+
+  subitems:
+    - title: "All Releases"
+      href: "/download/all/"

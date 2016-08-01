@@ -1,0 +1,43 @@
+# Site settings
+name: firewalld
+email: twoerner<AT>redhat.com
+author: Thomas Woerner
+
+keywords: firewalld, firewall, linux, security, netfilter, dbus, daemon
+description: > # this means to ignore newlines until "baseurl:"
+  Welcome to the firewalld project homepage!
+  Firewalld provides a dynamically managed firewall with support for network/firewall zones that defines the trust level of network connections or interfaces.
+
+baseurl: /firewalld
+url: https://twoerner.github.io
+
+# Exclude our ruby stuff
+exclude: [.bundle, bin, vendor, Gemfile, Gemfile.lock, Rakefile, s3_website.yml, .last_optimized, slim-pickins-jekyll-theme-master]
+
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+
+destination: _site
+
+gems:
+  - jekyll-feed
+  - jekyll-paginate
+
+feed:
+  path: atom.xml
+  
+# Compress our Css
+#sass:
+#    style: :compressed
+
+permalink: /:year/:month/:title
+paginate: 5
+paginate_path: "/blog/page/:num/"
+
+#### SEO Stuff
+# Google Analytics
+google_universal_analytics: 
+google_universal_analytics_cookiedomain: auto
