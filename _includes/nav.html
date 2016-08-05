@@ -1,0 +1,31 @@
+{%
+  if include.node.href contains "http://" %}{%
+    assign url = include.node.href %}{%
+  else %}{%
+    assign url = site.baseurl | append: include.path | append: include.node.path %}{%
+  endif %}{%
+  assign dropdown = "" %}{%
+  if include.node.subitems != null %}{%
+    if include.level > 1 %}{%
+      assign dropdown = "subdropdown " %}{%
+    else %}{%
+      assign dropdown = "dropdown " %}{%
+    endif %}{%
+  endif %}{%
+  assign active_normal = "normal" %}{%
+  assign node_url = url | remove: site.baseurl | remove: ".html" %}{%
+  if node_url != "/" and page.url contains node_url %}{%
+    assign active_normal = "active" %}{%
+  elsif node_url == page.url %}{%
+    assign active_normal = "active" %}{%
+  elsif page.section == include.node.title and include.level == 1 %}{%
+    assign active_normal = "active" %}{%
+  endif %}
+<li class="{{dropdown}}{{active_normal}}">
+  <a href='{{url}}'>{{include.node.title}}</a>
+{% if include.node.subitems != null %}
+  <ul>
+    {% for _node in include.node.subitems %}{% assign _level = include.level | plus: 1 %}{% assign _path = include.path | append: include.node.path %}{% include nav.html level=_level path=_path node=_node %}{% endfor %}
+  </ul>
+{% endif %}
+</li>

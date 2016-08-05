@@ -9,9 +9,6 @@ Firewalld provides a dynamically managed firewall with support for network/firew
 
 Changes can be done immediately in the runtime environment. No restart of the service or daemon is needed.
 
-
-
-
 With the firewalld D-Bus interface it is simple for services, applications and also users to adapt firewall settings. The interface is complete and is used for the firewall configuration tools firewall-cmd, firewallctl, firewall-config and firewall-applet.
 
 The separation of the runtime and permanent configuration makes it possible to do evaulation and tests in runtime. The runtime configuration is only valid up to the next service reload and restart or to a system reboot. Then the permanent configuration will be loaded again. With the runtime environment it is possible to use runtime for settings that should only be active for a limited amount of time. If the runtime configuration has been used for evaluation, and it is complete and working, then it is possible to save this configuration then to the permanent environment.
@@ -36,13 +33,13 @@ The separation of the runtime and permanent configuration makes it possible to d
  * Graphical configuration tool using gtk3
  * Applet using Qt4
 
-## Who’s using it?
+## Who is using it?
 
 firewalld is used in the following Linux distributions as the default firewall management tool:
 
  * RHEL 7, CentOS 7
  * Fedora 18 and newer
- * Available for many other distributions
+ * Available for several other distributions
 
 Applications and libraries which support firewalld as a firewall management tool include:
 

@@ -2,54 +2,13 @@
   <nav class="row">
     <div id="nav">
       <ul class="columns medium-12 left primary-nav">
-
 	<li id="toggleMenu"><a href="#nav">Menu</a></li>
 	<li id="hideMenu"><a href="#toggleMenu">Menu</a></li>
-	
-	{% for nav in site.data.nav %}
-
-	  {% if nav.title == page.section or nav.title == page.title %}
-	     {% assign class="active" %}
-	  {% else %}
-	     {% assign class="normal" %}
-	  {% endif %}
-	  {% if nav.subitems != null %}
-	    <li class="dropdown {{class}}">
-	      <a href="{{ site.baseurl }}{{ nav.href }}">{{ nav.title }}</a>
-	      <ul>
-		{% for subnav in nav.subitems %}
-		  {% if page.title == subnav.title %}
-		    {% assign subclass="active" %}
-		  {% else %}
-		    {% assign subclass="normal" %}
-		  {% endif %}
-		  <li class="{{ subclass }}"><a href="{{ site.baseurl }}{{ subnav.href }}">{{ subnav.title }}</a></li>
-		{% endfor %}
-	      </ul>
-	    </li>
-	  {% elsif nav.external-subitems != null %}
-	    <li class="dropdown">
-	      <a href="{{ site.url }}{{ nav.url }}">{{ nav.title }}</a>
-	      <ul>
-	 	{% for subnav in nav.external-subitems %}
-		  <li><a href="{{ subnav.href }}">{{ subnav.title }}</a></li>
-		{% endfor %}
-	      </ul>
-	    </li>
-    	  {% elsif nav.title == page.section %}
-	    <li class="active"><a href="{{ site.baseurl }}{{ nav.href }}">{{ nav.title }}</a></li>
-	  {% elsif nav.title == page.title %}
-	    <li class="active"><a href="{{ site.baseurl }}{{ nav.href }}">{{ nav.title }}</a></li>
-	  {% else %}
-	    {% if nav.href %}
- 	      <li><a href="{{ site.baseurl }}{{ nav.href }}">{{ nav.title }}</a></li>
-	    {% elsif nav.external %}
-	      <li><a href="{{ nav.external }}">{{ nav.title }}</a></li>
-	    {% endif %}
-	  {% endif %}
-	{% endfor %}
+        {% for _node in site.data.nav %}{% assign level = 1 %}{% include nav.html level=level path="/" node=_node %}{% endfor %}
 	{% for socials in site.data.socials %}
-	  <li class="right"><a href="{{ socials.href }}"><span class="icon-{{ socials.title }} socials"></span></a></li>
+	  <li class="right">
+	    <a href="{{ socials.href }}"><span class="icon-{{ socials.title }} socials"></span></a>
+	  </li>
         {% endfor %}
       </ul>
     </div>

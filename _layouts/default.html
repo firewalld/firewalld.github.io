@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
+  {% include subnav.html %}
+  {% assign page.subnav_title = subnav_title %}
   {% include head.html %}
   <body>
     <main class="wrap">
       {% include header.html %}
       {% include navigation.html %}
+      <div class="row page-navigation">
+      {% if subnav_title_size > 0 %}
+	{% for title in subnav_title %}{% assign idx = forloop.index | minus: 1 %}<a href="{{ subnav_url[idx] }}">{{title}}</a> &raquo; {% endfor %}
+      {% endif %}
+      </div>
       {{ content }}
     </main>
     {% include footer.html %}

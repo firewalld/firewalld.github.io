@@ -1,36 +1,76 @@
+#
+# Only use spaces in here, no tabs!
+#
+
 - title: "Home"
-  href: "/"
+  path: ""
 
 - title: "Blog"
-  href: "/blog/"
+  path: "blog/"
 
 - title: "Community"
-  href: "/community.html"
+  path: "community.html"
 
 - title: "Contribute"
-  href: "/contribute.html"
+  path: "contribute.html"
 
 #- title: "Development"
-#  href: "/development.html"
+#  path: "development.html"
 
 - title: "Documentation"
-  href: "/documentation/"
+  path: "documentation/"
 
   subitems:
-    - title: "Concepts"
-      href: "/documentation/concepts.html"
-    - title: "Configuration"
-      href: "/documentation/configuration.html"
-    - title: "Service Management"
-      href: "/documentation/service-management.html"
-    - title: "Zones"
-      href: "/documentation/zones.html"
-    - title: "Zone bindings"
-      href: "/documentation/zone-bindings.html"
+  - title: "Concepts"
+    path: "concepts.html"
+  - title: "Enable and Disable firewalld"
+    path: "enable-disable.html"
+  - title: "Configuration"
+    path: "configuration.html"
+  - title: "Directories"
+    path: "directories.html"
+  - title: "Zones"
+    path: "zones/"
+
+    subitems:
+    - title: "Predefined Zones"
+      path: "predefined-zones.html"
+    - title: "Interfaces and Sources"
+      path: "interfaces-and-sources.html"
+    - title: "Configuration of Zones"
+      path: "configuration-of-zones.html"
+
+  - title: "Services"
+    path: "services/"
+
+#    subitems:
+#    - title: "Predefined Services"
+#      path: "predefined-services.html"
+
+  - title: "IPSets"
+    path: "ipsets/"
+
+#    subitems:
+#    - title: "Predefined IPSets"
+#      path: "predefined-ipsets.html"
+
+  - title: "ICMP Types"
+    path: "icmptypes/"
+
+#    subitems:
+#    - title: "Predefined ICMP Types"
+#      path: "predefined-icmptypes.html"
+
+  - title: "Direct Interface"
+    path: "direct-interface.html"
+  - title: "Manual Pages"
+    path: "man-pages.html"
+  - title: "External Resources"
+    path: "external.html"
 
 - title: "Download"
-  href: "/download/"
+  path: "download/"
 
   subitems:
-    - title: "All Releases"
-      href: "/download/all.html"
+  - title: "All Releases"
+    path: "all.html"

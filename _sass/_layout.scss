@@ -36,9 +36,18 @@
   vertical-align: bottom;
 }
 
+.page-navigation {
+    padding-top: $spacing-unit;
+    padding-left: $spacing-unit;
+    padding-right: $spacing-unit;
+    padding-bottom: 0;
+}
+
 // Pages
 .page-content {
-    padding: $spacing-unit;
+    padding-left: $spacing-unit;
+    padding-right: $spacing-unit;
+    padding-bottom: $spacing-unit;
 }
 
 .page-heading {
@@ -126,6 +135,9 @@ html,body {
 .site-footer {
   color: $footer-text-color;
   background: $footer-color;
+  background: linear-gradient(bottom, lighten($footer-color, 10%) 0%, $footer-color 100%);
+  background: -moz-linear-gradient(bottom, lighten($footer-color, 10%) 0%, $footer-color 100%);
+  background: -webkit-linear-gradient(bottom, lighten($footer-color, 10%) 0%, $footer-color 100%);
   font-size: $small-font-size;
   position: relative;
   line-height: $footer-height;

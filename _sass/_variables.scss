@@ -39,7 +39,7 @@ $banner-color: lighten($primary-color, 75%);
 // Footer
 $footer-height: 30px;
 $footer-text-color: $secondary-color;
-$footer-color: lighten($primary-color, 25%);
+$footer-color: $primary-color;
 
 // Page Navigation
 $page-navigation-height: 18px;
