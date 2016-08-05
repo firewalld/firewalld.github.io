@@ -1,0 +1,82 @@
+---
+layout: page
+title: firewalld.direct
+---
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>firewalld.direct</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.direct"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>firewalld.direct &#8212; firewalld direct configuration file</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><p>
+      </p><pre class="programlisting">
+<code class="filename">/etc/firewalld/direct.xml</code>
+      </pre><p>
+    </p></div><div class="refsect1"><a name="description"></a><h2>Description</h2><p>
+     Direct configuration gives a more direct access to the firewall. It requires user to know basic ip(6)tables/ebtables concepts, i.e. <code class="literal">table</code> (filter/mangle/nat/...), <code class="literal">chain</code> (INPUT/OUTPUT/FORWARD/...), <code class="literal">commands</code> (-A/-D/-I/...), <code class="literal">parameters</code> (-p/-s/-d/-j/...) and <code class="literal">targets</code> (ACCEPT/DROP/REJECT/...).
+     Direct configuration should be used only as a last resort when it's not possible to use <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>.
+     See also <code class="literal">Direct Options</code> in <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>.
+    </p><p>
+      A firewalld direct configuration file contains informations about permanent direct chains, rules and passthrough ...
+    </p><p>
+       This is the structure of a direct configuration file:
+
+      </p><pre class="programlisting">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;direct&gt;
+  [ &lt;chain ipv="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>|<code class="literal">eb</code>" table="<em class="replaceable"><code>table</code></em>" chain="<em class="replaceable"><code>chain</code></em>"/&gt; ]
+  [ &lt;rule ipv="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>|<code class="literal">eb</code>" table="<em class="replaceable"><code>table</code></em>" chain="<em class="replaceable"><code>chain</code></em>" priority="<em class="replaceable"><code>priority</code></em>"&gt; args &lt;/rule&gt; ]
+  [ &lt;passthrough ipv="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>|<code class="literal">eb</code>"&gt; args &lt;/passthrough&gt; ]
+&lt;/direct&gt;
+      </pre><p>
+    </p><div class="refsect2"><a name="direct"></a><h3>direct</h3><p>
+	The mandatory direct start and end tag defines the direct. This tag can only be used once in a direct configuration file. There are no attributes for direct.
+      </p></div><div class="refsect2"><a name="chain"></a><h3>chain</h3><p>
+	Is an optional empty-element tag and can be used several times. It can be used to define names for additional chains. A chain entry has exactly three attributes:
+      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">ipv="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>|<code class="literal">eb</code>"</span></dt><dd><p>
+              The IP family where the chain will be created. This can be either <code class="literal">ipv4</code>, <code class="literal">ipv6</code> or <code class="literal">eb</code>.
+	    </p></dd><dt><span class="term">table="<em class="replaceable"><code>table</code></em>"</span></dt><dd><p>
+              The table name where the chain will be created.
+	      This can be one of the tables that can be used for iptables, ip6tables or ebtables.
+	      For the possible values, see TABLES section in the iptables, ip6tables or ebtables man pages.
+	    </p></dd><dt><span class="term">chain="<em class="replaceable"><code>chain</code></em>"</span></dt><dd><p>
+              The name of the chain, that will be created. Please make sure that there is no other chain with this name already.
+	    </p></dd></dl></div><p>
+	Please remember to add a rule or passthrough rule with an <code class="option">--jump</code> or <code class="option">--goto</code> option to connect the chain to another one.
+      </p></div><div class="refsect2"><a name="rule"></a><h3>rule</h3><p>
+	Is an optional element tag and can be used several times. It can be used to add rules to a built-in or added chain. A rule entry has exactly four attributes:
+      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">ipv="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>|<code class="literal">eb</code>"</span></dt><dd><p>
+              The IP family where the rule will be added. This can be either <code class="literal">ipv4</code>, <code class="literal">ipv6</code> or <code class="literal">eb</code>.
+	    </p></dd><dt><span class="term">table="<em class="replaceable"><code>table</code></em>"</span></dt><dd><p>
+              The table name where the rule will be added.
+	      This can be one of the tables that can be used for iptables, ip6tables or ebtables.
+	      For the possible values, see TABLES section in the iptables, ip6tables or ebtables man pages.
+	    </p></dd><dt><span class="term">chain="<em class="replaceable"><code>chain</code></em>"</span></dt><dd><p>
+              The name of the chain where the rule will be added. This can be either a built-in chain or a chain that has been created with the chain tag.
+              If the chain name is a built-in chain, then the rule will be added to <em class="replaceable"><code>chain</code></em>_direct, else the supplied chain name is used. <em class="replaceable"><code>chain</code></em>_direct is created internally for all built-in chains to make sure that the added rules do not conflict with the rules created by firewalld.
+	    </p></dd><dt><span class="term">priority="<em class="replaceable"><code>priority</code></em>"</span></dt><dd><p>
+	      The priority is used to order rules. Priority 0 means add rule on top of the chain, with a higher priority the rule will be added further down. Rules with the same priority are on the same level and the order of these rules is not fixed and may change. If you want to make sure that a rule will be added after another one, use a low priority for the first and a higher for the following.
+	    </p></dd></dl></div><p>
+	The <em class="replaceable"><code>args</code></em> can be any arguments of iptables or ip6tables, that do not conflict with the table or chain attributes.
+      </p></div><div class="refsect2"><a name="passthrough"></a><h3>passthrough</h3><p>
+	Is an optional element tag and can be used several times. It can be used to add rules to a built-in or added chain. A rule entry has exactly one attribute:
+      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">ipv="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>|<code class="literal">eb</code>"</span></dt><dd><p>
+              The IP family where the passthrough rule will be added. This can be either <code class="literal">ipv4</code>, <code class="literal">ipv6</code> or <code class="literal">eb</code>.
+	    </p></dd></dl></div><p>
+	The <em class="replaceable"><code>args</code></em> can be any arguments of iptables or ip6tables.
+      </p><p>
+	The passthrough rule will be added to the chain directly. There is no mechanism like for the direct <code class="option">rule</code> above. The user of the passthrough rule has to make sure that there will be no conflict with the rules created by firewalld.
+      </p></div></div><div class="refsect1"><a name="example"></a><h2>Example</h2><p>
+      Blacklisting of the networks 192.168.1.0/24 and 192.168.5.0/24 with logging and dropping early in the raw table:
+      
+      </p><pre class="programlisting">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;direct&gt;
+  &lt;chain ipv="ipv4" table="raw" chain="blacklist"/&gt;
+  &lt;rule ipv="ipv4" table="raw" chain="PREROUTING" priority="0"&gt;-s 192.168.1.0/24 -j blacklist&lt;/rule&gt;
+  &lt;rule ipv="ipv4" table="raw" chain="PREROUTING" priority="1"&gt;-s 192.168.5.0/24 -j blacklist&lt;/rule&gt;
+  &lt;rule ipv="ipv4" table="raw" chain="blacklist" priority="0"&gt;-m limit --limit 1/min -j LOG --log-prefix "blacklisted: "&lt;/rule&gt;
+  &lt;rule ipv="ipv4" table="raw" chain="blacklist" priority="1"&gt;-j DROP&lt;/rule&gt;
+&lt;/direct&gt;
+      </pre><p>
+      
+    </p></div><div class="refsect1"><a name="idm47443820292224"></a><h2>See Also</h2><span class="simplelist"><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></span></div><div class="refsect1"><a name="idm47443820266960"></a><h2>Notes</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">firewalld home page:</span></dt><dd><p>
+	  <a class="ulink" href="http://www.firewalld.org" target="_top">http://www.firewalld.org</a>
+	</p></dd><dt><span class="term">More documentation with examples:</span></dt><dd><p>
+	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
+	</p></dd></dl></div></div></div></body></html>

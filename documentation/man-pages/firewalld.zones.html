@@ -1,0 +1,56 @@
+---
+layout: page
+title: firewalld.zones
+---
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>firewalld.zones</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.zones"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>firewalld.zones &#8212; firewalld zones</p></div><div class="refsect1"><a name="description"></a><h2>Description</h2><div class="refsect2"><a name="whatisazone"></a><h3>What is a zone?</h3><p>
+	A network zone defines the level of trust for network connections. This is a one to many relation, which means that a connection can only be part of one zone, but a zone can be used for many network connections.
+      </p><p>
+	The zone defines the firewall features that are enabled in this zone:
+      </p><div class="refsect3"><a name="idm47742152005296"></a><h4>Predefined services</h4><p>
+	  A service is a combination of port and/or protocol entries. Optionally netfilter helper modules can be added and also a IPv4 and IPv6 destination address.
+	</p></div><div class="refsect3"><a name="idm47742152003888"></a><h4>Ports and protocols</h4><p>
+	  Definition of <code class="literal">tcp</code> or <code class="literal">udp</code> ports, where ports can be a single port or a port range.
+	</p></div><div class="refsect3"><a name="idm47742152001456"></a><h4>ICMP blocks</h4><p>
+	  Blocks selected Internet Control Message Protocol (ICMP) messages. These messages are either information requests or created as a reply to information requests or in error conditions.
+	</p></div><div class="refsect3"><a name="idm47742152175920"></a><h4>Masquerading</h4><p>
+	  The addresses of a private network are mapped to and hidden behind a public IP address. This is a form of address translation.
+	</p></div><div class="refsect3"><a name="idm47742152174624"></a><h4>Forward ports</h4><p>
+	  A forward port is either mapped to the same port on another host or to another port on the same host or to another port on another host.
+	</p></div><div class="refsect3"><a name="idm47742152173280"></a><h4>Rich language rules</h4><p>
+	  The rich language extends the elements (service, port, icmp-block, masquerade, forward-port and source-port) with additional source and destination addresses, logging, actions and limits for logs and actions. It can also be used for host or network white and black listing (for more information, please have a look at <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>).
+	</p></div><p>
+	For more information on the zone file format, please have a look at <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>.
+      </p></div><div class="refsect2"><a name="whichzonesareavailable"></a><h3>Which zones are available?</h3><p>
+	Here are the zones provided by firewalld sorted according to the default trust level of the zones from untrusted to trusted:
+      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">drop</span></dt><dd><p>
+		Any incoming network packets are dropped, there is no reply. Only outgoing network connections are possible.
+	      </p></dd><dt><span class="term">block</span></dt><dd><p>
+		Any incoming network connections are rejected with an <code class="literal">icmp-host-prohibited</code> message for IPv4 and <code class="literal">icmp6-adm-prohibited</code> for IPv6. Only network connections initiated within this system are possible.
+	      </p></dd><dt><span class="term">public</span></dt><dd><p>
+		For use in public areas. You do not trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.
+	      </p></dd><dt><span class="term">external</span></dt><dd><p>
+		For use on external networks with masquerading enabled especially for routers. You do not trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.
+	      </p></dd><dt><span class="term">dmz</span></dt><dd><p>
+		For computers in your demilitarized zone that are publicly-accessible with limited access to your internal network. Only selected incoming connections are accepted.
+	      </p></dd><dt><span class="term">work</span></dt><dd><p>
+		For use in work areas. You mostly trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.
+	      </p></dd><dt><span class="term">home</span></dt><dd><p>
+		For use in home areas. You mostly trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.
+	      </p></dd><dt><span class="term">internal</span></dt><dd><p>
+		For use on internal networks. You mostly trust the other computers on the networks to not harm your computer. Only selected incoming connections are accepted.
+	      </p></dd><dt><span class="term">trusted</span></dt><dd><p>
+		All network connections are accepted.
+	      </p></dd></dl></div></div><div class="refsect2"><a name="whichzonesshouldbeused"></a><h3>Which zone should be used?</h3><p>
+	A public WIFI network connection for example should be mainly untrusted, a wired home network connection should be fairly trusted. Select the zone that best matches the network you are using.
+      </p></div><div class="refsect2"><a name="howtoconfigureoraddzones"></a><h3>How to configure or add zones?</h3><p>
+	To configure or add zones you can either use one of the firewalld interfaces to handle and change the configuration: These are the graphical configuration tool firewall-config, the command line tool <span class="command"><strong>firewall-cmd</strong></span> or the D-Bus interface. Or you can create or copy a zone file in one of the configuration directories. <code class="filename">/usr/lib/firewalld/zones</code> is used for default and fallback configurations and <code class="filename">/etc/firewalld/zones</code> is used for user created and customized configuration files.
+      </p></div><div class="refsect2"><a name="howtosetorchangeazone"></a><h3>How to set or change a zone for a connection?</h3><p>
+	The zone is stored into the ifcfg of the connection with <code class="option">ZONE=</code> option. If the option is missing or empty, the default zone set in firewalld is used.
+      </p><p>
+       If the connection is controlled by NetworkManager, you can also use <span class="command"><strong>nm-connection-editor</strong></span> to change the zone.
+      </p></div></div><div class="refsect1"><a name="idm47742152129040"></a><h2>See Also</h2><span class="simplelist"><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></span></div><div class="refsect1"><a name="idm47742147167456"></a><h2>Notes</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">firewalld home page:</span></dt><dd><p>
+	  <a class="ulink" href="http://www.firewalld.org" target="_top">http://www.firewalld.org</a>
+	</p></dd><dt><span class="term">More documentation with examples:</span></dt><dd><p>
+	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
+	</p></dd></dl></div></div></div></body></html>
