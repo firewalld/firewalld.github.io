@@ -19,8 +19,8 @@
 }
 
 // Main navigation bar
-#nav .primary-nav{
-    z-index: 2;
+#nav .primary-nav {
+    z-index: 9999;
     position: relative;
     display: block;
 }
@@ -85,6 +85,7 @@
 
 // Dropdown menu arrow
 .dropdown>a::after {
+    z-index: 9999;
     position: absolute;
     display: block;
     content: "";
