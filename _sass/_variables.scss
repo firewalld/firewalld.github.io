@@ -46,3 +46,24 @@ $page-navigation-height: 18px;
 $page-navigation-text-color: lighten($primary-color, 50%);
 $page-navigation-link-color: lighten($primary-color, 80%);
 $page-navigation-color: $primary-color;
+
+// Breadcrumb Navigation
+$breadcrumb-height: 24px;
+$breadcrumb-color: #e0e0e0;
+$breadcrumb-link-color: $link-color;
+$breadcrumb-spacing: 10px;
+$breadcrumb-half-height: $breadcrumb-height/2;
+
+// Blog Navigation
+$blog-navigation-height: 24px;
+$blog-navigation-color: #e0e0e0;
+$blog-navigation-link-color: $link-color;
+$blog-navigation-spacing: 10px;
+$blog-navigation-half-height: $blog-navigation-height/2;
+
+// Pagination
+$pagination-height: 24px;
+$pagination-color: #e0e0e0;
+$pagination-text-color: lighten($link-color, 30%);
+$pagination-link-color: $link-color;
+$pagination-spacing: 10px;

@@ -254,6 +254,21 @@
 	width: auto;
     }
 
+    #nav .primary-nav ul>li>ul {
+	top: 0px;
+	opacity: 1;
+    }
+
+    #nav .primary-nav ul>li:hover>ul {
+	left: 0px;
+	height: auto;
+	position: relative;
+    }
+
+    #nav .primary-nav li:hover>ul>li {
+	height: auto;
+    }
+
     #nav #toggleMenu {
 	display: block;
 	padding-left: 15px;
