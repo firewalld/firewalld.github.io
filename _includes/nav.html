@@ -12,14 +12,18 @@
       assign dropdown = "dropdown " %}{%
     endif %}{%
   endif %}{%
-  assign active_normal = "normal" %}{%
-  assign node_url = url | remove: site.baseurl | remove: ".html" %}{%
-  if node_url != "/" and page.url contains node_url %}{%
+  assign page_url = page.url | remove: ".html" %}{%
+  assign node_url = include.path | append: include.node.path | remove: ".html" %}{%
+  assign page_url_size = page.url | split: "/" | size %}{%
+  assign node_url_size = include.path | append: include.node.path | split: "/" | size %}{%
+  if node_url != "/" and page_url_size != node_url_size and page_url contains node_url %}{%
     assign active_normal = "active" %}{%
   elsif node_url == page.url %}{%
     assign active_normal = "active" %}{%
   elsif page.section == include.node.title and include.level == 1 %}{%
     assign active_normal = "active" %}{%
+  else %}{%
+    assign active_normal = "normal" %}{%
   endif %}
 <li class="{{dropdown}}{{active_normal}}">
   <a href='{{url}}'>{{include.node.title}}</a>
