@@ -11,7 +11,7 @@ Changes can be done immediately in the runtime environment. No restart of the se
 
 With the firewalld D-Bus interface it is simple for services, applications and also users to adapt firewall settings. The interface is complete and is used for the firewall configuration tools firewall-cmd, firewallctl, firewall-config and firewall-applet.
 
-The separation of the runtime and permanent configuration makes it possible to do evaulation and tests in runtime. The runtime configuration is only valid up to the next service reload and restart or to a system reboot. Then the permanent configuration will be loaded again. With the runtime environment it is possible to use runtime for settings that should only be active for a limited amount of time. If the runtime configuration has been used for evaluation, and it is complete and working, then it is possible to save this configuration then to the permanent environment.
+The separation of the runtime and permanent configuration makes it possible to do evaulation and tests in runtime. The runtime configuration is only valid up to the next service reload and restart or to a system reboot. Then the permanent configuration will be loaded again. With the runtime environment it is possible to use runtime for settings that should only be active for a limited amount of time. If the runtime configuration has been used for evaluation, and it is complete and working, then it is possible to save this configuration to the permanent environment.
 
 ## Features
 
