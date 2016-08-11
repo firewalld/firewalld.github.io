@@ -3,7 +3,7 @@ layout: home
 title: Home
 ---
 
-Firewalld provides a dynamically managed firewall with support for network/firewall zones that defines the trust level of network connections or interfaces. It has support for IPv4, IPv6 firewall settings, ethernet bridges and IP sets. There is a separation of runtime and permanent configuration options. It also provides an interface for services or applications to add firewall rules directly.
+Firewalld provides a dynamically managed firewall with support for network/firewall zones that define the trust level of network connections or interfaces. It has support for IPv4, IPv6 firewall settings, ethernet bridges and IP sets. There is a separation of runtime and permanent configuration options. It also provides an interface for services or applications to add firewall rules directly.
 
 ## Benefits of using firewalld
 
@@ -23,7 +23,7 @@ The separation of the runtime and permanent configuration makes it possible to d
  * Simple service, port, protocol, source port, masquerading, port forwarding, icmp filter, rich rule, interface and source address handlig in zones
  * Simple service definition with ports, protocols, source ports, modules (netfilter helpers) and destination address handling
  * Rich Language for more flexible and complex rules in zones
- * Times firewall rules in zones
+ * Timed firewall rules in zones
  * Simple log of denied packets
  * Direct interface
  * Lockdown: Whitelisting of applications that may modify the firewall
