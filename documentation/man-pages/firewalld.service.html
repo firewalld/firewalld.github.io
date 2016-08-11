@@ -3,10 +3,10 @@ layout: page
 title: firewalld.service
 ---
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.service</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.service"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.service — firewalld service configuration files</blockquote><div class="refsynopsisdiv"><h2>Synopsis</h2><blockquote>
-      <pre class="programlisting"><code class="filename">/etc/firewalld/services/service.xml</code>
-<code class="filename">/usr/lib/firewalld/services/service.xml</code></pre>
-    </blockquote></div><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.service</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.service"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.service — firewalld service configuration files</blockquote><h2>Synopsis</h2><blockquote><p>
+      </p><pre class="programlisting"><code class="filename">/etc/firewalld/services/service.xml</code>
+<code class="filename">/usr/lib/firewalld/services/service.xml</code></pre><p>
+    </p></blockquote><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
       A firewalld service configuration file provides the information of a service entry for firewalld. The most important configuration options are ports, modules and destination addresses.
     </blockquote><blockquote>
       This example configuration file shows the structure of a service configuration file:
@@ -22,44 +22,44 @@ title: firewalld.service
 &lt;/service&gt;</pre>
     </blockquote></div><div class="refsect1"><a name="options"></a><h2>Options</h2><blockquote>
       The config can contain these tags and attributes. Some of them are mandatory, others optional.
-    </blockquote><blockquote><h3>service</h3><blockquote>
+    </blockquote><blockquote><div class="refsect2"><a name="options_service"></a><h3>service</h3><blockquote>
 	The mandatory service start and end tag defines the service. This tag can only be used once in a service configuration file. There are optional attributes for services:
-      </blockquote><blockquote><dt><span class="term">version="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
+      </blockquote><blockquote><dt><span class="term">version="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
               To give the service a version.
-	    </blockquote></dd></blockquote></blockquote><blockquote><h3>short</h3><blockquote>
+	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="options_short"></a><h3>short</h3><blockquote>
 	Is an optional start and end tag and is used to give an icmptype a more	readable name.
-      </blockquote></blockquote><blockquote><h3>description</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="options_description"></a><h3>description</h3><blockquote>
 	Is an optional start and end tag to have a description for a icmptype.
-      </blockquote></blockquote><blockquote><h3>port</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="options_port"></a><h3>port</h3><blockquote>
 	Is an optional empty-element tag and can be used several times to have more than one port entry. All attributes of a port entry are mandatory:
-      </blockquote><blockquote><dt><span class="term">port="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
+      </blockquote><blockquote><dt><span class="term">port="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
 	      The port <em class="replaceable"><code>string</code></em> can be a single port number or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em> or also empty to match a protocol only.
-	    </blockquote></dd><dt><span class="term">protocol="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
+	    </p></blockquote></dd><dt><span class="term">protocol="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
               The protocol value can either be <code class="option">tcp</code> or <code class="option">udp</code>.
-	    </blockquote></dd></blockquote><blockquote>
+	    </p></blockquote></dd></blockquote><blockquote>
 	For compatibility with older firewalld versions, it is possible to add protocols with the port option where the port is empty. With the addition of native protocol support in the service, this it not needed anymore. These entries will automatically be converted to protocols. With the next modification of the service file, the enries will be listed as protocols.
-      </blockquote></blockquote><blockquote><h3>protocol</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="options_protocol"></a><h3>protocol</h3><blockquote>
 	Is an optional empty-element tag and can be used several times to have more than one protocol entry. A protocol entry has exactly one attribute:
-      </blockquote><blockquote><dt><span class="term">value="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
+      </blockquote><blockquote><dt><span class="term">value="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
 	      The protocol can be any protocol supported by the system. Please have a look at <code class="filename">/etc/protocols</code> for supported protocols.
-	    </blockquote></dd></blockquote></blockquote><blockquote><h3>source-port</h3><blockquote>
+	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="options_source_port"></a><h3>source-port</h3><blockquote>
 	Is an optional empty-element tag and can be used several times to have more than one source port entry. All attributes of a source port entry are mandatory:
-      </blockquote><blockquote><dt><span class="term">port="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
+      </blockquote><blockquote><dt><span class="term">port="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
 	      The port <em class="replaceable"><code>string</code></em> can be a single port number or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>.
-	    </blockquote></dd><dt><span class="term">protocol="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
+	    </p></blockquote></dd><dt><span class="term">protocol="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
               The protocol value can either be <code class="option">tcp</code> or <code class="option">udp</code>.
-	    </blockquote></dd></blockquote></blockquote><blockquote><h3>module</h3><blockquote>
+	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="options_module"></a><h3>module</h3><blockquote>
 	Is an optional empty-element tag and can be used several times to enable more than one netfilter kernel helper for the service. A module entry has exactly one attribute:
-      </blockquote><blockquote><dt><span class="term">name="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
+      </blockquote><blockquote><dt><span class="term">name="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
               Defines the name of the kernel netfilter helper as a string.
-	    </blockquote></dd></blockquote></blockquote><blockquote><h3>destination</h3><blockquote>
+	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="options_destination"></a><h3>destination</h3><blockquote>
 	Is an optional empty-element tag and can be used only once. The destination specifies the destination network as a network IP address (optional with /mask), or a plain IP address. The use of hostnames is not recommended, because these will only be resolved at service activation and transmitted to the kernel. For more information in this element, please have a look at <code class="option">--destination</code> in <span class="citerefentry"><span class="refentrytitle">iptables</span>(8)</span> and <span class="citerefentry"><span class="refentrytitle">ip6tables</span>(8)</span>.
-      </blockquote><blockquote><dt><span class="term">ipv4="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]"</span></dt><dd><blockquote>
+      </blockquote><blockquote><dt><span class="term">ipv4="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]"</span></dt><dd><blockquote><p>
               The IPv4 destination address with optional mask.
-	    </blockquote></dd><dt><span class="term">ipv6="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]"</span></dt><dd><blockquote>
+	    </p></blockquote></dd><dt><span class="term">ipv6="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]"</span></dt><dd><blockquote><p>
               The IPv6 destination address with optional mask.
-	    </blockquote></dd></blockquote></blockquote></div><div class="refsect1"><a name="idm140572430765472"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140572430740208"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote>
+	    </p></blockquote></dd></blockquote></div></blockquote></div><div class="refsect1"><a name="idm140296973853216"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140296973838000"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://www.firewalld.org" target="_top">http://www.firewalld.org</a>
-	</blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote>
+	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
-	</blockquote></dd></blockquote></div></div></body></html>
+	</p></blockquote></dd></blockquote></div></div></body></html>

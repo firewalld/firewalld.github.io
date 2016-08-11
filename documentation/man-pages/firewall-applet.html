@@ -3,15 +3,15 @@ layout: page
 title: firewall-applet
 ---
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewall-applet</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewall-applet"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewall-applet — firewalld applet</blockquote><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">firewall-applet</code>  [OPTIONS...]</p></div></div><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewall-applet</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewall-applet"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewall-applet — firewalld applet</blockquote><h2>Synopsis</h2><blockquote><div class="cmdsynopsis"><p><code class="command">firewall-applet</code>  [OPTIONS...]</p></div></blockquote><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
       firewall-applet is a tray applet for firewalld.
     </blockquote></div><div class="refsect1"><a name="options"></a><h2>Options</h2><blockquote>
       <span class="command"><strong>firewall-applet</strong></span> does not support any special options.
     </blockquote><blockquote>
       The following options are supported:
-    </blockquote><blockquote><dt><span class="term"><code class="option">-h</code>, </span><span class="term"><code class="option">--help</code></span></dt><dd><blockquote>
+    </blockquote><blockquote><dt><span class="term"><code class="option">-h</code>, </span><span class="term"><code class="option">--help</code></span></dt><dd><blockquote><p>
 	    Prints a short help text and exists.
-	  </blockquote></dd></blockquote></div><div class="refsect1"><a name="qsettings"></a><h2>QSettings</h2><blockquote>
+	  </p></blockquote></dd></blockquote></div><div class="refsect1"><a name="qsettings"></a><h2>QSettings</h2><blockquote>
       <span class="command"><strong>firewall-applet</strong></span> has additional settings to adapt the look and feel. QSettings is used and stores them in <code class="filename">~/.config/firewall/applet.conf</code>. The file is automatically reloaded if it has been changed and the new settings will immediately be effective.
     </blockquote><blockquote>
       There is also the global config file <code class="filename">/etc/firewall/applet.conf</code>, which contains the default values. The settings in this file will be overloaded by settings in the user settings file.
@@ -22,39 +22,39 @@ notifications=true
 show-inactive=true</pre>
     </blockquote><blockquote>
       The following settings are supported:
-    </blockquote><blockquote><dt><span class="term"><code class="option">notifications</code></span></dt><dd><blockquote>
+    </blockquote><blockquote><dt><span class="term"><code class="option">notifications</code></span></dt><dd><blockquote><p>
 	    The applet shows notifications if enabled. This setting can be enabled also in the applet with the "Enable Notifications" checkbox in the right mouse menu.
-	  </blockquote><blockquote>
+	  </p><p>
 	    This setting defaults to <code class="option">false</code>.
-	  </blockquote><blockquote>
+	  </p><p>
 	    If notifications are shown for these actions if enabled:
 
-	    <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><blockquote>Connection to firewalld established</blockquote></li><li class="listitem"><blockquote>Connection to firewalld lost</blockquote></li><li class="listitem"><blockquote>Firewall has been reloaded</blockquote></li><li class="listitem"><blockquote>Default zone has been changed</blockquote></li><li class="listitem"><blockquote>Panic mode has been enabled or disabled</blockquote></li><li class="listitem"><blockquote>Activation, deactivation or change of zones bound to interfaces</blockquote></li><li class="listitem"><blockquote>Activation, deactivation or change of zones bound to sources addresses</blockquote></li></ul></div>
+	    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Connection to firewalld established</p></li><li class="listitem"><p>Connection to firewalld lost</p></li><li class="listitem"><p>Firewall has been reloaded</p></li><li class="listitem"><p>Default zone has been changed</p></li><li class="listitem"><p>Panic mode has been enabled or disabled</p></li><li class="listitem"><p>Activation, deactivation or change of zones bound to interfaces</p></li><li class="listitem"><p>Activation, deactivation or change of zones bound to sources addresses</p></li></ul></div><p>
 
-	  </blockquote></dd><dt><span class="term"><code class="option">show-inactive</code></span></dt><dd><blockquote>
+	  </p></blockquote></dd><dt><span class="term"><code class="option">show-inactive</code></span></dt><dd><blockquote><p>
 	    Show applet also if firewalld is not running. If firewalld has been stopped or is not running the applet will be hidden and not visible in the applet tray. Enable this setting to see the applet all the time for example to be sure that the firewall is active.
-	  </blockquote><blockquote>
+	  </p><p>
 	    This setting defaults to <code class="option">false</code>.
-	  </blockquote></dd><dt><span class="term"><code class="option">shields-up</code></span></dt><dd><blockquote>
+	  </p></blockquote></dd><dt><span class="term"><code class="option">shields-up</code></span></dt><dd><blockquote><p>
            The shields-up zone name to be used if shields-up is enabled.
-         </blockquote><blockquote>
+         </p><p>
            This setting defaults to '<code class="option">block</code>'.
-         </blockquote></dd><dt><span class="term"><code class="option">shields-down</code></span></dt><dd><blockquote>
+         </p></blockquote></dd><dt><span class="term"><code class="option">shields-down</code></span></dt><dd><blockquote><p>
            The shields-down zone name to be used if shields-up has been deactivated again.
-         </blockquote><blockquote>
+         </p><p>
            This setting defaults to '<code class="option">public</code>'.
-         </blockquote></dd><dt><span class="term"><code class="option">blink</code></span></dt><dd><blockquote>
+         </p></blockquote></dd><dt><span class="term"><code class="option">blink</code></span></dt><dd><blockquote><p>
 	    If enabled, the applet icon blinks in these cases:
 
-	    <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><blockquote>Connection to firewalld lost</blockquote></li><li class="listitem"><blockquote>Panic mode has been enabled or disabled</blockquote></li></ul></div>
-	  </blockquote><blockquote>
+	    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Connection to firewalld lost</p></li><li class="listitem"><p>Panic mode has been enabled or disabled</p></li></ul></div><p>
+	  </p><p>
 	    This setting defaults to <code class="option">false</code>.
-	  </blockquote></dd><dt><span class="term"><code class="option">blink-count</code></span></dt><dd><blockquote>
+	  </p></blockquote></dd><dt><span class="term"><code class="option">blink-count</code></span></dt><dd><blockquote><p>
 	    The number of blinks if <code class="option">blink</code> is enabled.
-	  </blockquote><blockquote>
+	  </p><p>
 	    This setting defaults to <code class="option">5</code>.
-	  </blockquote></dd></blockquote></div><div class="refsect1"><a name="idm140276181355456"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140276176681792"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote>
+	  </p></blockquote></dd></blockquote></div><div class="refsect1"><a name="idm140093362413968"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140093362399152"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://www.firewalld.org" target="_top">http://www.firewalld.org</a>
-	</blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote>
+	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
-	</blockquote></dd></blockquote></div></div></body></html>
+	</p></blockquote></dd></blockquote></div></div></body></html>
