@@ -3,25 +3,22 @@ layout: page
 title: firewalld.zone
 ---
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>firewalld.zone</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.zone"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>firewalld.zone &#8212; firewalld zone configuration files</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><p>
-      </p><pre class="programlisting">
-<code class="filename">/etc/firewalld/zones/zone.xml</code>
-<code class="filename">/usr/lib/firewalld/zones/zone.xml</code>
-      </pre><p>
-    </p></div><div class="refsect1"><a name="description"></a><h2>Description</h2><p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.zone</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.zone"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.zone — firewalld zone configuration files</blockquote><div class="refsynopsisdiv"><h2>Synopsis</h2><blockquote>
+      <pre class="programlisting"><code class="filename">/etc/firewalld/zones/zone.xml</code>
+<code class="filename">/usr/lib/firewalld/zones/zone.xml</code></pre>
+    </blockquote></div><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
       A firewalld zone configuration file contains the information for a zone.
       These are the zone description, services, ports, protcols, icmp-blocks, masquerade, forward-ports and rich language rules in an XML file format.
       The file name has to be <em class="replaceable"><code>zone_name</code></em>.xml where length of <em class="replaceable"><code>zone_name</code></em> is currently limited to 17 chars.
-    </p><p>
+    </blockquote><blockquote>
        This is the structure of a zone configuration file:
 
-      </p><pre class="programlisting">
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
+      <pre class="programlisting">&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;zone [version="<em class="replaceable"><code>versionstring</code></em>"] [target="<code class="literal">ACCEPT</code>|<code class="literal">%%REJECT%%</code>|<code class="literal">DROP</code>"]&gt;
   [ &lt;short&gt;<em class="replaceable"><code>short description</code></em>&lt;/short&gt; ]
   [ &lt;description&gt;<em class="replaceable"><code>description</code></em>&lt;/description&gt; ]
   [ &lt;interface name="<em class="replaceable"><code>string</code></em>"/&gt; ]
-  [ &lt;source address="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]"|mac="<em class="replaceable"><code>MAC</code></em>"|ipset="<em class="replaceable"><code>ipset</code></em>"/&gt; ]
+  [ &lt;source address="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]"|ipset="<em class="replaceable"><code>ipset</code></em>"/&gt; ]
   [ &lt;service name="<em class="replaceable"><code>string</code></em>"/&gt; ]
   [ &lt;port port="<em class="replaceable"><code>portid</code></em>[-<em class="replaceable"><code>portid</code></em>]" protocol="<code class="literal">tcp</code>|<code class="literal">udp</code>"/&gt; ]
   [ &lt;protcol value="<em class="replaceable"><code>protocol</code></em>"/&gt; ]
@@ -32,7 +29,7 @@ title: firewalld.zone
   [ &lt;source-port port="<em class="replaceable"><code>portid</code></em>[-<em class="replaceable"><code>portid</code></em>]" protocol="<code class="literal">tcp</code>|<code class="literal">udp</code>"/&gt; ]
   [
     &lt;rule [family="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>"]&gt;
-    [ &lt;source address="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]"|mac="<em class="replaceable"><code>MAC</code></em>"|ipset="<em class="replaceable"><code>ipset</code></em>" [invert="<em class="replaceable"><code>True</code></em>"]/&gt; ]
+    [ &lt;source address="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]"|ipset="<em class="replaceable"><code>ipset</code></em>" [invert="<em class="replaceable"><code>True</code></em>"]/&gt; ]
     [ &lt;destination address="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]" [invert="<em class="replaceable"><code>True</code></em>"]/&gt; ]
     [
       &lt;service name="<em class="replaceable"><code>string</code></em>"/&gt; |
@@ -52,88 +49,82 @@ title: firewalld.zone
     ]
     &lt;/rule&gt;
   ]
-&lt;/zone&gt;
-      </pre><p>
-    </p><p>
+&lt;/zone&gt;</pre>
+    </blockquote><blockquote>
       The config can contain these tags and attributes. Some of them are mandatory, others optional.
-    </p><div class="refsect2"><a name="zone"></a><h3>zone</h3><p>
+    </blockquote><blockquote><h3>zone</h3><blockquote>
 	The mandatory zone start and end tag defines the zone. This tag can only be used once in a zone configuration file. There are optional attributes for zones:
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">version="<em class="replaceable"><code>string</code></em>"</span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">version="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
               To give the zone a version.
-	    </p></dd><dt><span class="term">target="<code class="literal">ACCEPT</code>|<code class="literal">%%REJECT%%</code>|<code class="literal">DROP</code>"</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">target="<code class="literal">ACCEPT</code>|<code class="literal">%%REJECT%%</code>|<code class="literal">DROP</code>"</span></dt><dd><blockquote>
 	      Can be used to accept, reject or drop every packet that doesn't match any rule (port, service, etc.).
 	      The <code class="literal">ACCEPT</code> target is used in <code class="literal">trusted</code> zone to accept every packet not matching any rule.
 	      The <code class="literal">%%REJECT%%</code> target is used in <code class="literal">block</code> zone to reject (with default firewalld reject type) every packet not matching any rule.
 	      The <code class="literal">DROP</code> target is used in <code class="literal">drop</code> zone to drop every packet not matching any rule.
 	      If the target is not specified, every packet not matching any rule will be rejected.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="short"></a><h3>short</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>short</h3><blockquote>
 	Is an optional start and end tag and is used to give a zone a more readable name.
-      </p></div><div class="refsect2"><a name="options_description"></a><h3>description</h3><p>
+      </blockquote></blockquote><blockquote><h3>description</h3><blockquote>
 	Is an optional start and end tag to have a description for a zone.
-      </p></div><div class="refsect2"><a name="interface"></a><h3>interface</h3><p>
+      </blockquote></blockquote><blockquote><h3>interface</h3><blockquote>
 	Is an optional empty-element tag and can be used several times. It can be used to bind an interface to a zone.
 	You don't need this for NetworkManager-managed interfaces, because NetworkManager binds interfaces to zones automatically.
 	See also 'How to set or change a zone for a connection?' in <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>.
 	You can use it as a fallback mechanism for interfaces that can't be managed via NetworkManager.
 	An interface entry has exactly one attribute:
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">name="<em class="replaceable"><code>string</code></em>"</span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">name="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
               The name of the interface to be bound to the zone.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="source"></a><h3>source</h3><p>
-	Is an optional empty-element tag and can be used several times. It can be used to bind a source address, address range, a MAC address or an ipset to a zone. A source entry has exactly one of these attributes:
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">address="<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]"</span></dt><dd><p>
-	      The source is either an IP address or a network IP address with a mask for IPv4 or IPv6. The network family (IPv4/IPv6) will be automatically discovered. For IPv4, the mask can be a network mask or a plain number. For IPv6 the mask is a plain number. The use of host names is not supported.
-	    </p></dd><dt><span class="term">mac="<em class="replaceable"><code>MAC</code></em>"</span></dt><dd><p>
-	      The source is a MAC address. It must be of the form XX:XX:XX:XX:XX:XX.
-	    </p></dd><dt><span class="term">ipset="<em class="replaceable"><code>ipset</code></em>"</span></dt><dd><p>
-	      The source is an ipset.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="service"></a><h3>service</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>source</h3><blockquote>
+	Is an optional empty-element tag and can be used several times. It can be used to bind a source address or source address range to a zone. This can also be a MAC address. A source entry has exactly one attribute:
+      </blockquote><blockquote><dt><span class="term">address="<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]"</span></dt><dd><blockquote>
+	      The source to be bound to the zone. The source is either an IP address or a network IP address with a mask for IPv4 or IPv6 or a MAC address (no mask). The network family (IPv4/IPv6) will be automatically discovered. For IPv4, the mask can be a network mask or a plain number. For IPv6 the mask is a plain number. The use of host names is not supported.
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>service</h3><blockquote>
 	Is an optional empty-element tag and can be used several times to have more than one service entry enabled. A service entry has exactly one attribute:
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">name="<em class="replaceable"><code>string</code></em>"</span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">name="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
 	      The name of the service to be enabled. To get a list of valid service names <span class="command"><strong>firewall-cmd --list=services</strong></span> can be used.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="port"></a><h3>port</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>port</h3><blockquote>
 	Is an optional empty-element tag and can be used several times to have more than one port entry. All attributes of a port entry are mandatory:
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">port="<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]"</span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">port="<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]"</span></dt><dd><blockquote>
 	      The port can either be a single port number <em class="replaceable"><code>portid</code></em> or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>.
-	    </p></dd><dt><span class="term">protocol="<code class="literal">tcp</code>|<code class="literal">udp</code>"</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">protocol="<code class="literal">tcp</code>|<code class="literal">udp</code>"</span></dt><dd><blockquote>
 	      The protocol can either be <em class="replaceable"><code>tcp</code></em> or <em class="replaceable"><code>udp</code></em>.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="protocol"></a><h3>protocol</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>protocol</h3><blockquote>
 	Is an optional empty-element tag and can be used several times to have more than one protocol entry. All protocol has exactly one attribute:
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">value="<em class="replaceable"><code>string</code></em>"</span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">value="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
 	      The protocol can be any protocol supported by the system. Please have a look at <code class="filename">/etc/protocols</code> for supported protocols.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="icmp-block"></a><h3>icmp-block</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>icmp-block</h3><blockquote>
 	Is an optional empty-element tag and can be used several times to have more than one icmp-block entry. Each icmp-block tag has exactly one mandatory attribute:
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">name="<em class="replaceable"><code>string</code></em>"</span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">name="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
 	      The name of the Internet Control Message Protocol (ICMP) type to be blocked. To get a list of valid ICMP types <span class="command"><strong>firewall-cmd --list=icmptypes</strong></span> can be used.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="icmp-block-inversion"></a><h3>icmp-block-inversion</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>icmp-block-inversion</h3><blockquote>
 	Is an optional empty-element tag and can be used only once in a zone configuration. This flag inverts the icmp block handling. Only enabled ICMP types are accepted and all others are rejected in the zone.
-      </p></div><div class="refsect2"><a name="masquerade"></a><h3>masquerade</h3><p>
+      </blockquote></blockquote><blockquote><h3>masquerade</h3><blockquote>
 	Is an optional empty-element tag. It can be used only once in a zone configuration and is not usable for IPv6. If it's present masquerading is enabled for the zone. If you want to enable masquerading, you should enable it in the zone bound to the external interface.
-      </p></div><div class="refsect2"><a name="forward-port"></a><h3>forward-port</h3><p>
+      </blockquote></blockquote><blockquote><h3>forward-port</h3><blockquote>
 	Is an optional empty-element tag and can be used several times to have more than one port or packet forward entry. This is for IPv4 only. Use rich language rules for IPv6. There are mandatory and also optional attributes for forward ports:
-      </p><div class="refsect3"><a name="idm47248754907104"></a><h4>Mandatory attributes:</h4><p>
+      </blockquote><div class="refsect3"><a name="idm140131424548496"></a><h4>Mandatory attributes:</h4><blockquote>
 	  The local port and protocol to be forwarded.
-	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">port="<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]"</span></dt><dd><p>
+	</blockquote><div class="variablelist"><dl class="variablelist"><dt><span class="term">port="<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]"</span></dt><dd><blockquote>
 		The port can either be a single port number <em class="replaceable"><code>portid</code></em> or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>.
-	      </p></dd><dt><span class="term">protocol="<code class="literal">tcp</code>|<code class="literal">udp</code>"</span></dt><dd><p>
+	      </blockquote></dd><dt><span class="term">protocol="<code class="literal">tcp</code>|<code class="literal">udp</code>"</span></dt><dd><blockquote>
 		The protocol can either be <em class="replaceable"><code>tcp</code></em> or <em class="replaceable"><code>udp</code></em>.
-	      </p></dd></dl></div></div><div class="refsect3"><a name="idm47248754898432"></a><h4>Optional attributes:</h4><p>
+	      </blockquote></dd></dl></div></div><div class="refsect3"><a name="idm140131424539824"></a><h4>Optional attributes:</h4><blockquote>
 	  The destination of the forward. For local forwarding add <code class="option">to-port</code> only. For remote forwarding add <code class="option">to-addr</code> and use <code class="option">to-port</code> optionally if the destination port on the destination machine should be different.
-	</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">to-port="<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]"</span></dt><dd><p>
+	</blockquote><div class="variablelist"><dl class="variablelist"><dt><span class="term">to-port="<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]"</span></dt><dd><blockquote>
 		The destination port or port range to forward to. If omitted, the value of the port= attribute will be used altogether with the to-addr attribute.
-	      </p></dd><dt><span class="term">to-addr="<em class="replaceable"><code>address</code></em>"</span></dt><dd><p>
+	      </blockquote></dd><dt><span class="term">to-addr="<em class="replaceable"><code>address</code></em>"</span></dt><dd><blockquote>
 		The destination IPv4 IP address.
-	      </p></dd></dl></div></div></div><div class="refsect2"><a name="source-port"></a><h3>source-port</h3><p>
+	      </blockquote></dd></dl></div></div></blockquote><blockquote><h3>source-port</h3><blockquote>
 	Is an optional empty-element tag and can be used several times to have more than one source port entry. All attributes of a source port entry are mandatory:
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">port="<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]"</span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">port="<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]"</span></dt><dd><blockquote>
 	      The port can either be a single port number <em class="replaceable"><code>portid</code></em> or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>.
-	    </p></dd><dt><span class="term">protocol="<code class="literal">tcp</code>|<code class="literal">udp</code>"</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">protocol="<code class="literal">tcp</code>|<code class="literal">udp</code>"</span></dt><dd><blockquote>
 	      The protocol can either be <em class="replaceable"><code>tcp</code></em> or <em class="replaceable"><code>udp</code></em>.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="rule"></a><h3>rule</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>rule</h3><blockquote>
 	Is an optional element tag and can be used several times to have more than one rich language rule entry. 
-      </p><p>
+      </blockquote><blockquote>
 	The general rule structure:
-      </p><pre class="programlisting">
-&lt;rule [family="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>"]&gt;
+      </blockquote><pre class="programlisting">&lt;rule [family="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>"]&gt;
   [ &lt;source address="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]" [invert="<em class="replaceable"><code>True</code></em>"]/&gt; ]
   [ &lt;destination address="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]" [invert="<em class="replaceable"><code>True</code></em>"]/&gt; ]
   [
@@ -154,22 +145,19 @@ title: firewalld.zone
     &lt;mark set="<em class="replaceable"><code>mark</code></em>[/<em class="replaceable"><code>mask</code></em>]"&gt; [&lt;limit value="<em class="replaceable"><code>rate</code></em>/<em class="replaceable"><code>duration</code></em>"/&gt;] &lt;/mark&gt;
   ]
 
-&lt;/rule&gt;
-      </pre><p>
+&lt;/rule&gt;</pre><blockquote>
 	Rule structure for source black or white listing:
-      </p><pre class="programlisting">
-&lt;rule [family="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>"]&gt;
+      </blockquote><pre class="programlisting">&lt;rule [family="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>"]&gt;
   &lt;source address="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]" [invert="<em class="replaceable"><code>True</code></em>"]/&gt;
   [ &lt;log [prefix="<em class="replaceable"><code>prefixtext</code></em>"] [level="<code class="literal">emerg</code>|<code class="literal">alert</code>|<code class="literal">crit</code>|<code class="literal">err</code>|<code class="literal">warn</code>|<code class="literal">notice</code>|<code class="literal">info</code>|<code class="literal">debug</code>"]/&gt; [&lt;limit value="<em class="replaceable"><code>rate</code></em>/<em class="replaceable"><code>duration</code></em>"/&gt;] &lt;/log&gt; ]
   [ &lt;audit&gt; [&lt;limit value="<em class="replaceable"><code>rate</code></em>/<em class="replaceable"><code>duration</code></em>"/&gt;] &lt;/audit&gt; ]
   &lt;accept&gt; [&lt;limit value="<em class="replaceable"><code>rate</code></em>/<em class="replaceable"><code>duration</code></em>"/&gt;] &lt;/accept&gt; |
   &lt;reject [type="<em class="replaceable"><code>rejecttype</code></em>"]&gt; [&lt;limit value="<em class="replaceable"><code>rate</code></em>/<em class="replaceable"><code>duration</code></em>"/&gt;] &lt;/reject&gt; |
   &lt;drop&gt; [&lt;limit value="<em class="replaceable"><code>rate</code></em>/<em class="replaceable"><code>duration</code></em>"/&gt;] &lt;/drop&gt;
-&lt;/rule&gt;
-      </pre><p>
+&lt;/rule&gt;</pre><blockquote>
 	For a full description on rich language rules, please have a look at <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>.
-      </p></div></div><div class="refsect1"><a name="idm47248754826800"></a><h2>See Also</h2><span class="simplelist"><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></span></div><div class="refsect1"><a name="idm47248754811712"></a><h2>Notes</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">firewalld home page:</span></dt><dd><p>
+      </blockquote></blockquote></div><div class="refsect1"><a name="idm140131424468080"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140131424452672"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote>
 	  <a class="ulink" href="http://www.firewalld.org" target="_top">http://www.firewalld.org</a>
-	</p></dd><dt><span class="term">More documentation with examples:</span></dt><dd><p>
+	</blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
-	</p></dd></dl></div></div></div></body></html>
+	</blockquote></dd></blockquote></div></div></body></html>

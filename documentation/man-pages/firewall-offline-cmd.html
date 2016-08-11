@@ -3,88 +3,87 @@ layout: page
 title: firewall-offline-cmd
 ---
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>firewall-offline-cmd</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewall-offline-cmd"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>firewall-offline-cmd &#8212; firewalld offline command line client</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">firewall-offline-cmd</code>  [OPTIONS...]</p></div></div><div class="refsect1"><a name="description"></a><h2>Description</h2><p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewall-offline-cmd</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewall-offline-cmd"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewall-offline-cmd — firewalld offline command line client</blockquote><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">firewall-offline-cmd</code>  [OPTIONS...]</p></div></div><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
       firewall-offline-cmd is an offline command line client of the firewalld daemon. It should be used only if the firewalld service is not running. For example to migrate from system-config-firewall/lokkit or in the install environment to configure firewall settings with kickstart.
-    </p><p>
+    </blockquote><blockquote>
       Some lokkit options can not be automatically converted for firewalld, they will result in an error or warning message. This tool tries to convert as much as possible, but there are limitations for example with custom rules, modules and masquerading.
-    </p><p>
+    </blockquote><blockquote>
       Check the firewall configuration after using this tool.
-    </p></div><div class="refsect1"><a name="options"></a><h2>Options</h2><p>
+    </blockquote></div><div class="refsect1"><a name="options"></a><h2>Options</h2><blockquote>
       If no options are given, configuration from <span class="command"><strong>/etc/sysconfig/system-config-firewall</strong></span> will be migrated.
-    </p><p>
+    </blockquote><blockquote>
       The following options are supported:
-    </p><div class="refsect2"><a name="help_options"></a><h3>Help Options</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">-h</code>, </span><span class="term"><code class="option">--help</code></span></dt><dd><p>
+    </blockquote><blockquote><h3>Help Options</h3><blockquote><dt><span class="term"><code class="option">-h</code>, </span><span class="term"><code class="option">--help</code></span></dt><dd><blockquote>
 	      Prints a short help text and exists.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="status_options"></a><h3>Status Options</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--enabled</code></span></dt><dd><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>Status Options</h3><blockquote><dt><span class="term"><code class="option">--enabled</code></span></dt><dd><blockquote>
 	      Enable the firewall. This option is a default option and will activate the firewall if not already enabled as long as the option <code class="option">--disabled</code> is not given.
-	    </p></dd><dt><span class="term"><code class="option">--disabled</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--disabled</code></span></dt><dd><blockquote>
 	      Disable the firewall by disabling the firewalld service.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="genernal_options"></a><h3>Lokkit Compatibility Options</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>Lokkit Compatibility Options</h3><blockquote>
         These options are nearly identical to the options of <span class="command"><strong>lokkit</strong></span>.
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--addmodule</code>=<em class="replaceable"><code>module</code></em></span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term"><code class="option">--addmodule</code>=<em class="replaceable"><code>module</code></em></span></dt><dd><blockquote>
 	      This option will result in a warning message and will be ignored.
-	    </p><p>
+	    </blockquote><blockquote>
 	      Handling of netfilter helpers has been merged into services completely. Adding or removing netfilter helpers outside of services is therefore not needed anymore. For more information on handling netfilter helpers in services, please have a look at <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>.
-	    </p></dd><dt><span class="term"><code class="option">--removemodule</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--removemodule</code></span></dt><dd><blockquote>
 	      This option will result in a warning message and will be ignored.
-	    </p><p>
+	    </blockquote><blockquote>
 	      Handling of netfilter helpers has been merged into services completely. Adding or removing netfilter helpers outside of services is therefore not needed anymore. For more information on handling netfilter helpers in services, please have a look at <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>.
-	    </p></dd><dt><span class="term"><code class="option">--remove-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--remove-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote>
 	      Remove a service from the default zone. This option can be specified multiple times. 
-	    </p><p>
+	    </blockquote><blockquote>
 	      The service is one of the firewalld provided services. To get a list of the supported services, use <span class="command"><strong>firewall-cmd --get-services</strong></span>.
-	    </p></dd><dt><span class="term"><code class="option">-s</code> <em class="replaceable"><code>service</code></em>, </span><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">-s</code> <em class="replaceable"><code>service</code></em>, </span><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote>
 	      Add a service to the default zone. This option can be specified multiple times. 
-	    </p><p>
+	    </blockquote><blockquote>
 	      The service is one of the firewalld provided services. To get a list of the supported services, use <span class="command"><strong>firewall-cmd --get-services</strong></span>.
-	    </p></dd><dt><span class="term"><code class="option">-p</code> <em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:<em class="replaceable"><code>protocol</code></em>, </span><span class="term"><code class="option">--port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">-p</code> <em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:<em class="replaceable"><code>protocol</code></em>, </span><span class="term"><code class="option">--port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
 	      Add the port to the default zone. This option can be specified multiple times.
-	    </p><p>
+	    </blockquote><blockquote>
 	      The port can either be a single port number or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>. The protocol can either be <code class="literal">tcp</code> or <code class="literal">udp</code>.
-	    </p></dd><dt><span class="term"><code class="option">-t</code> <em class="replaceable"><code>interface</code></em>, </span><span class="term"><code class="option">--trust</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">-t</code> <em class="replaceable"><code>interface</code></em>, </span><span class="term"><code class="option">--trust</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><blockquote>
 	      This option will result in a warning message.
-	    </p><p>
+	    </blockquote><blockquote>
 	      Mark an interface as trusted. This option can be specified multiple times. The interface will be bound to the trusted zone.
-	    </p><p>
+	    </blockquote><blockquote>
 	      If the interface is used in a NetworkManager managed connection or if there is an ifcfg file for this interface, the zone will be changed to the zone defined in the configuration as soon as it gets activated. To change the zone of a connection use <span class="command"><strong>nm-connection-editor</strong></span> and set the zone to trusted, for an ifcfg file, use an editor and add "ZONE=trusted". If the zone is not defined in the ifcfg file, the firewalld default zone will be used.
-	    </p></dd><dt><span class="term"><code class="option">-m</code> <em class="replaceable"><code>interface</code></em>, </span><span class="term"><code class="option">--masq</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">-m</code> <em class="replaceable"><code>interface</code></em>, </span><span class="term"><code class="option">--masq</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><blockquote>
 	      This option will result in a warning message.
-	    </p><p>
+	    </blockquote><blockquote>
 	      Masquerading will be enabled in the default zone. The interface argument will be ignored. This is for <span class="emphasis"><em>IPv4</em></span> only.
-	    </p></dd><dt><span class="term"><code class="option">--custom-rules</code>=[<span class="optional"><em class="replaceable"><code>type</code></em>:</span>][<span class="optional"><em class="replaceable"><code>table</code></em>:</span>]<em class="replaceable"><code>filename</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--custom-rules</code>=[<span class="optional"><em class="replaceable"><code>type</code></em>:</span>][<span class="optional"><em class="replaceable"><code>table</code></em>:</span>]<em class="replaceable"><code>filename</code></em></span></dt><dd><blockquote>
 	      This option will result in a warning message and will be ignored.
-	    </p><p>
+	    </blockquote><blockquote>
 	      Custom rule files are not supported by firewalld.
-	    </p></dd><dt><span class="term"><code class="option">--forward-port</code>=if=<em class="replaceable"><code>interface</code></em>:port=<em class="replaceable"><code>port</code></em>:proto=<em class="replaceable"><code>protocol</code></em>[<span class="optional">:toport=<em class="replaceable"><code>destination port</code></em>:</span>][<span class="optional">:toaddr=<em class="replaceable"><code>destination address</code></em></span>]</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--forward-port</code>=if=<em class="replaceable"><code>interface</code></em>:port=<em class="replaceable"><code>port</code></em>:proto=<em class="replaceable"><code>protocol</code></em>[<span class="optional">:toport=<em class="replaceable"><code>destination port</code></em>:</span>][<span class="optional">:toaddr=<em class="replaceable"><code>destination address</code></em></span>]</span></dt><dd><blockquote>
 	      This option will result in a warning message.
-	    </p><p>
+	    </blockquote><blockquote>
 	      Add the <span class="emphasis"><em>IPv4</em></span> forward port in the default zone. This option can be specified multiple times. 
-	    </p><p>
+	    </blockquote><blockquote>
 	      The port can either be a single port number <em class="replaceable"><code>portid</code></em> or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>. The protocol can either be <code class="literal">tcp</code> or <code class="literal">udp</code>. The destination address is an IP address.
-	    </p></dd><dt><span class="term"><code class="option">--block-icmp</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--block-icmp</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><blockquote>
 	      This option will result in a warning message.
-	    </p><p>
+	    </blockquote><blockquote>
 	      Add an ICMP block for <em class="replaceable"><code>icmptype</code></em> in the default zone. This option can be specified multiple times.
-	    </p><p>
+	    </blockquote><blockquote>
 	      The <em class="replaceable"><code>icmptype</code></em> is the one of the icmp types firewalld supports. To get a listing of supported icmp types: <span class="command"><strong>firewall-cmd --get-icmptypes</strong></span>
-	    </p></dd></dl></div></div><div class="refsect2"><a name="zone_options"></a><h3>Zone Options</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--get-default-zone</code></span></dt><dd><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>Zone Options</h3><blockquote><dt><span class="term"><code class="option">--get-default-zone</code></span></dt><dd><blockquote>
 	      Print default zone for connections and interfaces.
-	    </p></dd><dt><span class="term"><code class="option">--set-default-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--set-default-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><blockquote>
 	      Set default zone for connections and interfaces where no zone has been selected. Setting the default zone changes the zone for the connections or interfaces, that are using the default zone.
-	    </p></dd><dt><span class="term"><code class="option">--get-zones</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--get-zones</code></span></dt><dd><blockquote>
 	      Print predefined zones as a space separated list.
-	    </p></dd><dt><span class="term"><code class="option">--get-services</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--get-services</code></span></dt><dd><blockquote>
 	      Print predefined services as a space separated list.
-	    </p></dd><dt><span class="term"><code class="option">--get-icmptypes</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--get-icmptypes</code></span></dt><dd><blockquote>
 	      Print predefined icmptypes as a space separated list.
-	    </p></dd><dt><span class="term"><code class="option">--get-zone-of-interface</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--get-zone-of-interface</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><blockquote>
 	      Print the name of the zone the <em class="replaceable"><code>interface</code></em> is bound to or <span class="emphasis"><em>no zone</em></span>.
-	    </p></dd><dt><span class="term"><code class="option">--get-zone-of-source</code>=<em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]|<em class="replaceable"><code>MAC</code></em>|ipset:<em class="replaceable"><code>ipset</code></em></span></dt><dd><p>
-	      Print the name of the zone the source is bound to or <span class="emphasis"><em>no zone</em></span>.
-	    </p></dd><dt><span class="term"><code class="option">--info-zone=<em class="replaceable"><code>zone</code></em></code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--get-zone-of-source</code>=<em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span></dt><dd><blockquote>
+	      Print the name of the zone the <em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>] is bound to or <span class="emphasis"><em>no zone</em></span>.
+	    </blockquote></dd><dt><span class="term"><code class="option">--info-zone=<em class="replaceable"><code>zone</code></em></code></span></dt><dd><blockquote>
 	      Print information about the zone <em class="replaceable"><code>zone</code></em>. The output format is:
-	      </p><pre class="programlisting">
-<em class="replaceable"><code>zone</code></em>
+	      <pre class="programlisting"><em class="replaceable"><code>zone</code></em>
   interfaces: <em class="replaceable"><code>interface1</code></em> ..
   sources: <em class="replaceable"><code>source1</code></em> ..
   services: <em class="replaceable"><code>service1</code></em> ..
@@ -97,12 +96,10 @@ title: firewall-offline-cmd
   icmp-blocks: <em class="replaceable"><code>icmp-type1</code></em> ..
   rich rules:
         <em class="replaceable"><code>rich-rule1</code></em>
-        ..
-              </pre><p>
-	    </p></dd><dt><span class="term"><code class="option">--list-all-zones</code></span></dt><dd><p>
+        ..</pre>
+	    </blockquote></dd><dt><span class="term"><code class="option">--list-all-zones</code></span></dt><dd><blockquote>
 	      List everything added for or enabled in all zones. The output format is:
-	      </p><pre class="programlisting">
-<em class="replaceable"><code>zone1</code></em>
+	      <pre class="programlisting"><em class="replaceable"><code>zone1</code></em>
   interfaces: <em class="replaceable"><code>interface1</code></em> ..
   sources: <em class="replaceable"><code>source1</code></em> ..
   services: <em class="replaceable"><code>service1</code></em> ..
@@ -116,407 +113,400 @@ title: firewall-offline-cmd
   rich rules:
         <em class="replaceable"><code>rich-rule1</code></em>
         ..
-..
-              </pre><p>
-	    </p></dd><dt><span class="term"><code class="option">--new-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><p>
+..</pre>
+	    </blockquote></dd><dt><span class="term"><code class="option">--new-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><blockquote>
               Add a new permanent zone.
-            </p></dd><dt><span class="term"><code class="option">--new-zone-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>zone</code></em></span>]</span></dt><dd><p>
+            </blockquote></dd><dt><span class="term"><code class="option">--new-zone-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>zone</code></em></span>]</span></dt><dd><blockquote>
               Add a new permanent zone from a prepared zone file with an optional name override.
-            </p></dd><dt><span class="term"><code class="option">--delete-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><p>
+            </blockquote></dd><dt><span class="term"><code class="option">--delete-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><blockquote>
               Delete an existing permanent zone.
-            </p></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><p>
+            </blockquote></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote>
              Set new description to zone
-           </p></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--get-description</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--get-description</code></span></dt><dd><blockquote>
              Print description for zone
-           </p></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--set-short</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--set-short</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote>
              Set short description to zone
-           </p></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--get-short</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--get-short</code></span></dt><dd><blockquote>
              Print short description for zone
-           </p></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--get-target</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--get-target</code></span></dt><dd><blockquote>
               Get the target of a permanent zone.
-            </p></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--set-target</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><p>
+            </blockquote></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--set-target</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><blockquote>
               Set the target of a permanent zone.
-            </p></dd></dl></div></div><div class="refsect2"><a name="options_to_adapt_and_query_zones"></a><h3>Options to Adapt and Query Zones</h3><p>
+            </blockquote></dd></blockquote></blockquote><blockquote><h3>Options to Adapt and Query Zones</h3><blockquote>
 	Options in this section affect only one particular zone. If used with <code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> option, they affect the zone <em class="replaceable"><code>zone</code></em>. If the option is omitted, they affect default zone (see <code class="option">--get-default-zone</code>).
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-all</code></span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-all</code></span></dt><dd><blockquote>
 	      List everything added for or enabled in <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-services</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-services</code></span></dt><dd><blockquote>
 	      List services added for <em class="replaceable"><code>zone</code></em> as a space separated list. If zone is omitted, default zone will be used.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote>
 	      Add a service for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times.
-	    </p><p>
+	    </blockquote><blockquote>
 	      The service is one of the firewalld provided services. To get a list of the supported services, use <span class="command"><strong>firewall-cmd --get-services</strong></span>.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-service-from-zone</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-service-from-zone</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote>
 	      Remove a service from <em class="replaceable"><code>zone</code></em>. This option can be specified multiple times. If zone is omitted, default zone will be used.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote>
 	      Return whether <em class="replaceable"><code>service</code></em> has been added for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. Returns 0 if true, 1 otherwise.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-ports</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-ports</code></span></dt><dd><blockquote>
 	      List ports added for <em class="replaceable"><code>zone</code></em> as a space separated list. A port is of the form <em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em>, it can be either a port and protocol pair or a port range with a protocol. If zone is omitted, default zone will be used.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
 	      Add the port for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times.
-	    </p><p>
+	    </blockquote><blockquote>
 	      The port can either be a single port number or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>. The protocol can either be <code class="literal">tcp</code> or <code class="literal">udp</code>.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
 	      Remove the port from <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
 	      Return whether the port has been added for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. Returns 0 if true, 1 otherwise.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-protocols</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-protocols</code></span></dt><dd><blockquote>
              List protocols added for <em class="replaceable"><code>zone</code></em> as a space separated list. If zone is omitted, default zone will be used.
-           </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-protocol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-protocol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Add the protocol for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times. If a timeout is supplied, the rule will be active for the specified amount of time and will be removed automatically afterwards.
              <em class="replaceable"><code>timeval</code></em> is either a number (of seconds) or number followed by one of characters <code class="literal">s</code> (seconds), <code class="literal">m</code> (minutes), <code class="literal">h</code> (hours), for example <code class="literal">20m</code> or <code class="literal">1h</code>.
-           </p><p>
+           </blockquote><blockquote>
              The protocol can be any protocol supported by the system. Please have a look at <code class="filename">/etc/protocols</code> for supported protocols.
-           </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-protcol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-protcol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Remove the protocol from <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times.
-           </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-protocol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-protocol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Return whether the protocol has been added for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. Returns 0 if true, 1 otherwise.
-           </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-icmp-blocks</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-icmp-blocks</code></span></dt><dd><blockquote>
 	      List Internet Control Message Protocol (ICMP) type blocks added for <em class="replaceable"><code>zone</code></em> as a space separated list. If zone is omitted, default zone will be used.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-icmp-block</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-icmp-block</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><blockquote>
 	      Add an ICMP block for <em class="replaceable"><code>icmptype</code></em> for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times.
-	    </p><p>
+	    </blockquote><blockquote>
 	      The <em class="replaceable"><code>icmptype</code></em> is the one of the icmp types firewalld supports. To get a listing of supported icmp types: <span class="command"><strong>firewall-cmd --get-icmptypes</strong></span>
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-icmp-block</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-icmp-block</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><blockquote>
 	      Remove the ICMP block for <em class="replaceable"><code>icmptype</code></em> from <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-icmp-block</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-icmp-block</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><blockquote>
 	      Return whether an ICMP block for <em class="replaceable"><code>icmptype</code></em> has been added for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. Returns 0 if true, 1 otherwise.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-forward-ports</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-forward-ports</code></span></dt><dd><blockquote>
 	      List <span class="emphasis"><em>IPv4</em></span> forward ports added for <em class="replaceable"><code>zone</code></em> as a space separated list. If zone is omitted, default zone will be used.
-	    </p><p>
+	    </blockquote><blockquote>
 	      For <span class="emphasis"><em>IPv6</em></span> forward ports, please use the rich language.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-forward-port</code>=port=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:proto=<em class="replaceable"><code>protocol</code></em>[<span class="optional">:toport=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]</span>][<span class="optional">:toaddr=<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span>]</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-forward-port</code>=port=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:proto=<em class="replaceable"><code>protocol</code></em>[<span class="optional">:toport=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]</span>][<span class="optional">:toaddr=<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span>]</span></dt><dd><blockquote>
 	      Add the <span class="emphasis"><em>IPv4</em></span> forward port for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times.
-	    </p><p>
+	    </blockquote><blockquote>
 	      The port can either be a single port number <em class="replaceable"><code>portid</code></em> or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>. The protocol can either be <code class="literal">tcp</code> or <code class="literal">udp</code>. The destination address is a simple IP address.
-	    </p><p>
+	    </blockquote><blockquote>
 	      For <span class="emphasis"><em>IPv6</em></span> forward ports, please use the rich language.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-forward-port</code>=port=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:proto=<em class="replaceable"><code>protocol</code></em>[<span class="optional">:toport=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]</span>][<span class="optional">:toaddr=<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span>]</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-forward-port</code>=port=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:proto=<em class="replaceable"><code>protocol</code></em>[<span class="optional">:toport=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]</span>][<span class="optional">:toaddr=<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span>]</span></dt><dd><blockquote>
 	      Remove the <span class="emphasis"><em>IPv4</em></span> forward port from <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times.
-	    </p><p>
+	    </blockquote><blockquote>
 	      For <span class="emphasis"><em>IPv6</em></span> forward ports, please use the rich language.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-forward-port</code>=port=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:proto=<em class="replaceable"><code>protocol</code></em>[<span class="optional">:toport=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]</span>][<span class="optional">:toaddr=<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span>]</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-forward-port</code>=port=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:proto=<em class="replaceable"><code>protocol</code></em>[<span class="optional">:toport=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]</span>][<span class="optional">:toaddr=<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span>]</span></dt><dd><blockquote>
 	      Return whether the <span class="emphasis"><em>IPv4</em></span> forward port has been added for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. Returns 0 if true, 1 otherwise.
-	    </p><p>
+	    </blockquote><blockquote>
 	      For <span class="emphasis"><em>IPv6</em></span> forward ports, please use the rich language.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-source-ports</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-source-ports</code></span></dt><dd><blockquote>
 	      List source ports added for <em class="replaceable"><code>zone</code></em> as a space separated list. A port is of the form <em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em>. If zone is omitted, default zone will be used.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
 	      Add the source port for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times. If a timeout is supplied, the rule will be active for the specified amount of time and will be removed automatically afterwards.
-	    </p><p>
+	    </blockquote><blockquote>
 	      The port can either be a single port number or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>. The protocol can either be <code class="literal">tcp</code> or <code class="literal">udp</code>.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
 	      Remove the source port from <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
 	      Return whether the source port has been added for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. Returns 0 if true, 1 otherwise.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-masquerade</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-masquerade</code></span></dt><dd><blockquote>
 	      Enable <span class="emphasis"><em>IPv4</em></span> masquerade for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. Masquerading is useful if the machine is a router and machines connected over an interface in another zone should be able to use the first connection.
-	    </p><p>
+	    </blockquote><blockquote>
 	      For <span class="emphasis"><em>IPv6</em></span> masquerading, please use the rich language.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-masquerade</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-masquerade</code></span></dt><dd><blockquote>
 	      Disable <span class="emphasis"><em>IPv4</em></span> masquerade for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used.
-	    </p><p>
+	    </blockquote><blockquote>
 	      For <span class="emphasis"><em>IPv6</em></span> masquerading, please use the rich language.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-masquerade</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-masquerade</code></span></dt><dd><blockquote>
 	      Return whether <span class="emphasis"><em>IPv4</em></span> masquerading has been enabled for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. Returns 0 if true, 1 otherwise.
-	    </p><p>
+	    </blockquote><blockquote>
 	      For <span class="emphasis"><em>IPv6</em></span> masquerading, please use the rich language.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-rich-rules</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-rich-rules</code></span></dt><dd><blockquote>
 	      List rich language rules added for <em class="replaceable"><code>zone</code></em> as a newline separated list. If zone is omitted, default zone will be used.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-rich-rule</code>='<em class="replaceable"><code>rule</code></em>'</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-rich-rule</code>='<em class="replaceable"><code>rule</code></em>'</span></dt><dd><blockquote>
 	      Add rich language rule '<em class="replaceable"><code>rule</code></em>' for <em class="replaceable"><code>zone</code></em>. This option can be specified multiple times. If zone is omitted, default zone will be used.
-	    </p><p>
+	    </blockquote><blockquote>
 	      For the rich language rule syntax, please have a look at <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-rich-rule</code>='<em class="replaceable"><code>rule</code></em>'</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-rich-rule</code>='<em class="replaceable"><code>rule</code></em>'</span></dt><dd><blockquote>
 	      Remove rich language rule '<em class="replaceable"><code>rule</code></em>' from <em class="replaceable"><code>zone</code></em>. This option can be specified multiple times. If zone is omitted, default zone will be used.
-	    </p><p>
+	    </blockquote><blockquote>
 	      For the rich language rule syntax, please have a look at <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-rich-rule</code>='<em class="replaceable"><code>rule</code></em>'</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-rich-rule</code>='<em class="replaceable"><code>rule</code></em>'</span></dt><dd><blockquote>
 	      Return whether a rich language rule '<em class="replaceable"><code>rule</code></em>' has been added for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. Returns 0 if true, 1 otherwise.
-	    </p><p>
+	    </blockquote><blockquote>
 	      For the rich language rule syntax, please have a look at <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="options_to_handle_bindings_of_interfaces"></a><h3>Options to Handle Bindings of Interfaces</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>Options to Handle Bindings of Interfaces</h3><blockquote>
 	Binding an interface to a zone means that this zone settings are used to restrict traffic via the interface.
-      </p><p>
+      </blockquote><blockquote>
 	Options in this section affect only one particular zone. If used with <code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> option, they affect the zone <em class="replaceable"><code>zone</code></em>. If the option is omitted, they affect default zone (see <code class="option">--get-default-zone</code>).
-      </p><p>
+      </blockquote><blockquote>
 	For a list of predefined zones use <span class="command"><strong>firewall-cmd --get-zones</strong></span>.
-      </p><p>
+      </blockquote><blockquote>
 	An interface name is a string up to 16 characters long, that may not contain <code class="option">' '</code>, <code class="option">'/'</code>, <code class="option">'!'</code> and <code class="option">'*'</code>.
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-interfaces</code></span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-interfaces</code></span></dt><dd><blockquote>
 	      List interfaces that are bound to zone <em class="replaceable"><code>zone</code></em> as a space separated list. If zone is omitted, default zone will be used.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-interface</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-interface</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><blockquote>
 	      Bind interface <em class="replaceable"><code>interface</code></em> to zone <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--change-interface</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--change-interface</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><blockquote>
 	      Change zone the interface <em class="replaceable"><code>interface</code></em> is bound to to zone <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. If old and new zone are the same, the call will be ignored without an error. If the interface has not been bound to a zone before, it will behave like <code class="option">--add-interface</code>.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-interface</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-interface</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><blockquote>
 	      Query whether interface <em class="replaceable"><code>interface</code></em> is bound to zone <em class="replaceable"><code>zone</code></em>. Returns 0 if true, 1 otherwise.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-interface</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-interface</code>=<em class="replaceable"><code>interface</code></em></span></dt><dd><blockquote>
 	      Remove binding of interface <em class="replaceable"><code>interface</code></em> from zone <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="options_to_handle_bindings_of_sources"></a><h3>Options to Handle Bindings of Sources</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>Options to Handle Bindings of Sources</h3><blockquote>
 	Binding a source to a zone means that this zone settings will be used to restrict traffic from this source.
-      </p><p>
-	A source address or address range is either an IP address or a network IP address with a mask for IPv4 or IPv6 or a MAC address or an ipset with the ipset: prefix. For IPv4, the mask can be a network mask or a plain number. For IPv6 the mask is a plain number. The use of host names is not supported.
-      </p><p>
+      </blockquote><blockquote>
+	A source address or address range is either an IP address or a network IP address with a mask for IPv4 or IPv6 or a MAC address (no mask). For IPv4, the mask can be a network mask or a plain number. For IPv6 the mask is a plain number. The use of host names is not supported.
+      </blockquote><blockquote>
 	Options in this section affect only one particular zone. If used with <code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> option, they affect the zone <em class="replaceable"><code>zone</code></em>. If the option is omitted, they affect default zone (see <code class="option">--get-default-zone</code>).
-      </p><p>
+      </blockquote><blockquote>
 	For a list of predefined zones use <span class="command"><strong>firewall-cmd --get-zones</strong></span>.
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-sources</code></span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-sources</code></span></dt><dd><blockquote>
 	      List sources that are bound to zone <em class="replaceable"><code>zone</code></em> as a space separated list. If zone is omitted, default zone will be used.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-source</code>=<em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]|<em class="replaceable"><code>MAC</code></em>|ipset:<em class="replaceable"><code>ipset</code></em></span></dt><dd><p>
-	      Bind the source to zone <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--change-source</code>=<em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]|<em class="replaceable"><code>MAC</code></em>|ipset:<em class="replaceable"><code>ipset</code></em></span></dt><dd><p>
-	      Change zone the source is bound to to zone <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. If old and new zone are the same, the call will be ignored without an error. If the source has not been bound to a zone before, it will behave like <code class="option">--add-source</code>.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-source</code>=<em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]|<em class="replaceable"><code>MAC</code></em>|ipset:<em class="replaceable"><code>ipset</code></em></span></dt><dd><p>
-	      Query whether the source is bound to the zone <em class="replaceable"><code>zone</code></em>. Returns 0 if true, 1 otherwise.
-	    </p></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-source</code>=<em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]|<em class="replaceable"><code>MAC</code></em>|ipset:<em class="replaceable"><code>ipset</code></em></span></dt><dd><p>
-	      Remove binding of the source from zone <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="ipset_options"></a><h3>IPSet Options</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--new-ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--type</code>=<em class="replaceable"><code>ipset type</code></em> [<span class="optional"><code class="option">--option</code>=<em class="replaceable"><code>ipset option</code></em>[<span class="optional">=<em class="replaceable"><code>value</code></em></span>]</span>]</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--add-source</code>=<em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span></dt><dd><blockquote>
+	      Bind source <em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>] to zone <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used.
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--change-source</code>=<em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span></dt><dd><blockquote>
+	      Change zone the source <em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>] is bound to to zone <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. If old and new zone are the same, the call will be ignored without an error. If the source has not been bound to a zone before, it will behave like <code class="option">--add-source</code>.
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-source</code>=<em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span></dt><dd><blockquote>
+	      Query whether the source <em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>] is bound to the zone <em class="replaceable"><code>zone</code></em>. Returns 0 if true, 1 otherwise.
+	    </blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-source</code>=<em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span></dt><dd><blockquote>
+	      Remove binding of source <em class="replaceable"><code>source</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>] from zone <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used.
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>IPSet Options</h3><blockquote><dt><span class="term"><code class="option">--new-ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--type</code>=<em class="replaceable"><code>ipset type</code></em> [<span class="optional"><code class="option">--option</code>=<em class="replaceable"><code>ipset option</code></em>[<span class="optional">=<em class="replaceable"><code>value</code></em></span>]</span>]</span></dt><dd><blockquote>
               Add a new permanent ipset with specifying the type and optional options.
-            </p></dd><dt><span class="term"><code class="option">--new-ipset-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>ipset</code></em></span>]</span></dt><dd><p>
+            </blockquote></dd><dt><span class="term"><code class="option">--new-ipset-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>ipset</code></em></span>]</span></dt><dd><blockquote>
 	      Add a new permanent ipset from a prepared ipset file with an optional name override.
-            </p></dd><dt><span class="term"><code class="option">--delete-ipset</code>=<em class="replaceable"><code>ipset</code></em></span></dt><dd><p>
+            </blockquote></dd><dt><span class="term"><code class="option">--delete-ipset</code>=<em class="replaceable"><code>ipset</code></em></span></dt><dd><blockquote>
               Delete an existing permanent ipset.
-            </p></dd><dt><span class="term"><code class="option">--info-ipset=<em class="replaceable"><code>ipset</code></em></code></span></dt><dd><p>
+            </blockquote></dd><dt><span class="term"><code class="option">--info-ipset=<em class="replaceable"><code>ipset</code></em></code></span></dt><dd><blockquote>
 	      Print information about the ipset <em class="replaceable"><code>ipset</code></em>. The output format is:
-	      </p><pre class="programlisting">
-<em class="replaceable"><code>ipset</code></em>
+	      <pre class="programlisting"><em class="replaceable"><code>ipset</code></em>
   type: <em class="replaceable"><code>type</code></em>
   options: <em class="replaceable"><code>option1[=value1]</code></em> ..
-  entries: <em class="replaceable"><code>entry1</code></em> ..
-              </pre><p>
-	    </p></dd><dt><span class="term"><code class="option">--get-ipsets</code></span></dt><dd><p>
+  entries: <em class="replaceable"><code>entry1</code></em> ..</pre>
+	    </blockquote></dd><dt><span class="term"><code class="option">--get-ipsets</code></span></dt><dd><blockquote>
 	      Print predefined ipsets as a space separated list.
-	    </p></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--add-entry</code>=<em class="replaceable"><code>entry</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--add-entry</code>=<em class="replaceable"><code>entry</code></em></span></dt><dd><blockquote>
              Add a new entry to the ipset.
-           </p></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--remove-entry</code>=<em class="replaceable"><code>entry</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--remove-entry</code>=<em class="replaceable"><code>entry</code></em></span></dt><dd><blockquote>
              Remove an entry from the ipset.
-           </p></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--query-entry</code>=<em class="replaceable"><code>entry</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--query-entry</code>=<em class="replaceable"><code>entry</code></em></span></dt><dd><blockquote>
 	     Return whether the entry has been added to an ipset. Returns 0 if true, 1 otherwise.
-           </p></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--get-entries</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--get-entries</code></span></dt><dd><blockquote>
              List all entries of the ipset.
-           </p></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--add-entries-from-file</code>=<em class="replaceable"><code>filename</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--add-entries-from-file</code>=<em class="replaceable"><code>filename</code></em></span></dt><dd><blockquote>
              Add a new entries to the ipset from the file. For all entries that are listed in the file but already in the ipset, a warning will be printed.
-           </p><p>
+           </blockquote><blockquote>
 	     The file should contain an entry per line. Lines starting with an hash or semicolon are ignored. Also empty lines.
-           </p></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--remove-entries-from-file</code>=<em class="replaceable"><code>filename</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--remove-entries-from-file</code>=<em class="replaceable"><code>filename</code></em></span></dt><dd><blockquote>
              Remove existing entries from the ipset from the file. For all entries that are listed in the file but not in the ipset, a warning will be printed.
-           </p><p>
+           </blockquote><blockquote>
 	     The file should contain an entry per line. Lines starting with an hash or semicolon are ignored. Also empty lines.
-           </p></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote>
              Set new description to ipset
-           </p></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--get-description</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--get-description</code></span></dt><dd><blockquote>
              Print description for ipset
-           </p></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--set-short</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--set-short</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote>
              Set new short description to ipset
-           </p></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--get-short</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--get-short</code></span></dt><dd><blockquote>
              Print short description for ipset
-           </p></dd></dl></div></div><div class="refsect2"><a name="service_options"></a><h3>Service Options</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--info-service=<em class="replaceable"><code>service</code></em></code></span></dt><dd><p>
+           </blockquote></dd></blockquote></blockquote><blockquote><h3>Service Options</h3><blockquote><dt><span class="term"><code class="option">--info-service=<em class="replaceable"><code>service</code></em></code></span></dt><dd><blockquote>
 	      Print information about the service <em class="replaceable"><code>service</code></em>. The output format is:
-	      </p><pre class="programlisting">
-<em class="replaceable"><code>service</code></em>
+	      <pre class="programlisting"><em class="replaceable"><code>service</code></em>
   ports: <em class="replaceable"><code>port1</code></em> ..
   protocols: <em class="replaceable"><code>protocol1</code></em> ..
   source-ports: <em class="replaceable"><code>source-port1</code></em> ..
   modules: <em class="replaceable"><code>module1</code></em> ..
-  destination: <em class="replaceable"><code>ipv1</code></em>:<em class="replaceable"><code>address1</code></em> ..
-              </pre><p>
-	    </p></dd><dt><span class="term"><code class="option">--new-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><p>
+  destination: <em class="replaceable"><code>ipv1</code></em>:<em class="replaceable"><code>address1</code></em> ..</pre>
+	    </blockquote></dd><dt><span class="term"><code class="option">--new-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote>
              Add a new permanent service.
-           </p></dd><dt><span class="term"><code class="option">--new-service-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>service</code></em></span>]</span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--new-service-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>service</code></em></span>]</span></dt><dd><blockquote>
               Add a new permanent service from a prepared service file with an optional name override.
-           </p></dd><dt><span class="term"><code class="option">--delete-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--delete-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote>
              Delete an existing permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote>
              Set new description to service
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-description</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-description</code></span></dt><dd><blockquote>
              Print description for service
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--set-short</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--set-short</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote>
              Set short description to service
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-short</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-short</code></span></dt><dd><blockquote>
              Print short description for service
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--add-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--add-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Add a new port to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Remove a port from the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Return wether the port has been added to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-ports</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-ports</code></span></dt><dd><blockquote>
              List ports added to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--add-protocol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--add-protocol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Add a new protocol to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-protocol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-protocol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Remove a protocol from the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-protocol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-protocol</code>=<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Return wether the protocol has been added to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-protocols</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-protocols</code></span></dt><dd><blockquote>
              List protocols added to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--add-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--add-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Add a new source port to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Remove a source port from the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-source-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote>
              Return wether the source port has been added to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-source-ports</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-source-ports</code></span></dt><dd><blockquote>
              List source ports added to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--add-module</code>=<em class="replaceable"><code>module</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--add-module</code>=<em class="replaceable"><code>module</code></em></span></dt><dd><blockquote>
              Add a new module to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-module</code>=<em class="replaceable"><code>module</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-module</code>=<em class="replaceable"><code>module</code></em></span></dt><dd><blockquote>
              Remove a module from the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-module</code>=<em class="replaceable"><code>module</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-module</code>=<em class="replaceable"><code>module</code></em></span></dt><dd><blockquote>
              Return wether the module has been added to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-modules</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-modules</code></span></dt><dd><blockquote>
              List modules added to the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--set-destination</code>=<em class="replaceable"><code>ipv</code></em>:<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--set-destination</code>=<em class="replaceable"><code>ipv</code></em>:<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span></dt><dd><blockquote>
              Set destination for ipv to address[/mask] in the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-destination</code>=<em class="replaceable"><code>ipv</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-destination</code>=<em class="replaceable"><code>ipv</code></em></span></dt><dd><blockquote>
              Remove the destination for ipv from the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-destination</code>=<em class="replaceable"><code>ipv</code></em>:<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-destination</code>=<em class="replaceable"><code>ipv</code></em>:<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span></dt><dd><blockquote>
              Return wether the destination ipv to address[/mask] has been set in the permanent service.
-           </p></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-destinations</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-destinations</code></span></dt><dd><blockquote>
              List destinations added to the permanent service.
-           </p></dd></dl></div></div><div class="refsect2"><a name="icmptype_options"></a><h3>Internet Control Message Protocol (ICMP) type Options</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--info-icmptype=<em class="replaceable"><code>icmptype</code></em></code></span></dt><dd><p>
+           </blockquote></dd></blockquote></blockquote><blockquote><h3>Internet Control Message Protocol (ICMP) type Options</h3><blockquote><dt><span class="term"><code class="option">--info-icmptype=<em class="replaceable"><code>icmptype</code></em></code></span></dt><dd><blockquote>
 	      Print information about the icmptype <em class="replaceable"><code>icmptype</code></em>. The output format is:
-	      </p><pre class="programlisting">
-<em class="replaceable"><code>icmptype</code></em>
-  destination: <em class="replaceable"><code>ipv1</code></em> ..
-              </pre><p>
-	    </p></dd><dt><span class="term"><code class="option">--new-icmptype</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><p>
+	      <pre class="programlisting"><em class="replaceable"><code>icmptype</code></em>
+  destination: <em class="replaceable"><code>ipv1</code></em> ..</pre>
+	    </blockquote></dd><dt><span class="term"><code class="option">--new-icmptype</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><blockquote>
              Add a new permanent icmptype.
-           </p></dd><dt><span class="term"><code class="option">--new-icmptype-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>icmptype</code></em></span>]</span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--new-icmptype-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>icmptype</code></em></span>]</span></dt><dd><blockquote>
 	     Add a new permanent icmptype from a prepared icmptype file with an optional name override.
-           </p></dd><dt><span class="term"><code class="option">--delete-icmptype</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--delete-icmptype</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><blockquote>
              Delete an existing permanent icmptype.
-           </p></dd><dt><span class="term"> <code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"> <code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote>
              Set new description to icmptype
-           </p></dd><dt><span class="term"> <code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--get-description</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"> <code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--get-description</code></span></dt><dd><blockquote>
              Print description for icmptype
-           </p></dd><dt><span class="term"> <code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--set-short</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"> <code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--set-short</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote>
              Set short description to icmptype
-           </p></dd><dt><span class="term"> <code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--get-short</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"> <code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--get-short</code></span></dt><dd><blockquote>
              Print short description for icmptype
-           </p></dd><dt><span class="term"><code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--add-destination</code>=<em class="replaceable"><code>ipv</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--add-destination</code>=<em class="replaceable"><code>ipv</code></em></span></dt><dd><blockquote>
              Enable destination for ipv in permanent icmptype. ipv is one of <code class="literal">ipv4</code> or <code class="literal">ipv6</code>.
-           </p></dd><dt><span class="term"><code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--remove-destination</code>=<em class="replaceable"><code>ipv</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--remove-destination</code>=<em class="replaceable"><code>ipv</code></em></span></dt><dd><blockquote>
              Disable destination for ipv in permanent icmptype. ipv is one of <code class="literal">ipv4</code> or <code class="literal">ipv6</code>.
-           </p></dd><dt><span class="term"><code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--query-destination</code>=<em class="replaceable"><code>ipv</code></em></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--query-destination</code>=<em class="replaceable"><code>ipv</code></em></span></dt><dd><blockquote>
              Return whether destination for ipv is enabled in permanent icmptype. ipv is one of <code class="literal">ipv4</code> or <code class="literal">ipv6</code>.
-           </p></dd><dt><span class="term"><code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--get-destinations</code></span></dt><dd><p>
+           </blockquote></dd><dt><span class="term"><code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--get-destinations</code></span></dt><dd><blockquote>
               List destinations in permanent icmptype.
-           </p></dd></dl></div></div><div class="refsect2"><a name="direct_options"></a><h3>Direct Options</h3><p>
+           </blockquote></dd></blockquote></blockquote><blockquote><h3>Direct Options</h3><blockquote>
 	The direct options give a more direct access to the firewall. These options require user to know basic iptables concepts, i.e. <code class="literal">table</code> (filter/mangle/nat/...), <code class="literal">chain</code> (INPUT/OUTPUT/FORWARD/...), <code class="literal">commands</code> (-A/-D/-I/...), <code class="literal">parameters</code> (-p/-s/-d/-j/...) and <code class="literal">targets</code> (ACCEPT/DROP/REJECT/...).
-      </p><p>
+      </blockquote><blockquote>
 	Direct options should be used only as a last resort when it's not possible to use for example <code class="option">--add-service</code>=<em class="replaceable"><code>service</code></em> or <code class="option">--add-rich-rule</code>='<em class="replaceable"><code>rule</code></em>'.
-      </p><p>
+      </blockquote><blockquote>
 	The first argument of each option has to be <code class="literal">ipv4</code> or <code class="literal">ipv6</code> or <code class="literal">eb</code>. With <code class="literal">ipv4</code> it will be for IPv4 (<span class="citerefentry"><span class="refentrytitle">iptables</span>(8)</span>), with <code class="literal">ipv6</code> for IPv6 (<span class="citerefentry"><span class="refentrytitle">ip6tables</span>(8)</span>) and with <code class="literal">eb</code> for ethernet bridges (<span class="citerefentry"><span class="refentrytitle">ebtables</span>(8)</span>).
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-all-chains</code></span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-all-chains</code></span></dt><dd><blockquote>
 	      Get all chains added to all tables.
-	    </p><p>
+	    </blockquote><blockquote>
 	      This option concerns only chains previously added with <code class="option">--direct --add-chain</code>.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-chains</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-chains</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em></span></dt><dd><blockquote>
 	      Get all chains added to table <em class="replaceable"><code>table</code></em> as a space separated list.
-	    </p><p>
+	    </blockquote><blockquote>
 	      This option concerns only chains previously added with <code class="option">--direct --add-chain</code>.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--add-chain</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--add-chain</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em></span></dt><dd><blockquote>
 	      Add a new chain with name <em class="replaceable"><code>chain</code></em> to table <em class="replaceable"><code>table</code></em>.
-	    </p><p>
+	    </blockquote><blockquote>
 	      There already exist basic chains to use with direct options, for example <code class="literal">INPUT_direct</code> chain (see <code class="literal">iptables-save | grep direct</code> output for all of them).
 	      These chains are jumped into before chains for zones, i.e. every rule put into <code class="literal">INPUT_direct</code> will be checked before rules in zones.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--remove-chain</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--remove-chain</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em></span></dt><dd><blockquote>
 	      Remove the chain with name <em class="replaceable"><code>chain</code></em> from table <em class="replaceable"><code>table</code></em>.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--query-chain</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--query-chain</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em></span></dt><dd><blockquote>
 	      Return whether a chain with name <em class="replaceable"><code>chain</code></em> exists in table <em class="replaceable"><code>table</code></em>. Returns 0 if true, 1 otherwise.
-	    </p><p>
+	    </blockquote><blockquote>
 	      This option concerns only chains previously added with <code class="option">--direct --add-chain</code>.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-all-rules</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-all-rules</code></span></dt><dd><blockquote>
 	      Get all rules added to all chains in all tables as a newline separated list of the priority and arguments.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-rules</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-rules</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em></span></dt><dd><blockquote>
 	      Get all rules added to chain <em class="replaceable"><code>chain</code></em> in table <em class="replaceable"><code>table</code></em> as a newline separated list of the priority and arguments.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--add-rule</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em> <em class="replaceable"><code>priority</code></em> <em class="replaceable"><code>args</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--add-rule</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em> <em class="replaceable"><code>priority</code></em> <em class="replaceable"><code>args</code></em></span></dt><dd><blockquote>
 	      Add a rule with the arguments <em class="replaceable"><code>args</code></em> to chain <em class="replaceable"><code>chain</code></em> in table <em class="replaceable"><code>table</code></em> with priority <em class="replaceable"><code>priority</code></em>.
-	    </p><p>
+	    </blockquote><blockquote>
 	      The <em class="replaceable"><code>priority</code></em> is used to order rules. Priority 0 means add rule on top of the chain, with a higher priority the rule will be added further down. Rules with the same priority are on the same level and the order of these rules is not fixed and may change. If you want to make sure that a rule will be added after another one, use a low priority for the first and a higher for the following.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--remove-rule</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em> <em class="replaceable"><code>priority</code></em> <em class="replaceable"><code>args</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--remove-rule</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em> <em class="replaceable"><code>priority</code></em> <em class="replaceable"><code>args</code></em></span></dt><dd><blockquote>
 	      Remove a rule with <em class="replaceable"><code>priority</code></em> and the arguments <em class="replaceable"><code>args</code></em> from chain <em class="replaceable"><code>chain</code></em> in table <em class="replaceable"><code>table</code></em>.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--remove-rules</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--remove-rules</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em></span></dt><dd><blockquote>
 	      Remove all rules in the chain with name <em class="replaceable"><code>chain</code></em> exists in table <em class="replaceable"><code>table</code></em>.
-	    </p><p>
+	    </blockquote><blockquote>
 	      This option concerns only rules previously added with <code class="option">--direct --add-rule</code> in this chain.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--query-rule</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em> <em class="replaceable"><code>priority</code></em> <em class="replaceable"><code>args</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--query-rule</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>table</code></em> <em class="replaceable"><code>chain</code></em> <em class="replaceable"><code>priority</code></em> <em class="replaceable"><code>args</code></em></span></dt><dd><blockquote>
 	      Return whether a rule with <em class="replaceable"><code>priority</code></em> and the arguments <em class="replaceable"><code>args</code></em> exists in chain <em class="replaceable"><code>chain</code></em> in table <em class="replaceable"><code>table</code></em>. Returns 0 if true, 1 otherwise.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-all-passthroughs</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-all-passthroughs</code></span></dt><dd><blockquote>
 	      Get all permanent passthrough as a newline separated list of the ipv value and arguments.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-passthroughs</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } </span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-passthroughs</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } </span></dt><dd><blockquote>
 	      Get all permanent passthrough rules for the ipv value as a newline separated list of the priority and arguments.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--add-passthrough</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>args</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--add-passthrough</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>args</code></em></span></dt><dd><blockquote>
 	      Add a permanent passthrough rule with the arguments <em class="replaceable"><code>args</code></em> for the ipv value.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--remove-passthrough</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>args</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--remove-passthrough</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>args</code></em></span></dt><dd><blockquote>
 	      Remove a permanent passthrough rule with the arguments <em class="replaceable"><code>args</code></em> for the ipv value.
-	    </p></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--query-passthrough</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>args</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--query-passthrough</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>args</code></em></span></dt><dd><blockquote>
 	      Return whether a permanent passthrough rule with the arguments <em class="replaceable"><code>args</code></em> exists for the ipv value. Returns 0 if true, 1 otherwise.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="lockdown_options"></a><h3>Lockdown Options</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>Lockdown Options</h3><blockquote>
 	Local applications or services are able to change the firewall configuration if they are running as root (example: libvirt) or are authenticated using PolicyKit. With this feature administrators can lock the firewall configuration so that only applications on lockdown whitelist are able to request firewall changes.
-      </p><p>
+      </blockquote><blockquote>
 	The lockdown access check limits D-Bus methods that are changing firewall rules. Query, list and get methods are not limited.
-      </p><p>
+      </blockquote><blockquote>
 	The lockdown feature is a very light version of user and application policies for firewalld and is turned off by default.
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--lockdown-on</code></span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term"><code class="option">--lockdown-on</code></span></dt><dd><blockquote>
 	      Enable lockdown. Be careful - if firewall-cmd is not on lockdown whitelist when you enable lockdown you won't be able to disable it again with firewall-cmd, you would need to edit firewalld.conf.
-	    </p></dd><dt><span class="term"><code class="option">--lockdown-off</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--lockdown-off</code></span></dt><dd><blockquote>
 	      Disable lockdown.
-	    </p></dd><dt><span class="term"><code class="option">--query-lockdown</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--query-lockdown</code></span></dt><dd><blockquote>
 	      Query whether lockdown is enabled. Returns 0 if lockdown is enabled, 1 otherwise.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="lockdown_whitelist_options"></a><h3>Lockdown Whitelist Options</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>Lockdown Whitelist Options</h3><blockquote>
 	The lockdown whitelist can contain <em class="replaceable"><code>commands</code></em>, <em class="replaceable"><code>contexts</code></em>, <em class="replaceable"><code>users</code></em> and <em class="replaceable"><code>user ids</code></em>.
-      </p><p>
+      </blockquote><blockquote>
 	If a command entry on the whitelist ends with an asterisk '*', then all command lines starting with the command will match. If the '*' is not there the absolute command inclusive arguments must match.
-      </p><p>
+      </blockquote><blockquote>
 	Commands for user root and others is not always the same. Example: As root <span class="command"><strong>/bin/firewall-cmd</strong></span> is used, as a normal user <span class="command"><strong>/usr/bin/firewall-cmd</strong></span> is be used on Fedora. 
-      </p><p>
+      </blockquote><blockquote>
 	The context is the security (SELinux) context of a running application or service. To get the context of a running application use <span class="command"><strong>ps -e --context</strong></span>.
-      </p><p>
+      </blockquote><blockquote>
 	<span class="bold"><strong>Warning:</strong></span> If the context is unconfined, then this will open access for more than the desired application. 
-      </p><p>
+      </blockquote><blockquote>
 	The lockdown whitelist entries are checked in the following order:
-	</p><table border="0" summary="Simple list" class="simplelist"><tr><td>1. <em class="replaceable"><code>context</code></em></td></tr><tr><td>2. <em class="replaceable"><code>uid</code></em></td></tr><tr><td>3. <em class="replaceable"><code>user</code></em></td></tr><tr><td>4. <em class="replaceable"><code>command</code></em></td></tr></table><p>
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--list-lockdown-whitelist-commands</code></span></dt><dd><p>
+	<table border="0" summary="Simple list" class="simplelist"><tr><td>1. <em class="replaceable"><code>context</code></em></td></tr><tr><td>2. <em class="replaceable"><code>uid</code></em></td></tr><tr><td>3. <em class="replaceable"><code>user</code></em></td></tr><tr><td>4. <em class="replaceable"><code>command</code></em></td></tr></table>
+      </blockquote><blockquote><dt><span class="term"><code class="option">--list-lockdown-whitelist-commands</code></span></dt><dd><blockquote>
 	      List all command lines that are on the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-command</code>=<em class="replaceable"><code>command</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-command</code>=<em class="replaceable"><code>command</code></em></span></dt><dd><blockquote>
 	      Add the <em class="replaceable"><code>command</code></em> to the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-command</code>=<em class="replaceable"><code>command</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-command</code>=<em class="replaceable"><code>command</code></em></span></dt><dd><blockquote>
 	      Remove the <em class="replaceable"><code>command</code></em> from the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-command</code>=<em class="replaceable"><code>command</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-command</code>=<em class="replaceable"><code>command</code></em></span></dt><dd><blockquote>
 	      Query whether the <em class="replaceable"><code>command</code></em> is on the whitelist. Returns 0 if true, 1 otherwise.
-	    </p></dd><dt><span class="term"><code class="option">--list-lockdown-whitelist-contexts</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--list-lockdown-whitelist-contexts</code></span></dt><dd><blockquote>
 	      List all contexts that are on the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-context</code>=<em class="replaceable"><code>context</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-context</code>=<em class="replaceable"><code>context</code></em></span></dt><dd><blockquote>
 	      Add the context <em class="replaceable"><code>context</code></em> to the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-context</code>=<em class="replaceable"><code>context</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-context</code>=<em class="replaceable"><code>context</code></em></span></dt><dd><blockquote>
 	      Remove the <em class="replaceable"><code>context</code></em> from the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-context</code>=<em class="replaceable"><code>context</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-context</code>=<em class="replaceable"><code>context</code></em></span></dt><dd><blockquote>
 	      Query whether the <em class="replaceable"><code>context</code></em> is on the whitelist. Returns 0 if true, 1 otherwise.
-	    </p></dd><dt><span class="term"><code class="option">--list-lockdown-whitelist-uids</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--list-lockdown-whitelist-uids</code></span></dt><dd><blockquote>
 	      List all user ids that are on the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-uid</code>=<em class="replaceable"><code>uid</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-uid</code>=<em class="replaceable"><code>uid</code></em></span></dt><dd><blockquote>
 	      Add the user id <em class="replaceable"><code>uid</code></em> to the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-uid</code>=<em class="replaceable"><code>uid</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-uid</code>=<em class="replaceable"><code>uid</code></em></span></dt><dd><blockquote>
 	      Remove the user id <em class="replaceable"><code>uid</code></em> from the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-uid</code>=<em class="replaceable"><code>uid</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-uid</code>=<em class="replaceable"><code>uid</code></em></span></dt><dd><blockquote>
 	      Query whether the user id <em class="replaceable"><code>uid</code></em> is on the whitelist. Returns 0 if true, 1 otherwise.
-	    </p></dd><dt><span class="term"><code class="option">--list-lockdown-whitelist-users</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--list-lockdown-whitelist-users</code></span></dt><dd><blockquote>
 	      List all user names that are on the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-user</code>=<em class="replaceable"><code>user</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-user</code>=<em class="replaceable"><code>user</code></em></span></dt><dd><blockquote>
 	      Add the user name <em class="replaceable"><code>user</code></em> to the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-user</code>=<em class="replaceable"><code>user</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-user</code>=<em class="replaceable"><code>user</code></em></span></dt><dd><blockquote>
 	      Remove the user name <em class="replaceable"><code>user</code></em> from the whitelist.
-	    </p></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-user</code>=<em class="replaceable"><code>user</code></em></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-user</code>=<em class="replaceable"><code>user</code></em></span></dt><dd><blockquote>
 	      Query whether the user name <em class="replaceable"><code>user</code></em> is on the whitelist. Returns 0 if true, 1 otherwise.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="polkit_options"></a><h3>Policy Options</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--policy-server</code></span></dt><dd><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>Policy Options</h3><blockquote><dt><span class="term"><code class="option">--policy-server</code></span></dt><dd><blockquote>
 	      Change Polkit actions to 'server'  (more restricted)
-	    </p></dd><dt><span class="term"><code class="option">--policy-desktop</code></span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term"><code class="option">--policy-desktop</code></span></dt><dd><blockquote>
 	      Change Polkit actions to 'desktop'  (less restricted)
-	    </p></dd></dl></div></div></div><div class="refsect1"><a name="idm47587401218944"></a><h2>See Also</h2><span class="simplelist"><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></span></div><div class="refsect1"><a name="idm47587401193600"></a><h2>Notes</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">firewalld home page:</span></dt><dd><p>
+	    </blockquote></dd></blockquote></blockquote></div><div class="refsect1"><a name="idm140393018099584"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140393018074240"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote>
 	  <a class="ulink" href="http://www.firewalld.org" target="_top">http://www.firewalld.org</a>
-	</p></dd><dt><span class="term">More documentation with examples:</span></dt><dd><p>
+	</blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
-	</p></dd></dl></div></div></div></body></html>
+	</blockquote></dd></blockquote></div></div></body></html>

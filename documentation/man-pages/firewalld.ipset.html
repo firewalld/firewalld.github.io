@@ -3,50 +3,46 @@ layout: page
 title: firewalld.ipset
 ---
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>firewalld.ipset</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.ipset"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>firewalld.ipset &#8212; firewalld ipset configuration files</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><p>
-      </p><pre class="programlisting">
-<code class="filename">/etc/firewalld/ipsets/ipset.xml</code>
-<code class="filename">/usr/lib/firewalld/ipsets/ipset.xml</code>
-      </pre><p>
-    </p></div><div class="refsect1"><a name="description"></a><h2>Description</h2><p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.ipset</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.ipset"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.ipset — firewalld ipset configuration files</blockquote><div class="refsynopsisdiv"><h2>Synopsis</h2><blockquote>
+      <pre class="programlisting"><code class="filename">/etc/firewalld/ipsets/ipset.xml</code>
+<code class="filename">/usr/lib/firewalld/ipsets/ipset.xml</code></pre>
+    </blockquote></div><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
       A firewalld ipset configuration file provides the information of an ip set for firewalld. The most important configuration options are type, option and entry.
-    </p><p>
+    </blockquote><blockquote>
       This example configuration file shows the structure of an ipset configuration file:
 
-      </p><pre class="programlisting">
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
+      <pre class="programlisting">&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;ipset type="<em class="replaceable"><code>hash:ip</code></em>"&gt;
   &lt;short&gt;<em class="replaceable"><code>My Ipset</code></em>&lt;/short&gt;
   &lt;description&gt;<em class="replaceable"><code>description</code></em>&lt;/description&gt;
   &lt;entry&gt;<em class="replaceable"><code>1.2.3.4</code></em>&lt;/entry&gt;
   &lt;entry&gt;<em class="replaceable"><code>1.2.3.5</code></em>&lt;/entry&gt;
   &lt;entry&gt;<em class="replaceable"><code>1.2.3.6</code></em>&lt;/entry&gt;
-&lt;/ipset&gt;
-      </pre><p>
-    </p></div><div class="refsect1"><a name="options"></a><h2>Options</h2><p>
+&lt;/ipset&gt;</pre>
+    </blockquote></div><div class="refsect1"><a name="options"></a><h2>Options</h2><blockquote>
       The config can contain these tags and attributes. Some of them are mandatory, others optional.
-    </p><div class="refsect2"><a name="options_ipset"></a><h3>ipset</h3><p>
+    </blockquote><blockquote><h3>ipset</h3><blockquote>
 	The mandatory ipset start and end tag defines the ipset. This tag can only be used once in a ipset configuration file. There is one mandatory and also optional attributes for ipsets:
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">type="<em class="replaceable"><code>string</code></em>"</span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">type="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
               The mandatory type of the ipset. This cas be one of these types: <em class="replaceable"><code>hash:ip</code></em>, <em class="replaceable"><code>hash:net</code></em>, <em class="replaceable"><code>hash:mac</code></em>.
-	    </p></dd><dt><span class="term">version="<em class="replaceable"><code>string</code></em>"</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">version="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
               To give the ipset a version.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="options_short"></a><h3>short</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>short</h3><blockquote>
 	Is an optional start and end tag and is used to give an icmptype a more	readable name.
-      </p></div><div class="refsect2"><a name="options_description"></a><h3>description</h3><p>
+      </blockquote></blockquote><blockquote><h3>description</h3><blockquote>
 	Is an optional start and end tag to have a description for a icmptype.
-      </p></div><div class="refsect2"><a name="options_option"></a><h3>option</h3><p>
+      </blockquote></blockquote><blockquote><h3>option</h3><blockquote>
 	Is an optional empty-element tag and can be used several times to have more than one option. Mostly all attributes of an option entry are mandatory:
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">name="<em class="replaceable"><code>string</code></em>"</span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">name="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
 	      The mandatory option name <em class="replaceable"><code>string</code></em>.
-	    </p></dd><dt><span class="term">value="<em class="replaceable"><code>string</code></em>"</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">value="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
               The optional value of the option.
-	    </p></dd></dl></div><p>
+	    </blockquote></dd></blockquote><blockquote>
 	The supported options are: family: <em class="replaceable"><code>"inet"</code></em>|<em class="replaceable"><code>"inet6"</code></em>, timeout: <em class="replaceable"><code>integer</code></em>, hashsize: <em class="replaceable"><code>integer</code></em>, maxelem: <em class="replaceable"><code>integer</code></em>. For more information on these options, please have a look at the ipset documentation.
-      </p></div><div class="refsect2"><a name="options_entry"></a><h3>entry</h3><p>
+      </blockquote></blockquote><blockquote><h3>entry</h3><blockquote>
 	Is an optional start and end tag and can be used several times to have more than one entry entry. An entry entry does not have attributes.
-      </p></div></div><div class="refsect1"><a name="idm47033536774320"></a><h2>See Also</h2><span class="simplelist"><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></span></div><div class="refsect1"><a name="idm47033531826768"></a><h2>Notes</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">firewalld home page:</span></dt><dd><p>
+      </blockquote></blockquote></div><div class="refsect1"><a name="idm140298616969088"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140298612030224"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote>
 	  <a class="ulink" href="http://www.firewalld.org" target="_top">http://www.firewalld.org</a>
-	</p></dd><dt><span class="term">More documentation with examples:</span></dt><dd><p>
+	</blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
-	</p></dd></dl></div></div></div></body></html>
+	</blockquote></dd></blockquote></div></div></body></html>

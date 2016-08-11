@@ -3,42 +3,38 @@ layout: page
 title: firewalld.icmptype
 ---
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>firewalld.icmptype</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.icmptype"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>firewalld.icmptype &#8212; firewalld icmptype configuration files</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><p>
-      </p><pre class="programlisting">
-<code class="filename">/etc/firewalld/icmptypes/icmptype.xml</code>
-<code class="filename">/usr/lib/firewalld/icmptypes/icmptype.xml</code>
-      </pre><p>
-    </p></div><div class="refsect1"><a name="description"></a><h2>Description</h2><p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.icmptype</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.icmptype"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.icmptype — firewalld icmptype configuration files</blockquote><div class="refsynopsisdiv"><h2>Synopsis</h2><blockquote>
+      <pre class="programlisting"><code class="filename">/etc/firewalld/icmptypes/icmptype.xml</code>
+<code class="filename">/usr/lib/firewalld/icmptypes/icmptype.xml</code></pre>
+    </blockquote></div><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
       A firewalld icmptype configuration file provides the information for an Internet Control Message Protocol (ICMP) type for firewalld.
-    </p><p>
+    </blockquote><blockquote>
       This example configuration file shows the structure of an icmptype configuration file:
 
-      </p><pre class="programlisting">
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
+      <pre class="programlisting">&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;icmptype&gt;
   &lt;short&gt;<em class="replaceable"><code>My Icmptype</code></em>&lt;/short&gt;
   &lt;description&gt;<em class="replaceable"><code>description</code></em>&lt;/description&gt;
   &lt;destination ipv4="<em class="replaceable"><code>yes</code></em>" ipv6="<em class="replaceable"><code>yes</code></em>"/&gt;
-&lt;/icmptype&gt;
-      </pre><p>
-    </p></div><div class="refsect1"><a name="options"></a><h2>Options</h2><p>
+&lt;/icmptype&gt;</pre>
+    </blockquote></div><div class="refsect1"><a name="options"></a><h2>Options</h2><blockquote>
       The config can contain these tags and attributes. Some of them are mandatory, others optional.
-    </p><div class="refsect2"><a name="options_icmptype"></a><h3>icmptype</h3><p>
+    </blockquote><blockquote><h3>icmptype</h3><blockquote>
 	The mandatory icmptype start and end tag defines the icmptype. This tag can only be used once in an icmptype configuration file. This tag has optional attributes:
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">version="<em class="replaceable"><code>string</code></em>"</span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">version="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote>
               To give the icmptype a version.
-	    </p></dd></dl></div></div><div class="refsect2"><a name="options_short"></a><h3>short</h3><p>
+	    </blockquote></dd></blockquote></blockquote><blockquote><h3>short</h3><blockquote>
 	Is an optional start and end tag and is used to give an icmptype a more	readable name.
-      </p></div><div class="refsect2"><a name="options_description"></a><h3>description</h3><p>
+      </blockquote></blockquote><blockquote><h3>description</h3><blockquote>
 	Is an optional start and end tag to have a description for a icmptype.
-      </p></div><div class="refsect2"><a name="options_destination"></a><h3>destination</h3><p>
+      </blockquote></blockquote><blockquote><h3>destination</h3><blockquote>
 	Is an optional empty-element tag and can be used only once. The destination tag specifies if an icmptype entry is available for IPv4 and/or IPv6. The default is IPv4 and IPv6, where this tag can be missing.
-      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">ipv4="<em class="replaceable"><code>bool</code></em>"</span></dt><dd><p>
+      </blockquote><blockquote><dt><span class="term">ipv4="<em class="replaceable"><code>bool</code></em>"</span></dt><dd><blockquote>
               Describes if the icmptype is available for IPv4.
-	    </p></dd><dt><span class="term">ipv6="<em class="replaceable"><code>bool</code></em>"</span></dt><dd><p>
+	    </blockquote></dd><dt><span class="term">ipv6="<em class="replaceable"><code>bool</code></em>"</span></dt><dd><blockquote>
               Describes if the icmptype is available for IPv6.
-	    </p></dd></dl></div></div></div><div class="refsect1"><a name="idm46968675393824"></a><h2>See Also</h2><span class="simplelist"><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></span></div><div class="refsect1"><a name="idm46968670464640"></a><h2>Notes</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term">firewalld home page:</span></dt><dd><p>
+	    </blockquote></dd></blockquote></blockquote></div><div class="refsect1"><a name="idm140392868324352"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140392863387632"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote>
 	  <a class="ulink" href="http://www.firewalld.org" target="_top">http://www.firewalld.org</a>
-	</p></dd><dt><span class="term">More documentation with examples:</span></dt><dd><p>
+	</blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
-	</p></dd></dl></div></div></div></body></html>
+	</blockquote></dd></blockquote></div></div></body></html>
