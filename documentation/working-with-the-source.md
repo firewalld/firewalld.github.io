@@ -61,7 +61,7 @@ to create the documentation and to update the po files.
 
 ## Start the Daemon
 
-You can start the firewall daemon in a termal for debugging:
+As user root you can start the firewall daemon in a termal for debugging:
 
     cd src
     ./firewalld --nofork --debug
