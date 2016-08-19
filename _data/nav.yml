@@ -29,8 +29,8 @@
     path: "configuration.html"
   - title: "Directories"
     path: "directories.html"
-  - title: "Zones"
-    path: "zones/"
+  - title: "Zone"
+    path: "zone/"
 
     subitems:
     - title: "Predefined Zones"
@@ -40,22 +40,22 @@
     - title: "Configuration of Zones"
       path: "configuration-of-zones.html"
 
-  - title: "Services"
-    path: "services/"
+  - title: "Service"
+    path: "service/"
 
 #    subitems:
 #    - title: "Predefined Services"
 #      path: "predefined-services.html"
 
-  - title: "IPSets"
-    path: "ipsets/"
+  - title: "IPSet"
+    path: "ipset/"
 
 #    subitems:
 #    - title: "Predefined IPSets"
 #      path: "predefined-ipsets.html"
 
-  - title: "ICMP Types"
-    path: "icmptypes/"
+  - title: "ICMP Type"
+    path: "icmptype/"
 
 #    subitems:
 #    - title: "Predefined ICMP Types"

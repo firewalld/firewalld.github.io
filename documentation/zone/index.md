@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Zones"
+title: "Zone"
 ---
 
 A network or firewall zone defines the trust level of the interface used for a connection. There are several pre-defined zones provided by firewalld. Zone configuration options and generic information about zones are described in [firewalld.zone](https://twoerner.fedorapeople.org/firewalld/doc/firewalld.zone.html)

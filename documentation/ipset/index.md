@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "IPSets"
+title: "IPSet"
 ---
 
 An ipset can be used to group several IP or MAC addresses together. An ipset for IP addresses is either usable for IPv4 or IPv6. This is defined by the family setting of the ipset. It can be either inet (the default) or inet6.
