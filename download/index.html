@@ -3,15 +3,12 @@ layout: page
 title: Download
 ---
 
-{% for post in site.posts site.recent_releases %}
-  {% if post.category == 'release' %}
-    <div class="entry">
-      <h2>{{ post.title }}</h2>
+{% for post in site.categories["release"] limit:1 %}
+  <div class="entry">
+    <h2>{{ post.title }}</h2>
       <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • {{ post.author }}{% endif %}{% if post.meta %} • {{ post.meta }}{% endif %}</p>
       {{ post.content }}
-    </div>
-    {% break %}
-  {% endif %}
+  </div>
 {% endfor %}
 
 <h2>Source Repository</h2>
@@ -19,4 +16,3 @@ title: Download
 <p>The source repository for firewalld is stored in git. Clone the repository by</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>$ git clone https://github.com/t-woerner/firewalld.git</code></pre></div>
-
