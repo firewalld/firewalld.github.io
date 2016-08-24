@@ -49,9 +49,11 @@
   - title: "Service"
     path: "service/"
 
-#    subitems:
-#    - title: "Predefined Services"
-#      path: "predefined-services.html"
+    subitems:
+    - title: "Options"
+      path: "options.html"
+    - title: "Examples"
+      path: "examples.html"
 
   - title: "IPSet"
     path: "ipset/"
