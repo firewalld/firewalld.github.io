@@ -35,10 +35,16 @@
     subitems:
     - title: "Predefined Zones"
       path: "predefined-zones.html"
-    - title: "Interfaces and Sources"
-      path: "interfaces-and-sources.html"
+    - title: "Connections, Interfaces and Sources"
+      path: "connections-interfaces-and-sources.html"
     - title: "Configuration of Zones"
       path: "configuration-of-zones.html"
+    - title: "Use of Zones"
+      path: "use-of-zones.html"
+    - title: "Options"
+      path: "options.html"
+    - title: "Examples"
+      path: "examples.html"
 
   - title: "Service"
     path: "service/"

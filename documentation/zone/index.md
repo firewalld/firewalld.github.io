@@ -3,10 +3,12 @@ layout: page
 title: "Zone"
 ---
 
-A network or firewall zone defines the trust level of the interface used for a connection. There are several pre-defined zones provided by firewalld. Zone configuration options and generic information about zones are described in [firewalld.zone](https://twoerner.fedorapeople.org/firewalld/doc/firewalld.zone.html)
+A firewall zone defines the trust level for a connection, interface or source address binding. This is a one to many relation, which means that a connection, interface or source can only be part of one zone, but a zone can be used for many network connections, interfaces and sources.
 
-## Table of Contents
+Here is more information about zones:
 
-<ol>
+<ul>
 {% for _node in site.data.nav %}{% assign level = 1 %}{% include toc.html level=level path="/" base_path=page.url node=_node %}{% endfor %}
-</ol>
+</ul>
+
+Zone configuration options and generic information about zones are also described in the [firewalld.zone]({{site.baseurl}}/documentation/man-pages/firewalld.zone.html) man page.

@@ -1,9 +1,9 @@
 ---
 layout: page
-title: "Interfaces and Sources"
+title: "Connections, Interfaces and Sources"
 ---
 
-It is possible to assign (or bind) zones to interfaces and source addresses.
+It is possible to assign (or bind) zones to connections, interfaces and source addresses.
 
 ## How to set or change a zone for a connection
 
