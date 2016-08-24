@@ -12,6 +12,9 @@
 // Navbar wrap
 .navbar-block {
     background-color: $navbar-color;
+    background: linear-gradient(top, lighten($navbar-color, 20%) 0%, $navbar-color 100%);
+    background: -moz-linear-gradient(top, lighten($navbar-color, 20%) 0%, $navbar-color 100%);
+    background: -webkit-linear-gradient(top, lighten($navbar-color, 20%) 0%, $navbar-color 100%);
 }
 
 .navbar {
