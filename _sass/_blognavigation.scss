@@ -51,3 +51,14 @@
     right: -$blog-navigation-half-height;
     top: 0;
 }
+
+@media print {
+    .blog-navigation>.prev:before {
+	content: "<";
+	border: 0;
+    }
+    .blog-navigation>.next:after {
+	content: ">";
+	border: 0;
+    }
+}
