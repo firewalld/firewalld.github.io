@@ -1,0 +1,72 @@
+/**
+ * Pagination
+ */
+
+.pagination {
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-align: center;
+    color: $pagination-text-color;
+    vertical-align: middle;
+}
+.top {
+    margin-bottom: 1em;
+}
+.bottom {
+    margin-top: 2em;
+}
+
+.pagination li {
+    display: inline-block;
+    border-radius: 2px;
+    text-align: center;
+    vertical-align: top;
+    line-height: $pagination-height;
+    background: $pagination-color;
+    width: 30px;
+}
+.pagination li a {
+    color: #404040;
+    display: block;
+}
+.pagination li.active a {
+    color: #ffffff;
+}
+.pagination li.active {
+    background-color: #ee6e73;
+}
+.pagination li.disabled {
+    cursor: default;
+    color: #909090;
+    background: lighten($pagination-color, 7.5%);
+}
+.pagination li.disabled a {
+    cursor: default;
+    color: #909090;
+}
+.pagination li.pages ul li {
+    display: inline-block;
+    float: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .pagination {
+	width: 100%;
+    }
+    .pagination li.prev,
+    .pagination li.next {
+	width: 10%;
+    }
+    .pagination li.pages {
+	width: 80%;
+	overflow: hidden;
+	white-space: nowrap;
+    }
+}
+
+@media print {
+    .pagination {
+	display: none;
+    }
+}

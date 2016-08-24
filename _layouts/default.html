@@ -8,10 +8,10 @@
       {% include header.html %}
       {% include navigation.html %}
       <div class="row page-navigation">
-      {% if subnav_title_size > 0 %}
       <ul class="breadcrumb">
-        {% for title in subnav_title %}{% assign idx = forloop.index | minus: 1 %}<li><a href="{{ subnav_url[idx] }}">{{title}}</a></li>{% endfor %}
-	{% endif %}
+        {% if subnav_title_size > 0 %}
+          {% for title in subnav_title %}{% assign idx = forloop.index | minus: 1 %}<li><a href="{{ subnav_url[idx] }}">{{title}}</a></li>{% endfor %}
+      {% endif %}
       </ul>
       </div>
       {{ content }}

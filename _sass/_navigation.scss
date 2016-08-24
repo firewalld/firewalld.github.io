@@ -10,12 +10,20 @@
 }
 
 // Navbar wrap
+.navbar-block {
+    background-color: $navbar-color;
+}
+
 .navbar {
-  height: $navbar-height;
-  background: $navbar-color;
-  background: linear-gradient(top, lighten($navbar-color, 20%) 0%, $navbar-color 100%);
-  background: -moz-linear-gradient(top, lighten($navbar-color, 20%) 0%, $navbar-color 100%);
-  background: -webkit-linear-gradient(top, lighten($navbar-color, 20%) 0%, $navbar-color 100%);
+    height: $navbar-height;
+    background: $navbar-color;
+    background: linear-gradient(top, lighten($navbar-color, 20%) 0%, $navbar-color 100%);
+    background: -moz-linear-gradient(top, lighten($navbar-color, 20%) 0%, $navbar-color 100%);
+    background: -webkit-linear-gradient(top, lighten($navbar-color, 20%) 0%, $navbar-color 100%);
+    padding-left: ($spacing-unit/2);
+    padding-right: ($spacing-unit/2);
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 // Main navigation bar
@@ -26,27 +34,27 @@
 }
 
 #nav >.primary-nav>li {
-    display: block;
     float: left;
     position: relative;
+    height: $navbar-height;
 }
 
 // Alignment of Social Icons
 #nav>.primary-nav>.right>a {
     padding: 0px;
+    height: $navbar-height;
 }
 
 // Hover state of Social Icons
 #nav>.primary-nav>.right [class*="icon-"]:hover {
-    color: $navbar-hover-color;
+    color: $navbar-hover-text-color;
 }
 
 // Main navigation links
 #nav>.primary-nav>li>a {
     /* Layout */
     line-height: $navbar-height;
-    display: block;
-    padding: 0 22px;
+    padding: 0 12px;
     border-color: $secondary-color;
 
     /* Typography */
@@ -58,17 +66,24 @@
     text-decoration: none;
 	
     /* Transitions */
-    -webkit-transition: color .2s ease-in, border-top-color .2s ease-in;
-    -ms-transition: color .2s ease-in, border-top-color .2s ease-in;
-    -moz-transition: color .2s ease-in, border-top-color .2s ease-in;
-    -o-transition: color .2s ease-in, border-top-color .2s ease-in;
-    transition: color .2s ease-in, border-top-color .2s ease-in;
+    -webkit-transition: color .2s ease-in-out;
+    -ms-transition: color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
 }
 
 // Hover state of the links
 #nav>.primary-nav>li:hover>a {
-    color: $navbar-hover-color;
+    color: $navbar-hover-text-color;
     border-top-color: #fff;
+}
+
+#nav>.primary-nav>li:hover {
+    background: $navbar-hover-color;
+    background: linear-gradient(top, lighten($navbar-hover-color, 20%) 0%, $navbar-hover-color 100%);
+    background: -moz-linear-gradient(top, lighten($navbar-hover-color, 20%) 0%, $navbar-hover-color 100%);
+    background: -webkit-linear-gradient(top, lighten($navbar-hover-color, 20%) 0%, $navbar-hover-color 100%);
 }
 
 // Active state of the links
@@ -79,8 +94,16 @@
     background: -webkit-linear-gradient(top, lighten($navbar-active-color, 20%) 0%, $navbar-active-color 100%);
 }
 
+#nav>.primary-nav>li.active:hover {
+    background: $navbar-hover-active-color;
+    background: linear-gradient(top, lighten($navbar-hover-active-color, 20%) 0%, $navbar-hover-active-color 100%);
+    background: -moz-linear-gradient(top, lighten($navbar-hover-active-color, 20%) 0%, $navbar-hover-active-color 100%);
+    background: -webkit-linear-gradient(top, lighten($navbar-hover-active-color, 20%) 0%, $navbar-hover-active-color 100%);
+}
+
 #nav>.primary-nav>li.dropdown>a {
     padding-right: 28px;
+    height: $navbar-height;
 }
 
 // Dropdown menu arrow
@@ -93,8 +116,8 @@
     width: 0;
     border: 4px solid transparent;
     border-top-color: inherit;
-    right: 11px;
-    top: ($navbar-height / 2);
+    right: ($navbar-height / 4);
+    top: 48%;
 }
 
 // Submenus
@@ -109,22 +132,22 @@
     cursor: pointer;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-    -webkit-transition: opacity .22s ease-in;
-    -ms-transition: opacity .22s ease-in;
-    -moz-transition: opacity .22s ease-in;
-    -o-transition: opacity .22s ease-in;
-    transition: opacity .22s ease-in;
+    -webkit-transition: opacity .22s ease-in-out;
+    -ms-transition: opacity .22s ease-in-out;
+    -moz-transition: opacity .22s ease-in-out;
+    -o-transition: opacity .22s ease-in-out;
+    transition: opacity .22s ease-in-out;
 }
 
 #nav .primary-nav ul li {
     display: block;
     position: absolute;
     height: 0px;
-    -webkit-transition: height .15s ease-in;
-    -ms-transition: height .15s ease-in;
-    -moz-transition: height .15s ease-in;
-    -o-transition: height .15s ease-in;
-    transition: height .15s ease-in;
+    -webkit-transition: height .15s ease-in-out;
+    -ms-transition: height .15s ease-in-out;
+    -moz-transition: height .15s ease-in-out;
+    -o-transition: height .15s ease-in-out;
+    transition: height .15s ease-in-out;
 }
 
 // Submenu appears when its parent is hovered
@@ -135,15 +158,15 @@
 
 #nav .primary-nav li:hover>ul>li {
     position: relative;
-    height: 31px;
+    height: auto;
 }
 
 // Submenu links
 #nav .primary-nav ul li a {
     /* Layout */
-    display: block;
-    padding: 7px 12px 7px 22px;
-    width: 250px;
+    display: inline-block;
+    padding: 7px 20px 7px 10px;
+    width: 220px;
 
     /* Typography */
     font-family: $navbar-font-family;
@@ -154,21 +177,31 @@
 	
     /* Background & effects */
     background: $navbar-color;
-    -webkit-transition: color .2s ease-in, border-left-color .2s ease-in;;
-    -ms-transition: color .2s ease-in, border-left-color .2s ease-in;;
-    -moz-transition: color .2s ease-in, border-left-color .2s ease-in;;
-    -o-transition: color .2s ease-in, border-left-color .2s ease-in;;
-    transition: color .2s ease-in, border-left-color .2s ease-in;;
+    -webkit-transition: color .2s ease-in-out;
+    -ms-transition: color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+
+    -webkit-transition: background-color .2s ease-in-out;
+    -ms-transition: background-color .2s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out;
 }
 
 // Change the link color on hover
 #nav .primary-nav ul li:hover>a {
-    color: $navbar-hover-color;
+    color: $navbar-hover-text-color;
+    background-color: $navbar-hover-color;
 }
 
 // Active state of the links
 #nav>.primary-nav ul li.active>a {
     background-color: $navbar-active-color;
+}
+#nav>.primary-nav ul li.active:hover>a {
+    background-color: $navbar-hover-active-color;
 }
 
 // ###########################################################
@@ -186,8 +219,8 @@
     width: 0;
     border: 4px solid transparent;
     border-left-color: inherit;
-    right: 11px;
-    bottom: 11px;
+    right: 5px;
+    top: 42%;
 }
 
 // Subsubmenus
@@ -197,7 +230,7 @@
 }
 
 #nav .primary-nav ul>li:hover>ul {
-    left: 250px;
+    left: 220px;
     opacity: 1;
 }
 
@@ -330,11 +363,19 @@
 	
     .navbar {
 	background-color: $navbar-color;
-	height: 44px;
+	height: $navbar-height;
 	display: inline;
+	padding-left: 0;
+	padding-right: 0;
     }
- 
+
     #nav>.right.primary-nav  {
 	background-color: lighten($navbar-color, 10%);
     }
 } 
+
+@media print {
+    .navbar {
+	display: none;
+    }
+}
