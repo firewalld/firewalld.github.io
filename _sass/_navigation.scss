@@ -180,17 +180,11 @@
 	
     /* Background & effects */
     background: $navbar-color;
-    -webkit-transition: color .2s ease-in-out;
-    -ms-transition: color .2s ease-in-out;
-    -moz-transition: color .2s ease-in-out;
-    -o-transition: color .2s ease-in-out;
-    transition: color .2s ease-in-out;
-
-    -webkit-transition: background-color .2s ease-in-out;
-    -ms-transition: background-color .2s ease-in-out;
-    -moz-transition: background-color .2s ease-in-out;
-    -o-transition: background-color .2s ease-in-out;
-    transition: background-color .2s ease-in-out;
+    -webkit-transition: color .2s ease-in-out, background-color .2s ease-in-out;
+    -ms-transition: color .2s ease-in-out, background-color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out, background-color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out, background-color .2s ease-in-out;
+    transition: color .2s ease-in-out, background-color .2s ease-in-out;
 }
 
 // Change the link color on hover
@@ -245,7 +239,7 @@
 
 // Styling for mobile devices
 @media screen and (max-width: 768px) {
-    #nav .primary-nav{
+    #nav .primary-nav {
 	width: 100%;
 	max-width: 768px;
 	height: auto;
@@ -263,6 +257,26 @@
 	padding: 0 10px;
     }
 
+    #nav>.primary-nav li {
+	background-color: $navbar-color;
+	background: $navbar-color;
+    }
+
+    #nav>.primary-nav li:hover {
+	background-color: $navbar-hover-color;
+	background: $navbar-hover-color;
+    }
+
+    #nav>.primary-nav li.active {
+	background-color: $navbar-active-color;
+	background: $navbar-active-color;
+    }
+
+    #nav>.primary-nav li.active:hover {
+	background-color: $navbar-hover-active-color;
+	background: $navbar-hover-active-color;
+    }
+
     .dropdown>a::after {
 	display: none;
     }
@@ -278,9 +292,11 @@
 	right: auto;
 	opacity: 1;
 	clear: both;
+	display: block;
     }
 
-    #nav .primary-nav ul li, #nav>.primary-nav>li:hover>ul>li {
+    #nav .primary-nav ul li,
+    #nav>.primary-nav>li:hover>ul>li {
 	height: auto;
 	position: relative;
     }
@@ -288,6 +304,7 @@
     #nav .primary-nav ul li a {
 	padding: 5px 10px;
 	width: auto;
+	display: block;
     }
 
     #nav .primary-nav ul>li>ul {
@@ -364,16 +381,25 @@
 	border-color: $secondary-color;
     }
 	
+    .navbar-block {
+	background: $navbar-color;
+    }
+
     .navbar {
 	background-color: $navbar-color;
 	height: $navbar-height;
-	display: inline;
+	display: block;
 	padding-left: 0;
 	padding-right: 0;
+	background: $navbar-color;
     }
 
     #nav>.right.primary-nav  {
 	background-color: lighten($navbar-color, 10%);
+    }
+
+    #nav > .primary-nav > li {
+	height: auto;
     }
 } 
 
