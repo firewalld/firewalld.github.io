@@ -86,9 +86,11 @@
   - title: "ICMP Type"
     path: "icmptype/"
 
-#    subitems:
-#    - title: "Predefined ICMP Types"
-#      path: "predefined-icmptypes.html"
+    subitems:
+    - title: "Options"
+      path: "options.html"
+    - title: "Examples"
+      path: "examples.html"
 
   - title: "Direct Interface"
     path: "direct/"
