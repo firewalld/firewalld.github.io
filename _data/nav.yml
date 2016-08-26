@@ -89,7 +89,14 @@
 #      path: "predefined-icmptypes.html"
 
   - title: "Direct Interface"
-    path: "direct-interface.html"
+    path: "direct/"
+
+    subitems:
+    - title: "Options"
+      path: "options.html"
+    - title: "Examples"
+      path: "examples.html"
+
   - title: "Manual Pages"
     path: "man-pages/"
 
