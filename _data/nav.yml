@@ -77,9 +77,11 @@
   - title: "IPSet"
     path: "ipset/"
 
-#    subitems:
-#    - title: "Predefined IPSets"
-#      path: "predefined-ipsets.html"
+    subitems:
+    - title: "Options"
+      path: "options.html"
+    - title: "Examples"
+      path: "examples.html"
 
   - title: "ICMP Type"
     path: "icmptype/"
