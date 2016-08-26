@@ -101,6 +101,15 @@
     - title: "Examples"
       path: "examples.html"
 
+  - title: "HowTo"
+    path: "howto/"
+
+    subitems:
+    - title: "Get firewalld State"
+      path: "get-firewalld-state.html"
+    - title: "Reload firewalld"
+      path: "reload-firewalld.html"
+
   - title: "Manual Pages"
     path: "man-pages/"
 
