@@ -39,6 +39,8 @@
       path: "connections-interfaces-and-sources.html"
     - title: "Configuration of Zones"
       path: "configuration-of-zones.html"
+    - title: "Default Zone"
+      path: "default-zone.html"
     - title: "Use of Zones"
       path: "use-of-zones.html"
     - title: "Options"
