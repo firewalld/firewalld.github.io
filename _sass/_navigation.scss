@@ -169,7 +169,7 @@
     /* Layout */
     display: inline-block;
     padding: 7px 20px 7px 10px;
-    width: 220px;
+    width: $navbar-menu-width;
 
     /* Typography */
     font-family: $navbar-font-family;
@@ -227,7 +227,7 @@
 }
 
 #nav .primary-nav ul>li:hover>ul {
-    left: 220px;
+    left: $navbar-menu-width;
     opacity: 1;
 }
 
