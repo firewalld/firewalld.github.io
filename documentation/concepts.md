@@ -8,7 +8,7 @@ firewalld has a two layer design: The core layer and the D-Bus layer on top. The
 ![firewalld-structure+nftables](firewalld-structure+nftables.png "firewalld structure")
 *firewalld structure*
 
-The firewalld D-Bus interface is the primary way to alter and create the firewall configuration. The interface is used by all firewalld provided online tools, like for example firewall-cmd, cirewallctl, firewall-config and firewall-applet. firewall-offline-cmd is not talking to firewalld, but altering and creating firewalld config files directly using the firewalld IO back ends. firewall-offline-cmd can be used while firewalld is running, but it is not recommended as it is only able to alter the permanent configuration.
+The firewalld D-Bus interface is the primary way to alter and create the firewall configuration. The interface is used by all firewalld provided online tools, like for example firewall-cmd, firewallctl, firewall-config and firewall-applet. firewall-offline-cmd is not talking to firewalld, but altering and creating firewalld config files directly using the firewalld core with the IO handlers. firewall-offline-cmd can be used while firewalld is running, but it is not recommended as it is only able to alter the permanent configuration that are visible in firewall after about five seconds.
 
 More information on the firewalld D-Bus API is available [here](man-pages/firewalld.dbus.html).
 
