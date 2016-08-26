@@ -11,4 +11,4 @@ Here is more information about zones:
 {% for _node in site.data.nav %}{% assign level = 1 %}{% include toc.html level=level path="/" base_path=page.url node=_node %}{% endfor %}
 </ul>
 
-Zone configuration options and generic information about zones are also described in the [firewalld.zone]({{site.baseurl}}/documentation/man-pages/firewalld.zone.html) man page.
+Further zone configuration options and generic information about zones are also described in the [firewalld.zone](../man-pages/firewalld.zone.html) man page.
