@@ -68,6 +68,9 @@ $blog-navigation-half-height: $blog-navigation-height/2;
 // Pagination
 $pagination-height: 24px;
 $pagination-color: #e0e0e0;
-$pagination-text-color: lighten($link-color, 30%);
-$pagination-link-color: $link-color;
-$pagination-spacing: 10px;
+$pagination-text-color: $link-color;
+$pagination-active-color: #ee4e53;
+$pagination-active-text-color: $pagination-color;
+$pagination-disabled-color: $pagination-color;
+$pagination-disabled-text-color: #ffffff;
+$pagination-item-width: 30px;

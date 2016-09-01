@@ -24,26 +24,26 @@
     vertical-align: top;
     line-height: $pagination-height;
     background: $pagination-color;
-    width: 30px;
+    width: $pagination-item-width;
 }
 .pagination li a {
-    color: #404040;
+    color: $pagination-text-color;
     display: block;
 }
 .pagination li.active a {
-    color: #ffffff;
+    color: $pagination-active-text-color;
 }
 .pagination li.active {
-    background-color: #ee6e73;
+    background-color: $pagination-active-color;
 }
 .pagination li.disabled {
     cursor: default;
-    color: #909090;
-    background: lighten($pagination-color, 7.5%);
+    color: $pagination-disabled-text-color;
+    background: $pagination-disabled-color;
 }
 .pagination li.disabled a {
     cursor: default;
-    color: #909090;
+    color: $pagination-disabled-text-color;
 }
 .pagination li.pages ul li {
     display: inline-block;
