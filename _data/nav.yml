@@ -158,3 +158,6 @@
   subitems:
   - title: "All Releases"
     path: "all.html"
+
+- title: "Search"
+  path: "search.html"
