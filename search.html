@@ -19,19 +19,19 @@ title: "Search"
     document.title = document.title.replace("{{page.title}} | ", "{{page.title}} for \""+search+"\" | ");
     document.getElementById("search-input").value = search;
 
-    var re = new RegExp(search, 'igm');
+    var regex = new RegExp(search, 'igm');
     $.getJSON( "search.json", function( data ) {
       var items = [];
 
       for (var i = 0; i < data.length; i++) {
-        if (re.test(data[i].title) || re.test(data[i].content) ||
-            re.test(data[i].tags) || re.test(data[i].category)) {
+        if (regex.test(data[i].title) || regex.test(data[i].content) ||
+            regex.test(data[i].tags) || regex.test(data[i].category)) {
 	  items.push("<div class=\"search-item\">");
           if (data[i].section != "") {
             items.push(data[i].section + "> ");
           }
       	  items.push("<a href=\""+ data[i].url +"\">" + data[i].title + "</a>");
-          items.push("<div class=\"search-excerpt\">" + getExcerpt(unescape(htmlDecode(data[i].content)), 320) + "</div></div>");
+          items.push("<div class=\"search-excerpt\">" + getExcerpt(unescape(htmlDecode(data[i].content)), regex, 320) + "</div></div>");
         }
       }
       if (items.length < 1) {
@@ -46,6 +46,5 @@ title: "Search"
   } else {
   }
 </script>
-
 
 <div class="results-container"></div>

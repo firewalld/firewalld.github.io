@@ -16,8 +16,8 @@ function getGetVariable(name) {
     return null;
 }
 
-function getExcerpt(text, excerpt_length) {
-    var start = text.indexOf(search);
+function getExcerpt(text, regex, excerpt_length) {
+    var start = text.search(regex);
     start = text.lastIndexOf(" ", start-10);
     if (start < 0) {
         start = 0;
@@ -40,7 +40,7 @@ function getExcerpt(text, excerpt_length) {
     }
     
     excerpt = text.substr(start, end-start);
-    excerpt = excerpt.replace(re, "<b>" + search + "</b>");
+    excerpt = excerpt.replace(regex, "<b>$&</b>");
     
     if (start > 0) {
         excerpt = "... " + excerpt;
