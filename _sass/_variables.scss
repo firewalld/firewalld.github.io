@@ -6,16 +6,15 @@ $body-bg: #fdfdfd;
 $body-font-color: #222;
 
 // Links
-$link-color: lighten($body-font-color, 25%);
+$link-color: #600000;
 $link-hover-color: $body-font-color;
-$link-visited-color: darken($complimentary-color, 60%);
+$link-visited-color: $link-color;
 
 // Text
 $base-font-family: Helvetica, Arial, sans-serif;
 $base-font-size: 1.0em;
 $small-font-size: $base-font-size * 0.875;
 $base-line-height: 1.5;
-
 
 // Primary Navbar Settings
 $navbar-height: 40px;
