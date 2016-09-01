@@ -25,6 +25,7 @@ destination: _site
 gems:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-seo-tag
 
 feed:
   path: atom.xml
