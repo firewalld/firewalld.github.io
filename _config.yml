@@ -31,8 +31,8 @@ feed:
   path: atom.xml
   
 # Compress our Css
-#sass:
-#    style: :compressed
+sass:
+    style: :compressed
 
 permalink: /:year/:month/:title
 paginate: 5
