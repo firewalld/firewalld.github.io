@@ -8,7 +8,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Welcome to the firewalld project homepage!
   Firewalld provides a dynamically managed firewall with support for network/firewall zones that defines the trust level of network connections or interfaces.
 
-baseurl: 
+baseurl:
 url: https://firewalld.github.io/
 
 # Exclude our ruby stuff
