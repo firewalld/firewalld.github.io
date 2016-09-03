@@ -17,7 +17,7 @@ title: "Search"
   var search = getGetVariable("search");
   if (search != null && search != "") {
     document.title = document.title.replace("{{page.title}} | ", "{{page.title}} for \""+search+"\" | ");
-    document.getElementById("search-input").value = search;
+    document.getElementById("search-input").value = htmlDecode(search);
 
     var regex = new RegExp(search, 'igm');
     $.getJSON( "search.json", function( data ) {
