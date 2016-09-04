@@ -89,18 +89,43 @@
 }
 
 .search-form {
-    margin: 0;
-    padding: 0;
     margin-bottom: 1em;
+    width: 100%;
 }
 
 .search-input {
-    width: 55%;
+    max-width: 100%;
+    width: 70%;
+    padding: 2px 4px;
+    padding-left: 26px;
+    background-image: url('/images/search.png');
+    background-position: 2px 3px;
+    background-repeat: no-repeat;
+    line-height: 24px;
+}
+aside .search-input {
+    width: 100%;
 }
 
 .search-submit {
-    width: 40%;
-    padding: 0;
+    padding: 2px 8px;
+    margin-left: 4px;
+}
+
+input[type=text] {
+    border: 2px solid #c0c0c0;
+    background-color: white;
+}
+input[type=text]:focus {
+    background-color: #ffffcc;
+}
+input[type=button], input[type=submit], input[type=reset] {
+    border: none;
+    padding: 3px 4px;
+    border-radius: 4px;
+}
+input[type=submit]:hover {
+    background-color: #ff6060;
 }
 
 .search-item {

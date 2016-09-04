@@ -6,12 +6,9 @@ title: "Search"
 <script src="{{ site.baseurl }}/js/jquery-2.2.4.min.js"></script>
 <script src="{{ site.baseurl }}/js/search.js"></script>
 
-<div class="search-form">
-<form action="{{ site.baseurl }}/search.html" method="get">
-  <input id="search-input" class="search-input" type="text" name="search" placeholder="Search..."></input>
-  <input class="submit" type="submit" value="Search"></input>
+<form class="search-form" action="{{ site.baseurl }}/search.html" method="get">
+  <input id="search-input" class="search-input" type="text" name="search" placeholder="Search..."></input><input class="search-submit" type="submit" value="Search"></input>
 </form>
-</div>
 
 <script type="text/javascript">
   var search = getGetVariable("search");
