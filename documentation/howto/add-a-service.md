@@ -1,0 +1,70 @@
+---
+layout: page
+title: "Add a Service"
+---
+
+There are different ways to a add a new service. A new service will only be visible in the runtime environment after it has been added. To be able to use it also in the run time environment, you need to reload firewalld.
+
+## With firewall-config
+
+Switch into the permanent configuration view. Click on the plus sign in the bottom of the zone list. Then enter the zone settings.
+
+## With firewall-cmd
+
+To add a new and empty service, use the `--new-service` altogether with the `--permanent` option:
+
+    firewall-cmd --permanent --new-service=myservice
+
+Configure the service:
+
+    firewall-cmd --permanent --service=service --set-description=description
+    firewall-cmd --permanent --service=service --set-short=description
+    firewall-cmd --permanent --service=service --add-port=portid[-portid]/protocol
+    firewall-cmd --permanent --service=service --add-protocol=protocol
+    firewall-cmd --permanent --service=service --add-source-port=portid[-portid]/protocol
+    firewall-cmd --permanent --service=service --add-module=module
+    firewall-cmd --permanent --service=service --set-destination=ipv:address[/mask]
+
+Alternatively you can a new service using an existing file:
+
+    firewall-cmd --permanent --new-service-from-file=myservice.xml
+
+This adds a new service using all settings from the file including the servie name.
+
+    firewall-cmd --permanent --new-service-from-file=myservice.xml --name=mynewservice
+
+This adds a new service using the service settings from the file. But the new service will have the name `mynewservice`.
+
+## With firewall-offline-cmd
+
+To add a new and empty service, use the `--new-service` option:
+
+    firewall-offline-cmd --new-service=myservice
+
+Configure the service:
+
+    firewall-offline-cmd --service=service --set-description=description
+    firewall-offline-cmd --service=service --set-short=description
+    firewall-offline-cmd --service=service --add-port=portid[-portid]/protocol
+    firewall-offline-cmd --service=service --add-protocol=protocol
+    firewall-offline-cmd --service=service --add-source-port=portid[-portid]/protocol
+    firewall-offline-cmd --service=service --add-module=module
+    firewall-offline-cmd --service=service --set-destination=ipv:address[/mask]
+
+Alternativly you can add a new service using an existing file:
+
+    firewall-offline-cmd --new-service-from-file=myservice.xml
+
+This adds a new service using all settings from the file including the servie name.
+
+    firewall-offline-cmd --new-service-from-file=myservice.xml --name=mynewservice
+
+This adds a new service using the service settings from the file. But the new service will have the name `mynewservice`.
+
+## Copy a file in the services directory in /etc/firewalld
+
+As root copy the file:
+
+    # cp myservice.xml /etc/firewalld/services
+
+After you have copied the file into `/etc/firewalld/services` it takes about 5 seconds till the new service will be visible in firewalld.

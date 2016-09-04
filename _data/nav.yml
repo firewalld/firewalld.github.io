@@ -109,6 +109,8 @@
       path: "get-firewalld-state.html"
     - title: "Reload firewalld"
       path: "reload-firewalld.html"
+    - title: "Add a Service"
+      path: "add-a-service.html"
 
   - title: "Manual Pages"
     path: "man-pages/"
