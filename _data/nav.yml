@@ -42,8 +42,8 @@
     - title: "firewall-applet"
       path: "firewall-applet.html"
 
-  - title: "firewalld"
-    path: "firewalld.html"
+  - title: "The daemon: firewalld"
+    path: "the-daemon-firewalld.html"
   - title: "Zone"
     path: "zone/"
 
@@ -111,6 +111,8 @@
       path: "reload-firewalld.html"
     - title: "Add a Service"
       path: "add-a-service.html"
+    - title: "Debug firewalld"
+      path: "debug-firewalld.html"
 
   - title: "Manual Pages"
     path: "man-pages/"

@@ -1,15 +1,7 @@
 ---
 layout: page
-title: "firewalld"
+title: "Debug firewalld"
 ---
-
-firewalld is the firewall daemon. It provides a dynamically managed firewall with support for network/firewall “zones” to assign a level of trust to a network and its associated connections, interfaces or sources. It has support for IPv4, IPv6, Ethernet bridges and also for IPSet firewall settings. There is a separation of the runtime and permanent configuration options. It also provides an interface for services or applications to add iptables, ip6tables and ebtables rules directly. This interface can also be used by advanced users.
-
-## Reload firewalld
-
-To reload firewalld you can either use the command line tool `firewall-cmd --reload` or `firewallctl reload` or you can send the `SIGHUP` signal to firewalld for example with `killall -HUP firewalld`.
-
-## Debugging firewalld
 
 You can either add the --debug option to the firewalld args in the `/etc/sysconfig/firewalld` file or in the firewalld service file or you can start firewalld in a terminal after stopping the service.
 
@@ -74,7 +66,3 @@ Different debug levels are supported here. The default is debug level 1 if --deb
 |           4 | + Transaction steps |
 |       5 - 9 | Currently unused
 |          10 | + Introspection XML data |
-
-## Further information
-
-Please have a look at the [firewalld](man-pages/firewalld.html) man page.
