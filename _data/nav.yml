@@ -23,8 +23,6 @@
   subitems:
   - title: "Concepts"
     path: "concepts.html"
-  - title: "Enable and Disable firewalld"
-    path: "enable-disable.html"
   - title: "Configuration"
     path: "configuration.html"
   - title: "Directories"
@@ -105,6 +103,8 @@
     path: "howto/"
 
     subitems:
+    - title: "Enable and Disable firewalld"
+      path: "enable-and-disable-firewalld.html"
     - title: "Get firewalld State"
       path: "get-firewalld-state.html"
     - title: "Reload firewalld"
