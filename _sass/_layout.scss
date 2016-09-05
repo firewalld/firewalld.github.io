@@ -101,7 +101,7 @@
     background-image: url('/images/search.png');
     background-position: 2px 3px;
     background-repeat: no-repeat;
-    line-height: 24px;
+    line-height: $form-height;
 }
 aside .search-input {
     width: 100%;
@@ -109,23 +109,25 @@ aside .search-input {
 
 .search-submit {
     padding: 2px 8px;
-    margin-left: 4px;
 }
 
 input[type=text] {
-    border: 2px solid #c0c0c0;
-    background-color: white;
+    border: none;
+    border: $form-border;
+    background-color: $form-color;
 }
 input[type=text]:focus {
-    background-color: #ffffcc;
+    background-color: $form-focus-color;
 }
 input[type=button], input[type=submit], input[type=reset] {
+    background-color: $form-border-color;
     border: none;
-    padding: 3px 4px;
-    border-radius: 4px;
+    padding: 2px 5px;
+    border: $form-border;
+    line-height: $form-height;
 }
 input[type=submit]:hover {
-    background-color: #ff6060;
+    background-color: $form-border-color;
 }
 
 .search-item {

@@ -1,6 +1,6 @@
 // Base Colors
 $primary-color: #272727;
-$secondary-color: #aaa;
+$secondary-color: #ccc;
 $complimentary-color: #fff;
 $body-bg: #fdfdfd;
 $body-font-color: #222;
@@ -69,7 +69,14 @@ $pagination-height: 24px;
 $pagination-color: #e0e0e0;
 $pagination-text-color: $link-color;
 $pagination-active-color: #ee4e53;
-$pagination-active-text-color: $pagination-color;
-$pagination-disabled-color: $pagination-color;
+$pagination-active-text-color: #fdfdfd;
+$pagination-disabled-color: lighten($pagination-color, 5%);
 $pagination-disabled-text-color: #ffffff;
 $pagination-item-width: 30px;
+
+// form
+$form-border-color: #c0c0c0;
+$form-color: #fdfdfd;
+$form-border: 1px $form-border-color solid;
+$form-height: 24px;
+$form-focus-color: #feffe9;
