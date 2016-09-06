@@ -26,6 +26,10 @@ gems:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from
 
 feed:
   path: atom.xml
