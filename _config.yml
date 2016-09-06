@@ -40,5 +40,5 @@ paginate_path: "/blog/page/:num/"
 
 #### SEO Stuff
 # Google Analytics
-google_universal_analytics: 
+google_universal_analytics: UA-83693467-1
 google_universal_analytics_cookiedomain: auto
