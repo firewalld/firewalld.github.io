@@ -4,8 +4,6 @@ title: "MAC address support"
 section: Blog
 date: 2015-12-01T02:47:16
 author: Thomas Woerner
-redirect_from:
-  - /2015/12/mac-address-support
 ---
 
 The MAC support branch has been merged into master and will be available with the nest version. This will be version 0.4.0 and is planned to be released in the next days.
