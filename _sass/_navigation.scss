@@ -48,6 +48,10 @@
     height: $navbar-height;
 }
 
+#nav>.primary-nav>.right [class*="icon-"] {
+    display: block;
+}
+
 // Hover state of Social Icons
 #nav>.primary-nav>.right [class*="icon-"]:hover {
     color: $navbar-hover-text-color;
@@ -56,6 +60,7 @@
 // Main navigation links
 #nav>.primary-nav>li>a {
     /* Layout */
+    display: block;
     line-height: $navbar-height;
     padding: 0 12px;
     border-color: $secondary-color;
