@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Configuration"
+title: "Runtime versus Permanent"
 --- 
 
 The configuration is separated into the runtime and the permanent configuration.
@@ -12,4 +12,3 @@ Runtime configuration is the actual active configuration and is not permanent. A
 ## Permanent configuration
 
 The permanent configuration is stored in config files and will be loaded and become new runtime configuration with every machine boot or service reload/restart.
-

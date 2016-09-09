@@ -24,9 +24,16 @@
   - title: "Concepts"
     path: "concepts.html"
   - title: "Configuration"
-    path: "configuration.html"
-  - title: "Directories"
-    path: "directories.html"
+    path: "configuration/"
+
+    subitems:
+    - title: "Directories"
+      path: "directories.html"
+    - title: "Runtime versus Permanent"
+      path: "runtime-versus-permanent.html"
+    - title: "firewalld.conf"
+      path: "firewalld-conf.html"
+
   - title: "Utilities"
     path: "utilities/"
 
