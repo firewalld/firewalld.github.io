@@ -109,6 +109,8 @@
       path: "get-firewalld-state.html"
     - title: "Reload firewalld"
       path: "reload-firewalld.html"
+    - title: "Open a Port or Service"
+      path: "open-a-port-or-service.html"
     - title: "Add a Service"
       path: "add-a-service.html"
     - title: "Debug firewalld"
