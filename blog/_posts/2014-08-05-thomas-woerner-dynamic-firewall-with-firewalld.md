@@ -3,6 +3,7 @@ layout: post
 title: "Thomas Woerner - Dynamic firewall with firewalld"
 section: Blog
 date: 2014-08-05T02:35:09
+category: talk
 ---
 
 Watch Thomas Woerner talking about firewalld at DevConf 2013
