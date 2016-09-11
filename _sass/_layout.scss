@@ -23,6 +23,7 @@
 //Banner
 .banner-block {
     background-color: $banner-color;
+    background-image: url(/images/banner-bg.png);
 }
 .banner {
     padding-right: $spacing-unit;
@@ -30,8 +31,6 @@
     padding-top: ($spacing-unit/2);
 }
 .banner-image {
-    margin-right: 10px;
-    vertical-align: text-bottom;
 }
 
 .page-navigation {
