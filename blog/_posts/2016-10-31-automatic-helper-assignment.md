@@ -6,7 +6,7 @@ date: 2016-10-31T15:34:31
 author: Thomas Woerner
 ---
 
-With kernel 4.7 and up the automatic helper assignment in kernel has been turned off by default. Netfilter conntrack helpers like for example nf_conntrack_ftp now need to be used in a different way. See https://home.regit.org/netfilter-en/secure-use-of-helpers/
+With kernel 4.7 and up the automatic helper assignment in kernel has been turned off by default. Netfilter conntrack helpers like for example nf_conntrack_ftp now need to be used in a different way. See [Secure use of iptables and connection tracking helpers](https://home.regit.org/netfilter-en/secure-use-of-helpers/)
 
 The new AutomaticHelpers configuration setting has been added to firewalld.conf:
 
