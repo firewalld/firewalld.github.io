@@ -11,7 +11,7 @@ The new firewalld version 0.4.4.1 is available as a bug fix release for 0.4.4.
 
 The main changes are
 
-**firewall-config: Use proper source check in sourceDialog (issue #162) **
+**firewall-config: Use proper source check in sourceDialog (issue #162)**
 
 **firewallctl: Use sys.excepthook to force exception_handler usage always**
 
