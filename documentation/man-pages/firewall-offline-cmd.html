@@ -12,6 +12,10 @@ title: firewall-offline-cmd
     </blockquote></div><div class="refsect1"><a name="options"></a><h2>Options</h2><blockquote>
       If no options are given, configuration from <span class="command"><strong>/etc/sysconfig/system-config-firewall</strong></span> will be migrated.
     </blockquote><blockquote>
+      For sequence options, this are the options that can be specified multiple times, the exit code is 0 if there is at least one item that succeded. The <code class="literal">ALREADY_ENABLED</code> (11), <code class="literal">NOT_ENABLED</code> (12) and also <code class="literal">ZONE_ALREADY_SET</code> (16) errors are treated as succeeded.
+      If there are issues while parsing the items, then these are treated as warnings and will not change the result as long as there is a succeeded one.
+      Without any succeeded item, the exit code will depend on the error codes. If there is exactly one error code, then this is used. If there are more than one then <code class="literal">UNKNOWN_ERROR</code> (254) will be used.
+    </blockquote><blockquote>
       The following options are supported:
     </blockquote><blockquote><div class="refsect2"><a name="help_options"></a><h3>Help Options</h3><blockquote><dt><span class="term"><code class="option">-h</code>, </span><span class="term"><code class="option">--help</code></span></dt><dd><blockquote><p>
 	      Prints a short help text and exists.
@@ -67,6 +71,20 @@ title: firewall-offline-cmd
 	      Add an ICMP block for <em class="replaceable"><code>icmptype</code></em> in the default zone. This option can be specified multiple times.
 	    </p><p>
 	      The <em class="replaceable"><code>icmptype</code></em> is the one of the icmp types firewalld supports. To get a listing of supported icmp types: <span class="command"><strong>firewall-cmd --get-icmptypes</strong></span>
+	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="log_denied_options"></a><h3>Log Denied Options</h3><blockquote><dt><span class="term"><code class="option">--get-log-denied</code></span></dt><dd><blockquote><p>
+	      Print the log denied setting.
+	    </p></blockquote></dd><dt><span class="term"><code class="option">--set-log-denied</code>=<em class="replaceable"><code>value</code></em></span></dt><dd><blockquote><p>
+	      Add logging rules right before reject and drop rules in the INPUT, FORWARD and OUTPUT chains for the default rules and also final reject and drop rules in zones for the configured link-layer packet type. The possible values are: <em class="replaceable"><code>all</code></em>, <em class="replaceable"><code>unicast</code></em>, <em class="replaceable"><code>broadcast</code></em>, <em class="replaceable"><code>multicast</code></em> and <em class="replaceable"><code>off</code></em>. The default setting is <em class="replaceable"><code>off</code></em>, which disables the logging.
+	    </p><p>
+	      This is a runtime and permanent change and will also reload the firewall to be able to add the logging rules.
+	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="automatic_helpers_options"></a><h3>Automatic Helpers Options</h3><blockquote><dt><span class="term"><code class="option">--get-automatic-helpers</code></span></dt><dd><blockquote><p>
+	      Print the automatic helpers setting.
+	    </p></blockquote></dd><dt><span class="term"><code class="option">--set-automatic-helpers</code>=<em class="replaceable"><code>value</code></em></span></dt><dd><blockquote><p>
+	      For the secure use of iptables and connection tracking helpers it is recommended to turn AutomaticHelpers off. But this might have side effects on other services using the netfilter helpers as the sysctl setting in <code class="filename">/proc/sys/net/netfilter/nf_conntrack_helper</code> will be changed.
+	      With the system setting, the default value set in the kernel or with sysctl will be used.
+	      Possible values are: <code class="literal">yes</code>, <code class="literal">no</code> and <code class="literal">system</code>. The default value is <code class="literal">system</code>.
+	    </p><p>
+	      This is a runtime and permanent change and will also reload the firewall to be able to make the helpers usable.
 	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="zone_options"></a><h3>Zone Options</h3><blockquote><dt><span class="term"><code class="option">--get-default-zone</code></span></dt><dd><blockquote><p>
 	      Print default zone for connections and interfaces.
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--set-default-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><blockquote><p>
@@ -118,7 +136,9 @@ title: firewall-offline-cmd
               Add a new permanent zone.
             </p></blockquote></dd><dt><span class="term"><code class="option">--new-zone-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>zone</code></em></span>]</span></dt><dd><blockquote><p>
               Add a new permanent zone from a prepared zone file with an optional name override.
-            </p></blockquote></dd><dt><span class="term"><code class="option">--delete-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><blockquote><p>
+            </p></blockquote></dd><dt><span class="term"><code class="option">--path-zone=<em class="replaceable"><code>zone</code></em></code></span></dt><dd><blockquote><p>
+	      Print path of the zone configuration file.
+	    </p></blockquote></dd><dt><span class="term"><code class="option">--delete-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><blockquote><p>
               Delete an existing permanent zone.
             </p></blockquote></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote><p>
              Set new description to zone
@@ -305,7 +325,9 @@ title: firewall-offline-cmd
              Set new short description to ipset
            </p></blockquote></dd><dt><span class="term"><code class="option">--ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--get-short</code></span></dt><dd><blockquote><p>
              Print short description for ipset
-           </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="service_options"></a><h3>Service Options</h3><blockquote><dt><span class="term"><code class="option">--info-service=<em class="replaceable"><code>service</code></em></code></span></dt><dd><blockquote><p>
+           </p></blockquote></dd><dt><span class="term"><code class="option">--path-ipset=<em class="replaceable"><code>ipset</code></em></code></span></dt><dd><blockquote><p>
+	      Print path of the ipset configuration file.
+	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="service_options"></a><h3>Service Options</h3><blockquote><dt><span class="term"><code class="option">--info-service=<em class="replaceable"><code>service</code></em></code></span></dt><dd><blockquote><p>
 	      Print information about the service <em class="replaceable"><code>service</code></em>. The output format is:
 	      </p><pre class="programlisting"><em class="replaceable"><code>service</code></em>
   ports: <em class="replaceable"><code>port1</code></em> ..
@@ -319,7 +341,9 @@ title: firewall-offline-cmd
               Add a new permanent service from a prepared service file with an optional name override.
            </p></blockquote></dd><dt><span class="term"><code class="option">--delete-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote><p>
              Delete an existing permanent service.
-           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote><p>
+           </p></blockquote></dd><dt><span class="term"><code class="option">--path-service=<em class="replaceable"><code>service</code></em></code></span></dt><dd><blockquote><p>
+	      Print path of the service configuration file.
+	    </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote><p>
              Set new description to service
            </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-description</code></span></dt><dd><blockquote><p>
              Print description for service
@@ -367,6 +391,52 @@ title: firewall-offline-cmd
              Return wether the destination ipv to address[/mask] has been set in the permanent service.
            </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-destinations</code></span></dt><dd><blockquote><p>
              List destinations added to the permanent service.
+           </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="helper_options"></a><h3>Helper Options</h3><blockquote>
+	Options in this section affect only one particular helper.
+      </blockquote><blockquote><dt><span class="term"><code class="option">--info-helper=<em class="replaceable"><code>helper</code></em></code></span></dt><dd><blockquote><p>
+	      Print information about the helper <em class="replaceable"><code>helper</code></em>. The output format is:
+	      </p><pre class="programlisting"><em class="replaceable"><code>helper</code></em>
+  family: <em class="replaceable"><code>family</code></em>
+  module: <em class="replaceable"><code>module</code></em>
+  ports: <em class="replaceable"><code>port1</code></em> ..</pre><p>
+	    </p></blockquote></dd></blockquote><blockquote>
+	The following options are only usable in the permanent configuration.
+      </blockquote><blockquote><dt><span class="term"><code class="option">--new-helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--module</code>=<em class="replaceable"><code>nf_conntrack_module</code></em> [<span class="optional"><code class="option">--family</code>=<code class="literal">ipv4</code>|<code class="literal">ipv6</code></span>]</span></dt><dd><blockquote><p>
+             Add a new permanent helper with module and optionally family defined.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--new-helper-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>helper</code></em></span>]</span></dt><dd><blockquote><p>
+              Add a new permanent helper from a prepared helper file with an optional name override.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--delete-helper</code>=<em class="replaceable"><code>helper</code></em></span></dt><dd><blockquote><p>
+             Delete an existing permanent helper.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--load-helper-defaults</code>=<em class="replaceable"><code>helper</code></em></span></dt><dd><blockquote><p>
+              Load helper default settings or report NO_DEFAULTS error.
+            </p></blockquote></dd><dt><span class="term"><code class="option">--path-helper=<em class="replaceable"><code>helper</code></em></code></span></dt><dd><blockquote><p>
+	      Print path of the helper configuration file.
+	    </p></blockquote></dd><dt><span class="term"><code class="option">--get-helpers</code></span></dt><dd><blockquote><p>
+	      Print predefined helpers as a space separated list.
+	    </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote><p>
+             Set new description to helper
+           </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--get-description</code></span></dt><dd><blockquote><p>
+             Print description for helper
+           </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--set-short</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote><p>
+             Set short description to helper
+           </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--get-short</code></span></dt><dd><blockquote><p>
+             Print short description for helper
+           </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--add-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote><p>
+             Add a new port to the permanent helper.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--remove-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote><p>
+             Remove a port from the permanent helper.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--query-port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]/<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote><p>
+             Return wether the port has been added to the permanent helper.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--get-ports</code></span></dt><dd><blockquote><p>
+             List ports added to the permanent helper.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--set-module</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote><p>
+             Set module description for helper
+           </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--get-module</code></span></dt><dd><blockquote><p>
+             Print module description for helper
+           </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--set-family</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote><p>
+             Set family description for helper
+           </p></blockquote></dd><dt><span class="term"><code class="option">--helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--get-family</code></span></dt><dd><blockquote><p>
+             Print family description of helper
            </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="icmptype_options"></a><h3>Internet Control Message Protocol (ICMP) type Options</h3><blockquote><dt><span class="term"><code class="option">--info-icmptype=<em class="replaceable"><code>icmptype</code></em></code></span></dt><dd><blockquote><p>
 	      Print information about the icmptype <em class="replaceable"><code>icmptype</code></em>. The output format is:
 	      </p><pre class="programlisting"><em class="replaceable"><code>icmptype</code></em>
@@ -393,7 +463,9 @@ title: firewall-offline-cmd
              Return whether destination for ipv is enabled in permanent icmptype. ipv is one of <code class="literal">ipv4</code> or <code class="literal">ipv6</code>.
            </p></blockquote></dd><dt><span class="term"><code class="option">--icmptype</code>=<em class="replaceable"><code>icmptype</code></em> <code class="option">--get-destinations</code></span></dt><dd><blockquote><p>
               List destinations in permanent icmptype.
-           </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="direct_options"></a><h3>Direct Options</h3><blockquote>
+           </p></blockquote></dd><dt><span class="term"><code class="option">--path-icmptype=<em class="replaceable"><code>icmptype</code></em></code></span></dt><dd><blockquote><p>
+	      Print path of the icmptype configuration file.
+	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="direct_options"></a><h3>Direct Options</h3><blockquote>
 	The direct options give a more direct access to the firewall. These options require user to know basic iptables concepts, i.e. <code class="literal">table</code> (filter/mangle/nat/...), <code class="literal">chain</code> (INPUT/OUTPUT/FORWARD/...), <code class="literal">commands</code> (-A/-D/-I/...), <code class="literal">parameters</code> (-p/-s/-d/-j/...) and <code class="literal">targets</code> (ACCEPT/DROP/REJECT/...).
       </blockquote><blockquote>
 	Direct options should be used only as a last resort when it's not possible to use for example <code class="option">--add-service</code>=<em class="replaceable"><code>service</code></em> or <code class="option">--add-rich-rule</code>='<em class="replaceable"><code>rule</code></em>'.
@@ -505,7 +577,7 @@ title: firewall-offline-cmd
 	      Change Polkit actions to 'server'  (more restricted)
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--policy-desktop</code></span></dt><dd><blockquote><p>
 	      Change Polkit actions to 'desktop'  (less restricted)
-	    </p></blockquote></dd></blockquote></div></blockquote></div><div class="refsect1"><a name="idm140126468243616"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140126468218368"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
+	    </p></blockquote></dd></blockquote></div></blockquote></div><div class="refsect1"><a name="idm140142616302384"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140142616285152"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://www.firewalld.org" target="_top">http://www.firewalld.org</a>
 	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>

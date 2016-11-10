@@ -149,6 +149,8 @@
       path: "firewalld.service.html"
     - title: "firewalld.ipset(5)"
       path: "firewalld.ipset.html"
+    - title: "firewalld.helper(5)"
+      path: "firewalld.helper.html"
     - title: "firewalld.icmptype(5)"
       path: "firewalld.icmptype.html"
     - title: "firewalld.richlanguage(5)"
