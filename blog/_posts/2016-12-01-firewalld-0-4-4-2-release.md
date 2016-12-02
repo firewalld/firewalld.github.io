@@ -27,7 +27,7 @@ The ifcfg io file backend is now properly hadnling quoted values and is not fail
 
 On reboot or shutdown the zone has been reset to default in an ifcfg file if the network service was enabled and controlling the interface.
     
-The call of `firewall-cmd --remove-interface` in ifdown.post is now only removing the zone binding in the firewall, but not modifying the ifcfg file anymore.
+The call of `firewall-cmd --remove-interface` in `ifdown.post` is now only removing the zone binding in the firewall, but not modifying the ifcfg file anymore.
     
 **Translation updates**
 
