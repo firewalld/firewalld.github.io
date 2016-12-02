@@ -19,11 +19,11 @@ To give the ipset a version.
 
 ## short
 
-Is an optional start and end tag and is used to give an icmptype a more readable name. 
+Is an optional start and end tag and is used to give an ipset a more readable name.
 
 ## description
 
-Is an optional start and end tag to have a description for a icmptype. 
+Is an optional start and end tag to have a description for an ipset.
 
 ## option
 
@@ -41,4 +41,4 @@ The supported options are: `family: "inet"|"inet6"`, `timeout: integer`, `hashsi
 
 ## entry
 
-Is an optional start and end tag and can be used several times to have more than one entry entry. An entry entry does not have attributes. 
+Is an optional start and end tag and can be used several times to have more than one entry entry. An entry entry does not have attributes.

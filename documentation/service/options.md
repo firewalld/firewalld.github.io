@@ -17,11 +17,11 @@ Give the service a version.
 
 ## short
 
-Is an optional start and end tag and is used to give an icmptype a more readable name. 
+Is an optional start and end tag and is used to give a ervice a more readable name.
 
 ## description
 
-Is an optional start and end tag to have a description for a icmptype. 
+Is an optional start and end tag to have a description for a service.
 
 ## port
 
