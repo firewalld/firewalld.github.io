@@ -88,6 +88,15 @@
     - title: "Examples"
       path: "examples.html"
 
+  - title: "Helper"
+    path: "helper/"
+
+    subitems:
+    - title: "Options"
+      path: "options.html"
+    - title: "Examples"
+      path: "examples.html"
+
   - title: "ICMP Type"
     path: "icmptype/"
 
