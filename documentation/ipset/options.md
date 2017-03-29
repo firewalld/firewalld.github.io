@@ -11,7 +11,7 @@ The mandatory ipset start and end tag defines the ipset. This tag can only be us
 
     type="string"
 
-The mandatory type of the ipset. This cas be one of these types: hash:ip, hash:net, hash:mac. 
+The mandatory type of the ipset. To get the list of supported types, use `firewall-cmd --get-ipset-types`.
 
     version="string"
 
