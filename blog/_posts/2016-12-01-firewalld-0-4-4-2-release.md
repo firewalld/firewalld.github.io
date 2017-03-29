@@ -35,7 +35,7 @@ The call of `firewall-cmd --remove-interface` in `ifdown.post` is now only remov
 
 The new firewalld version 0.4.4.2 is available here:
 
- * Tarball: [firewalld-0.4.4.2.tar.bz2](https://fedorahosted.org/released/firewalld/firewalld-0.4.4.2.tar.bz2)
- * SHA1: d241ec5b3504b38ed2fcd9754e9ce9d93a573c51
+ * Tarball: [firewalld-0.4.4.2.tar.gz](https://github.com/t-woerner/firewalld/archive/v0.4.4.2.tar.gz#/firewalld-0.4.4.2.tar.gz)
+ * SHA256: 9df21f7fae253fe4f388f7fd46abe43cec527e4e0ec8f8d0db0a189673d13cf3
  * Source repository on github: [v0.4.4.2](https://github.com/t-woerner/firewalld/releases/tag/v0.4.4.2)
  * Complete changelog on github: [0.4.4.1 to 0.4.4.2](https://github.com/t-woerner/firewalld/compare/v0.4.4.1...v0.4.4.2)

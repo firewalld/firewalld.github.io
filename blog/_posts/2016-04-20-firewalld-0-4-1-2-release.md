@@ -55,7 +55,7 @@ There are also several bug fixes and further code optimizations.
 
 The new firewalld version 0.4.1.2 is available here:
 
- * Tarball: [firewalld-0.4.1.2.tar.bz2](https://fedorahosted.org/released/firewalld/firewalld-0.4.1.2.tar.bz2)
- * SHA1: c7f3d04bd115b9a56a95fc7aee1a6d10559d2690
+ * Tarball: [firewalld-0.4.1.2.tar.gz](https://github.com/t-woerner/firewalld/archive/v0.4.1.2.tar.gz#/firewalld-0.4.1.2.tar.gz)
+ * SHA256: fa818f2bf6a500cd81968db0ab8c6220a74b78c3a3fc4b2d7663daed003b6a34
  * Source repository on github: [v0.4.1.2](https://github.com/t-woerner/firewalld/releases/tag/v0.4.1.2)
  * Complete changelog on github: [0.4.1.1 to 0.4.1.2](https://github.com/t-woerner/firewalld/compare/v0.4.1.2...v0.4.1.2)

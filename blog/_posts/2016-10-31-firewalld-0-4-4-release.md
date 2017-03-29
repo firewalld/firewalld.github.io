@@ -43,7 +43,7 @@ The services cfengine, condor-collector and smtp-submission have been added.
 
 The new firewalld version 0.4.4 is available here:
 
- * Tarball: [firewalld-0.4.4.tar.bz2](https://fedorahosted.org/released/firewalld/firewalld-0.4.4.tar.bz2)
- * SHA1: a3dc95ccad8bd4021a1f781a092801ba3bdccf96
+ * Tarball: [firewalld-0.4.4.tar.gz](https://github.com/t-woerner/firewalld/archive/v0.4.4.tar.gz#/firewalld-0.4.4.tar.gz)
+ * SHA256: c19cd2fdc1ee3d68545b8d65e6027a2a9b74a1ccdfb4743cde13a5482706b38b
  * Source repository on github: [v0.4.4](https://github.com/t-woerner/firewalld/releases/tag/v0.4.4)
  * Complete changelog on github: [0.4.3.3 to 0.4.4](https://github.com/t-woerner/firewalld/compare/v0.4.3.3...v0.4.4)
