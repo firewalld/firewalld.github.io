@@ -11,7 +11,7 @@ The mandatory ipset start and end tag defines the ipset. This tag can only be us
 
     type="string"
 
-The mandatory type of the ipset. To get the list of supported types, use `firewall-cmd --get-ipset-types`.
+The mandatory type of the ipset. To get the list of supported types, use `firewall-cmd --get-ipset-types`. This depends on firewalld, the ipset and also kernel version.
 
     version="string"
 
