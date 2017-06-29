@@ -87,7 +87,7 @@ freeipa-trust, mssql, kibana, elasticsearch, quassel, bitcoin-rpc, bitcoin-testn
 
 The new firewalld version 0.4.4.3 is available here:
 
- * Tarball: [firewalld-0.4.4.3.tar.gz](https://github.com/t-woerner/firewalld/archive/v0.4.4.3.tar.gz#/firewalld-0.4.4.3.tar.gz)
+ * Tarball: [firewalld-0.4.4.3.tar.gz](https://github.com/firewalld/firewalld/archive/v0.4.4.3.tar.gz#/firewalld-0.4.4.3.tar.gz)
  * SHA256: e31fad3fc987115cdde25a96c842baa321fb98a456cbab318ceed85642fee40c
- * Source repository on github: [v0.4.4.3](https://github.com/t-woerner/firewalld/releases/tag/v0.4.4.3)
- * Complete changelog on github: [0.4.4.2 to 0.4.4.3](https://github.com/t-woerner/firewalld/compare/v0.4.4.2...v0.4.4.3)
+ * Source repository on github: [v0.4.4.3](https://github.com/firewalld/firewalld/releases/tag/v0.4.4.3)
+ * Complete changelog on github: [0.4.4.2 to 0.4.4.3](https://github.com/firewalld/firewalld/compare/v0.4.4.2...v0.4.4.3)

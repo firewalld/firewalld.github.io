@@ -5,7 +5,7 @@ title: "firewall-config"
 
 This is the graphical configuration tool for firewalld.
 
-![firewall-config](https://raw.githubusercontent.com/t-woerner/firewalld/master/doc/firewall-config.png "firewall-config")
+![firewall-config](https://raw.githubusercontent.com/firewalld/firewalld/master/doc/firewall-config.png "firewall-config")
 *firewall-config*
 
 On the left there is the overview of the active bindings. These are the zones, that have a connection, interface or source bound or added to it. Here it is possible to easily change the zone of these bindings. But it is not possible to add new bindings here. Use the `Interface` and `Source` tab in the `Zones` notebook on the right side for this.

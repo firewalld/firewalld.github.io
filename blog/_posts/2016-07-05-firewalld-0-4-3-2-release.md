@@ -31,7 +31,7 @@ The service has been included finally in the release. It does not need to be add
 
 The new firewalld version 0.4.3.2 is available here:
 
- * Tarball: [firewalld-0.4.3.2.tar.gz](https://github.com/t-woerner/firewalld/archive/v0.4.3.2.tar.gz#/firewalld-0.4.3.2.tar.gz)
+ * Tarball: [firewalld-0.4.3.2.tar.gz](https://github.com/firewalld/firewalld/archive/v0.4.3.2.tar.gz#/firewalld-0.4.3.2.tar.gz)
  * SHA256: 6a5ef24f5fde6dae105d575f0ef219c64d4bbefe2bf1dd024257903d2f5046b8
- * Source repository on github: [v0.4.3.2](https://github.com/t-woerner/firewalld/releases/tag/v0.4.3.2)
- * Complete changelog on github: [0.4.3.1 to 0.4.3.2](https://github.com/t-woerner/firewalld/compare/v0.4.3.1...v0.4.3.2)
+ * Source repository on github: [v0.4.3.2](https://github.com/firewalld/firewalld/releases/tag/v0.4.3.2)
+ * Complete changelog on github: [0.4.3.1 to 0.4.3.2](https://github.com/firewalld/firewalld/compare/v0.4.3.1...v0.4.3.2)

@@ -3,11 +3,11 @@ layout: page
 title: "Working With The Source"
 ---
 
-You can use the [source repository](https://github.com/t-woerner/firewalld) directly to test out changes.
+You can use the [source repository](https://github.com/firewalld/firewalld) directly to test out changes.
 
 To check out the source repository, you can use:
 
-    git clone https://github.com/t-woerner/firewalld.git
+    git clone https://github.com/firewalld/firewalld.git
 
 This will create a local copy of the repository.
 
@@ -97,9 +97,9 @@ For Fedora and RHEL based distributions, there is a spec file in the source repo
 ## Links
 
     Homepage:          http://www.firewalld.org
-    Report a bug:      https://github.com/t-woerner/firewalld/issues
-    Git repo browser:  https://github.com/t-woerner/firewalld
-    Git repo:          https://github.com/t-woerner/firewalld.git
+    Report a bug:      https://github.com/firewalld/firewalld/issues
+    Git repo browser:  https://github.com/firewalld/firewalld
+    Git repo:          https://github.com/firewalld/firewalld.git
     Documentation:     https://fedoraproject.org/wiki/FirewallD
 
 

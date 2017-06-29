@@ -33,7 +33,7 @@ There are also other bug fixes.
 
 The new firewalld version 0.4.3.1 is available here:
 
- * Tarball: [firewalld-0.4.3.1.tar.gz](https://github.com/t-woerner/firewalld/archive/v0.4.3.1.tar.gz#/firewalld-0.4.3.1.tar.gz)
+ * Tarball: [firewalld-0.4.3.1.tar.gz](https://github.com/firewalld/firewalld/archive/v0.4.3.1.tar.gz#/firewalld-0.4.3.1.tar.gz)
  * SHA256: afd73292eaab13e0e440e2b3a25faae3164a4776ed53f749a9123501b007704e
- * Source repository on github: [v0.4.3.1](https://github.com/t-woerner/firewalld/releases/tag/v0.4.3.1)
- * Complete changelog on github: [0.4.3 to 0.4.3.1](https://github.com/t-woerner/firewalld/compare/v0.4.3...v0.4.3.1)
+ * Source repository on github: [v0.4.3.1](https://github.com/firewalld/firewalld/releases/tag/v0.4.3.1)
+ * Complete changelog on github: [0.4.3 to 0.4.3.1](https://github.com/firewalld/firewalld/compare/v0.4.3...v0.4.3.1)

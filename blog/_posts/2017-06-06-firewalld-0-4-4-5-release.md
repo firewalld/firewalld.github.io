@@ -70,7 +70,7 @@ Fixes: RHBZ#1452681
 
 The new firewalld version 0.4.4.5 is available here:
 
- * Tarball: [firewalld-0.4.4.5.tar.gz](https://github.com/t-woerner/firewalld/archive/v0.4.4.5.tar.gz#/firewalld-0.4.4.5.tar.gz)
+ * Tarball: [firewalld-0.4.4.5.tar.gz](https://github.com/firewalld/firewalld/archive/v0.4.4.5.tar.gz#/firewalld-0.4.4.5.tar.gz)
  * SHA256: 89419316e829a2cb086142acc4b1aeba45f20ecddf0ca236db5faf8ec8d12601
- * Source repository on github: [v0.4.4.5](https://github.com/t-woerner/firewalld/releases/tag/v0.4.4.5)
- * Complete changelog on github: [0.4.4.4 to 0.4.4.5](https://github.com/t-woerner/firewalld/compare/v0.4.4.4...v0.4.4.5)
+ * Source repository on github: [v0.4.4.5](https://github.com/firewalld/firewalld/releases/tag/v0.4.4.5)
+ * Complete changelog on github: [0.4.4.4 to 0.4.4.5](https://github.com/firewalld/firewalld/compare/v0.4.4.4...v0.4.4.5)

@@ -61,7 +61,7 @@ Deactivate the edit and remove buttons for zones, services, ipsets, icmptypes an
 
 The new firewalld version 0.4.4.4 is available here:
 
- * Tarball: [firewalld-0.4.4.4.tar.gz](https://github.com/t-woerner/firewalld/archive/v0.4.4.4.tar.gz#/firewalld-0.4.4.4.tar.gz)
+ * Tarball: [firewalld-0.4.4.4.tar.gz](https://github.com/firewalld/firewalld/archive/v0.4.4.4.tar.gz#/firewalld-0.4.4.4.tar.gz)
  * SHA256: 8726bb7c15c180191b81764072041bebd371664fcbc25a0eafffc35c707b3df9
- * Source repository on github: [v0.4.4.4](https://github.com/t-woerner/firewalld/releases/tag/v0.4.4.4)
- * Complete changelog on github: [0.4.4.3 to 0.4.4.4](https://github.com/t-woerner/firewalld/compare/v0.4.4.3...v0.4.4.4)
+ * Source repository on github: [v0.4.4.4](https://github.com/firewalld/firewalld/releases/tag/v0.4.4.4)
+ * Complete changelog on github: [0.4.4.3 to 0.4.4.4](https://github.com/firewalld/firewalld/compare/v0.4.4.3...v0.4.4.4)

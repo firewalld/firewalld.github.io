@@ -54,7 +54,7 @@ There are also several other bug fixes or enhancements and code optimizations.
 
 The new firewalld version 0.4.2 is available here:
 
- * Tarball: [firewalld-0.4.2.tar.gz](https://github.com/t-woerner/firewalld/archive/v0.4.2.tar.gz#/firewalld-0.4.2.tar.gz)
+ * Tarball: [firewalld-0.4.2.tar.gz](https://github.com/firewalld/firewalld/archive/v0.4.2.tar.gz#/firewalld-0.4.2.tar.gz)
  * SHA256: e127bff64f6e7c242668a971674f5f075657fc5110a6ab363129be243885f938
- * Source repository on github: [v0.4.2](https://github.com/t-woerner/firewalld/releases/tag/v0.4.2)
- * Complete changelog on github: [0.4.1.2 to 0.4.2](https://github.com/t-woerner/firewalld/compare/v0.4.1.2...v0.4.2)
+ * Source repository on github: [v0.4.2](https://github.com/firewalld/firewalld/releases/tag/v0.4.2)
+ * Complete changelog on github: [0.4.1.2 to 0.4.2](https://github.com/firewalld/firewalld/compare/v0.4.1.2...v0.4.2)

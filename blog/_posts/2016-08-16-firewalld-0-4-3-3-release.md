@@ -39,7 +39,7 @@ Several error return code fixes have been added to fix the behavior with single 
 
 The new firewalld version 0.4.3.3 is available here:
 
- * Tarball: [firewalld-0.4.3.3.tar.gz](https://github.com/t-woerner/firewalld/archive/v0.4.3.3.tar.gz#/firewalld-0.4.3.3.tar.gz)
+ * Tarball: [firewalld-0.4.3.3.tar.gz](https://github.com/firewalld/firewalld/archive/v0.4.3.3.tar.gz#/firewalld-0.4.3.3.tar.gz)
  * SHA256: 92111a40a6602984ba4e1917cd7ec6f80cc1a277c9a50d93d7f57bfecc2c8d98
- * Source repository on github: [v0.4.3.3](https://github.com/t-woerner/firewalld/releases/tag/v0.4.3.3)
- * Complete changelog on github: [0.4.3.2 to 0.4.3.3](https://github.com/t-woerner/firewalld/compare/v0.4.3.2...v0.4.3.3)
+ * Source repository on github: [v0.4.3.3](https://github.com/firewalld/firewalld/releases/tag/v0.4.3.3)
+ * Complete changelog on github: [0.4.3.2 to 0.4.3.3](https://github.com/firewalld/firewalld/compare/v0.4.3.2...v0.4.3.3)
