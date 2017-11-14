@@ -7,7 +7,7 @@ author: Thomas Woerner
 category: release
 ---
 
-The new firewalld version 0.4.4.4 is available as a third bug fix release for 0.4.4.
+The new firewalld version 0.4.4.4 is available as the fourth bug fix release for 0.4.4.
 
 The main changes are
 
