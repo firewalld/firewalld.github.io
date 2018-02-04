@@ -21,5 +21,5 @@ This is a bug fix only release.
 Source available here:
 
  * Tarball: [firewalld-0.5.1.tar.gz](https://github.com/firewalld/firewalld/archive/v0.5.1.tar.gz)
- * SHA256: 57d0639bed3a845899ea16f52fbd68b2e62fdca75cea50be60d651e4255be00e
+ * SHA256: 267878f1774df84173bb0103c1d50c208109d0d5a032c23811081ed39cacd0ec
  * Complete changelog on github: [0.5.0 to 0.5.1](https://github.com/firewalld/firewalld/compare/v0.5.0...v0.5.1)
