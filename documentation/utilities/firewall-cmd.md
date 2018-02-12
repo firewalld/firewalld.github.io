@@ -6,7 +6,7 @@ title: "firewall-cmd"
 firewall-cmd is the primary command line tool for firewalld. It can be used to
 get state information about firewalld, to get the firewall configuration for the runtime and permanent environment and also to alter those.
 
-Depending on the selected policy, you need to be authenticated to be able to access or alter the firewalld configuration. [polkit](http://www.freedesktop.org/wiki/Software/polkit) is used for this. It is only usable if firwalld is running.
+Depending on the selected policy, you need to be authenticated to be able to access or alter the firewalld configuration. [polkit](http://www.freedesktop.org/wiki/Software/polkit) is used for this. It is only usable if firewalld is running.
 
 This tool is used also by services to have a simple migration path from using iptables calls.
 

@@ -23,4 +23,4 @@ The firewall-cmd is:
 
     firewall-cmd --runtime-to-permanent
 
-If the firewall setup is not working, a simple firewalld reload/restart will reapply the workgin permanent configuration.
+If the firewall setup is not working, a simple firewalld reload/restart will reapply the working permanent configuration.

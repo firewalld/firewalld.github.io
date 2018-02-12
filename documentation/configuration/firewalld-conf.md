@@ -3,7 +3,7 @@ layout: page
 title: "firewalld.conf"
 ---
 
-The firewalld.conf file in `/etc/firewalld` provides the base configruation for firewalld. If it is absent or if `/etc/firewalld` is missing, the firewalld internal defaults will be used.
+The firewalld.conf file in `/etc/firewalld` provides the base configuration for firewalld. If it is absent or if `/etc/firewalld` is missing, the firewalld internal defaults will be used.
 
 The settings listed below are the default values.
 
