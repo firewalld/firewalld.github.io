@@ -7,12 +7,12 @@ firewall-applet is a tray applet for firewalld. It provides information about th
 
 There is a left and also right mouse button menu and also a tooltip with the active settings when moving the mouse over the icon.
 
-The applet has ben ported over to Qt4 as the StatusIcon support in Gtk3 has been deprecated.
+The applet has been ported over to Qt4 as the StatusIcon support in Gtk3 has been deprecated.
 
 ## Limitations with Gnome3
 
 Not all options are available in Gnome3. This desktop environment changes the behaviour of the applet externally:
 
-* With enabled notifications, the icon is made unvisible after it was sending out a notification. The applet is not able to detect or change that it is hidden.
+* With enabled notifications, the icon is made invisible after it was sending out a notification. The applet is not able to detect or change that it is hidden.
 * The tooltip is not visible.
 * The menus are not always usable or visible.

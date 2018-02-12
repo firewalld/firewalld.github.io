@@ -13,7 +13,7 @@ The runtime configuration will be lost with a firewalld service stop. A firewall
 
 ## Permanent Configuration
 
-The permanent configuration is stored in config files and will be loaded and become new runtime configuration with every machine boot or service reload/restart.
+The permanent configuration is stored in configuration files and will be loaded and become new runtime configuration with every machine boot or service reload/restart.
 
 ## Runtime to Permanent
 

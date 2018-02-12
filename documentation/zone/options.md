@@ -55,7 +55,7 @@ Is an optional empty-element tag and can be used several times to have more than
 
     name="string"
 
-The name of the service to be enabled. To get a list of valid service names `firewall-cmd --list=services` can be used.
+The name of the service to be enabled. To get a list of valid service names `firewall-cmd --list-services` can be used.
 
 ## port
 
@@ -83,7 +83,7 @@ Is an optional empty-element tag and can be used several times to have more than
 
     name="string"
 
-The name of the Internet Control Message Protocol (ICMP) type to be blocked. To get a list of valid ICMP types `firewall-cmd --list=icmptypes` can be used.
+The name of the Internet Control Message Protocol (ICMP) type to be blocked. To get a list of valid ICMP types `firewall-cmd --list-icmptypes` can be used.
 
 ## icmp-block-inversion
 
@@ -119,7 +119,7 @@ The destination port or port range to forward to. If omitted, the value of the p
 
     to-addr="address"
 
-The destination IPv4 IP address.
+The destination IPv4 address.
 
 ## source-port
 
@@ -172,5 +172,5 @@ Rule structure for source black or white listing:
       <drop> [<limit value="rate/duration"/>] </drop>
     </rule>
 
-For a full description on rich language rules, please have a look at [firewalld.richlanguage(5)](../man-pages/firewalld.richlanguage.html).
+For a full description of rich language rules, please have a look at [firewalld.richlanguage(5)](../man-pages/firewalld.richlanguage.html).
 

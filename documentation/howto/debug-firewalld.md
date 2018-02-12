@@ -3,17 +3,17 @@ layout: page
 title: "Debug firewalld"
 ---
 
-You can either add the --debug option to the firewalld args in the `/etc/sysconfig/firewalld` file or in the firewalld service file or you can start firewalld in a terminal after stopping the service.
+You can either add the --debug option to the firewalld arguments in the `/etc/sysconfig/firewalld` file or in the firewalld service file or you can start firewalld in a terminal after stopping the service.
 
 ### The sysconfig file
 
-This file does not exist in all distributions. In Fedora or RHEL based distributions it usable:
+This file exists in Fedora and RHEL based distributions, but may not in others.
 
     # firewalld command line args
     # possible values: --debug
     FIREWALLD_ARGS=
 
-To enable the debugging mode, add `--debug[=<level>]` to `FIREWALLD_ARGS`. For a list of the supported debug levels, please have a look furter down.
+To enable the debugging mode, add `--debug[=<level>]` to `FIREWALLD_ARGS`. For a list of the supported debug levels, please have a look further down.
 
 ### The firewalld systemd service file
 
@@ -44,11 +44,11 @@ This is the firewalld systemd service file on Fedora for example:
     WantedBy=multi-user.target
     Alias=dbus-org.fedoraproject.FirewallD1.service
 
-To enable debugging, you can add the `--debug[=<level>]` option to `ExecStart`. For a list of the supported debug levels, please have a look furter down.
+To enable debugging, you can add the `--debug[=<level>]` option to `ExecStart`. For a list of the supported debug levels, please have a look further down.
 
 ### Start in terminal
 
-As user root you can start the firewall daemon in a termal for debugging:
+As user root you can start the firewall daemon in a terminal for debugging:
 
     # firewalld --nofork --debug
 

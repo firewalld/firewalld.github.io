@@ -5,7 +5,7 @@ title: "Options"
 
 
 
-The config can contain these tags and attributes. Some of them are mandatory, others optional. 
+The configuration can contain these tags and attributes. Some of them are mandatory, others optional. 
 
 ## service
 
@@ -17,7 +17,7 @@ Give the service a version.
 
 ## short
 
-Is an optional start and end tag and is used to give a ervice a more readable name.
+Is an optional start and end tag and is used to give a service a more readable name.
 
 ## description
 
@@ -35,7 +35,7 @@ The port string can be a single port number or a port range portid-portid or als
 
 The protocol value can either be tcp or udp. 
 
-For compatibility with older firewalld versions, it is possible to add protocols with the port option where the port is empty. With the addition of native protocol support in the service, this it not needed anymore. These entries will automatically be converted to protocols. With the next modification of the service file, the enries will be listed as protocols. 
+For compatibility with older firewalld versions, it is possible to add protocols with the port option where the port is empty. With the addition of native protocol support in the service, this it not needed anymore. These entries will automatically be converted to protocols. With the next modification of the service file, the entries will be listed as protocols. 
 
 ## protocol
 

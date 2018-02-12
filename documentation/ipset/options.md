@@ -3,7 +3,7 @@ layout: page
 title: "Options"
 ---
 
-The config can contain these tags and attributes. Some of them are mandatory, others optional. 
+The configuration can contain these tags and attributes. Some of them are mandatory, others optional. 
 
 ## ipset
 

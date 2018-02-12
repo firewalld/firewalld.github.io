@@ -17,7 +17,7 @@ This will open the port 80 with protocol tcp in the public zone of the runtime e
 
     firewall-cmd --permanent --zone=public --add-port=80/tcp
 
-If you want to make this a permanent change also, then open the port also in the permanent environment. This means the port will be open also after a system reboot or firewalld serice reload.
+If you want to make this a permanent change also, then open the port also in the permanent environment. This means the port will be open also after a system reboot or firewalld service reload.
 
 ## How to open a service with firewall-cmd:
 
