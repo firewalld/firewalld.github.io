@@ -9,4 +9,13 @@ A public WIFI network connection for example should be mainly untrusted, a wired
 
 ## How to configure or add zones?
 
-To configure or add zones you can either use one of the firewalld interfaces to handle and change the configuration. These are the graphical configuration tool firewall-config, the command line tool firewall-cmd or the D-BUS interface. Or you can create or copy a zone file in one of the configuration directories. `/usr/lib/firewalld/zones` is used for default and fallback configurations and `/etc/firewalld/zones` is used for user created and customized configuration files.
+To configure or add zones, you can use any of the following firewalld
+configuration interfaces:
+
+	* Graphical configuration tool `firewall-config`
+	* Command line tool `firewall-cmd`
+	* Programmatic D-BUS interface. See man page `FIREWALLD.DBUS(5)`.
+	* Edit configuration files. See man page `FIREWALLD.ZONE(5)`.
+		* create, copy, or edit a zone file in one of the configuration directories
+			* `/etc/firewalld/zones` for user created and customized configuration files.
+			* `/usr/lib/firewalld/zones` for default and fallback configurations only.
