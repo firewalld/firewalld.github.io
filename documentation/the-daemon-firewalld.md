@@ -7,7 +7,7 @@ firewalld is the firewall daemon. It provides a dynamically managed firewall wit
 
 ## Reload firewalld
 
-To reload firewalld you can either use the command line tool `firewall-cmd --reload` or `firewallctl reload` or you can send the `SIGHUP` signal to firewalld for example with `killall -HUP firewalld`.
+To reload firewalld you can either use the command line tool `firewall-cmd --reload` or you can send the `SIGHUP` signal to firewalld for example with `killall -HUP firewalld`.
 
 ## Further information
 
