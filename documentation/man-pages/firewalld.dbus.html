@@ -1,8 +1,3 @@
----
-layout: page
-title: firewalld.dbus
----
-
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.dbus</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.dbus"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.dbus — firewalld D-Bus interface description</blockquote><div class="refsect1"><a name="object-paths"></a><h2>Object Paths</h2><blockquote>
       This is the basic firewalld object path structure. The used interfaces are explained below in <a class="xref" href="#interfaces" title="Interfaces">the section called “Interfaces”</a>.
     </blockquote><blockquote>
@@ -486,7 +481,7 @@ title: firewalld.dbus
               </p><p>
 		Possible errors: INVALID_ZONE, INVALID_INTERFACE, ALREADY_ENABLED, INVALID_COMMAND
 	      </p></blockquote></dd><dt><a name="FirewallD1.zone.Methods.addMasquerade"></a><span class="term"><code class="methodname">addMasquerade</code>(s: zone, i: timeout) → s</span></dt><dd><blockquote><p>
-		Enable IPv4 masquerade in <em class="replaceable"><code>zone</code></em>.
+		Enable masquerade in <em class="replaceable"><code>zone</code></em>.
 		If <em class="replaceable"><code>zone</code></em> is empty, use default zone.
 		If <em class="replaceable"><code>timeout</code></em> is non-zero, masquerading will be active for the amount of seconds.
 		For permanent settings see <a class="link" href="#FirewallD1.config.zone.Methods.addMasquerade">org.fedoraproject.FirewallD1.config.zone.Methods.addMasquerade</a>.
@@ -681,7 +676,7 @@ title: firewalld.dbus
               </p><p>
 		Possible errors: INVALID_ZONE, INVALID_INTERFACE
 	      </p></blockquote></dd><dt><a name="FirewallD1.zone.Methods.queryMasquerade"></a><span class="term"><code class="methodname">queryMasquerade</code>(s: zone) → b</span></dt><dd><blockquote><p>
-		Return whether IPv4 masquerading has been enabled in <em class="replaceable"><code>zone</code></em>
+		Return whether masquerading has been enabled in <em class="replaceable"><code>zone</code></em>
 		If <em class="replaceable"><code>zone</code></em> is empty, use default zone.
 		For permanent operation see <a class="link" href="#FirewallD1.config.zone.Methods.queryMasquerade">org.fedoraproject.FirewallD1.config.zone.Methods.queryMasquerade</a>.
               </p><p>
@@ -755,7 +750,7 @@ title: firewalld.dbus
               </p><p>
 		Possible errors: INVALID_ZONE, INVALID_INTERFACE, NOT_ENABLED, INVALID_COMMAND
 	      </p></blockquote></dd><dt><a name="FirewallD1.zone.Methods.removeMasquerade"></a><span class="term"><code class="methodname">removeMasquerade</code>(s: zone) → s</span></dt><dd><blockquote><p>
-		Disable IPv4 masquerade for <em class="replaceable"><code>zone</code></em>.
+		Disable masquerade for <em class="replaceable"><code>zone</code></em>.
 		If <em class="replaceable"><code>zone</code></em> is empty, use default zone.
 		For permanent operation see <a class="link" href="#FirewallD1.config.zone.Methods.removeMasquerade">org.fedoraproject.FirewallD1.config.zone.Methods.removeMasquerade</a>.
               </p><p>
@@ -827,9 +822,9 @@ title: firewalld.dbus
               </p></blockquote></dd><dt><a name="FirewallD1.zone.Signals.InterfaceRemoved"></a><span class="term">InterfaceRemoved(s: zone, s: interface)</span></dt><dd><blockquote><p>
 		Emitted when <em class="replaceable"><code>interface</code></em> has been removed from <em class="replaceable"><code>zone</code></em>.
               </p></blockquote></dd><dt><a name="FirewallD1.zone.Signals.MasqueradeAdded"></a><span class="term">MasqueradeAdded(s: zone, i: timeout)</span></dt><dd><blockquote><p>
-		Emitted when IPv4 masquerade has been enabled for <em class="replaceable"><code>zone</code></em>.
+		Emitted when masquerade has been enabled for <em class="replaceable"><code>zone</code></em>.
               </p></blockquote></dd><dt><a name="FirewallD1.zone.Signals.MasqueradeRemoved"></a><span class="term">MasqueradeRemoved(s: zone)</span></dt><dd><blockquote><p>
-		Emitted when IPv4 masquerade has been disabled for <em class="replaceable"><code>zone</code></em>.
+		Emitted when masquerade has been disabled for <em class="replaceable"><code>zone</code></em>.
               </p></blockquote></dd><dt><a name="FirewallD1.zone.Signals.PortAdded"></a><span class="term">PortAdded(s: zone, s: port, s: protocol, i: timeout)</span></dt><dd><blockquote><p>
 		Emitted when <em class="replaceable"><code>port</code></em>/<em class="replaceable"><code>protocol</code></em> has been added to <em class="replaceable"><code>zone</code></em> with <em class="replaceable"><code>timeout</code></em>.
               </p></blockquote></dd><dt><a name="FirewallD1.zone.Signals.PortRemoved"></a><span class="term">PortRemoved(s: zone, s: port, s: protocol)</span></dt><dd><blockquote><p>
@@ -959,6 +954,10 @@ title: firewalld.dbus
 		If firewalld stops, it cleans up all firewall rules. Setting this option to no or false leaves the current firewall rules untouched.
               </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.DefaultZone"></a><span class="term">DefaultZone - s - (ro)</span></dt><dd><blockquote><p>
 		Default zone for connections or interfaces if the zone is not selected or specified by NetworkManager, initscripts or command line tool.
+              </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.FirewallBackend"></a><span class="term">FirewallBackend - s - (rw)</span></dt><dd><blockquote><p>
+                Selects the firewalld backend for all rules except the direct
+                interface. Valid options are; nftables, iptables. Default in
+                nftables.
               </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.IPv6_rpfilter"></a><span class="term"><em class="parameter"><code>IPv6_rpfilter</code></em> - s - (rw)</span></dt><dd><blockquote><p>Indicates whether the reverse path filter test on a packet for IPv6 is enabled. If a reply to the packet would be sent via the same interface that the packet arrived on, the packet will match and be accepted, otherwise dropped.</p></blockquote></dd><dt><a name="FirewallD1.config.Properties.IndividualCalls"></a><span class="term"><em class="parameter"><code>IndividualCalls</code></em> - s - (ro)</span></dt><dd><blockquote><p>Indicates whether individual calls combined -restore calls are used. If enabled, this increases the time that is needed to apply changes and to start the daemon, but is good for debugging.
 	    </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.Lockdown"></a><span class="term">Lockdown - s - (rw)</span></dt><dd><blockquote><p>
 		If this property is enabled, firewall changes with the D-Bus interface will be limited to applications that are listed in the lockdown whitelist.
@@ -1943,7 +1942,7 @@ title: firewalld.dbus
 		Name of icmp type.
               </p></blockquote></dd><dt><a name="FirewallD1.config.icmptype.Properties.path"></a><span class="term">path - s - (ro)</span></dt><dd><blockquote><p>
 		Path to directory where the icmp type configuration is stored. Should be either /usr/lib/firewalld/icmptypes or /etc/firewalld/icmptypes.
-              </p></blockquote></dd></blockquote></div></blockquote></div></blockquote></div><div class="refsect1"><a name="idm140676625453952"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewallctl.html"><span class="citerefentry"><span class="refentrytitle">firewallctl</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140676625436672"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
+              </p></blockquote></dd></blockquote></div></blockquote></div></blockquote></div><div class="refsect1"><a name="idm139921013355152"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm139921013338864"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://www.firewalld.org" target="_top">http://www.firewalld.org</a>
 	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
