@@ -17,13 +17,13 @@ To add a new and empty service, use the `--new-service` altogether with the `--p
 
 Configure the service:
 
-    firewall-cmd --permanent --service=service --set-description=description
-    firewall-cmd --permanent --service=service --set-short=description
-    firewall-cmd --permanent --service=service --add-port=portid[-portid]/protocol
-    firewall-cmd --permanent --service=service --add-protocol=protocol
-    firewall-cmd --permanent --service=service --add-source-port=portid[-portid]/protocol
-    firewall-cmd --permanent --service=service --add-module=module
-    firewall-cmd --permanent --service=service --set-destination=ipv:address[/mask]
+    firewall-cmd --permanent --service=myservice --set-description=description
+    firewall-cmd --permanent --service=myservice --set-short=description
+    firewall-cmd --permanent --service=myservice --add-port=portid[-portid]/protocol
+    firewall-cmd --permanent --service=myservice --add-protocol=protocol
+    firewall-cmd --permanent --service=myservice --add-source-port=portid[-portid]/protocol
+    firewall-cmd --permanent --service=myservice --add-module=module
+    firewall-cmd --permanent --service=myservice --set-destination=ipv:address[/mask]
 
 Alternatively you can a new service using an existing file:
 
@@ -43,13 +43,13 @@ To add a new and empty service, use the `--new-service` option:
 
 Configure the service:
 
-    firewall-offline-cmd --service=service --set-description=description
-    firewall-offline-cmd --service=service --set-short=description
-    firewall-offline-cmd --service=service --add-port=portid[-portid]/protocol
-    firewall-offline-cmd --service=service --add-protocol=protocol
-    firewall-offline-cmd --service=service --add-source-port=portid[-portid]/protocol
-    firewall-offline-cmd --service=service --add-module=module
-    firewall-offline-cmd --service=service --set-destination=ipv:address[/mask]
+    firewall-offline-cmd --service=myservice --set-description=description
+    firewall-offline-cmd --service=myservice --set-short=description
+    firewall-offline-cmd --service=myservice --add-port=portid[-portid]/protocol
+    firewall-offline-cmd --service=myservice --add-protocol=protocol
+    firewall-offline-cmd --service=myservice --add-source-port=portid[-portid]/protocol
+    firewall-offline-cmd --service=myservice --add-module=module
+    firewall-offline-cmd --service=myservice --set-destination=ipv:address[/mask]
 
 Alternatively you can add a new service using an existing file:
 
