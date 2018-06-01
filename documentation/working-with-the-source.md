@@ -96,7 +96,7 @@ For Fedora and RHEL based distributions, there is a spec file in the source repo
 
 ## Links
 
-    Homepage:          http://www.firewalld.org
+    Homepage:          http://firewalld.org
     Report a bug:      https://github.com/firewalld/firewalld/issues
     Git repo browser:  https://github.com/firewalld/firewalld
     Git repo:          https://github.com/firewalld/firewalld.git

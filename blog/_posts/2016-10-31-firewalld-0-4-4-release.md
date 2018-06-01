@@ -15,7 +15,7 @@ The main changes are
 
 Automatic helper assignment has been disabled in kernel 4.7. firewalld version 0.4.4 is now able to recognize this and to create rules if automatic helper assignment has been turned off to make conntrack helpers work again. If automatic helper assignment is turned on, then firewalld will behave as before.
 
-For more information about the use of netfilter conntrack helper, please have a look at [Automatic Helper Assignment](http://www.firewalld.org/2016/10/automatic-helper-assignment)
+For more information about the use of netfilter conntrack helper, please have a look at [Automatic Helper Assignment](http://firewalld.org/2016/10/automatic-helper-assignment)
 
 **Firewall-applet is now using Qt5**
 

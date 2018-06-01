@@ -1,1 +1,1 @@
-http://www.firewalld.org/robots.txt
+http://firewalld.org/robots.txt
