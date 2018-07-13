@@ -17,8 +17,8 @@ User facing features:
 - **nftables backend**  
 This is the new default for all firewalld's abstractions. The direct interface
 still supports iptables, ip6tables, and ebtables. It is configurable via
-`FirewallBackend` in `/etc/firewalld.conf` - valid values are; `nftables`,
-`iptables`.
+`FirewallBackend` in `/etc/firewalld/firewalld.conf` - valid values are;
+`nftables`, `iptables`.
 - new services  
 apcupsd, cockpit, distcc, etcd, finger, iSNS, llmnr, matrix, mqtt, nut, plex,
 rtsp, salt-master, samba-dc, slp, steam, subversion, svdrp, wbem-http, wsman
