@@ -9,24 +9,24 @@ category: release
 
 A new release of firewalld, version 0.6.0, is available.
 
-This is a large feature release. Some new features warrant a separate blog post
-so the release is only summarized here.
+This is a large feature release. Some new features warrant a separate blog
+post. As such, the release is only summarized here.
 
 User facing features:
 
-- nftables backend
+- **nftables backend**  
 This is the new default for all firewalld's abstractions. The direct interface
 still supports iptables, ip6tables, and ebtables. It is configurable via
 `FirewallBackend` in `/etc/firewalld.conf` - valid values are; `nftables`,
 `iptables`.
-- new services
+- new services  
 apcupsd, cockpit, distcc, etcd, finger, iSNS, llmnr, matrix, mqtt, nut, plex,
 rtsp, salt-master, samba-dc, slp, steam, subversion, svdrp, wbem-http, wsman
 - updated translations
 
 A lot of development time was spent on improving continuous integration and
 sanity checks to give confidence in new code changes and contributions from
-others. This is reflected it the below list of developer focused improvements.
+others. This is reflected below in the list of developer focused improvements.
 
 Developer focused improvements:
 
