@@ -39,9 +39,9 @@
      id="namedview371"
      showgrid="true"
      inkscape:document-units="mm"
-     inkscape:zoom="1.4568341"
-     inkscape:cx="221.96161"
-     inkscape:cy="260.27241"
+     inkscape:zoom="2.9136682"
+     inkscape:cx="357.89054"
+     inkscape:cy="208.62924"
      inkscape:window-x="1920"
      inkscape:window-y="26"
      inkscape:window-maximized="0"
@@ -1101,7 +1101,7 @@
            id="path4845-6"
            d="m 10200.007,3631.553 127.172,254.329 -254.346,0 z"
            style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:28.22222328px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" /></g></g><g
-       id="g3886"><g
+       id="g3633"><g
          id="g5019"
          transform="translate(-2399.897,-1474.3034)"><g
            id="g5021"><rect
@@ -1122,7 +1122,7 @@
                y="15701.31"
                x="17187.186"
                id="tspan5027"
-               sodipodi:role="line">nft / libnftnl</tspan></text>
+               sodipodi:role="line">libnftables</tspan></text>
 </g></g><text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:282.22735596px;line-height:80.00000119%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#0084d1;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1134,5 +1134,41 @@
            id="tspan4984-4"
            sodipodi:role="line"
            x="13708.203"
-           y="14541.062">0.6.0</tspan></text>
+           y="14541.062">0.7.0</tspan></text>
+</g><g
+       id="g3617"><g
+         id="g5019-2"
+         transform="translate(-2410.7785,-2909.0486)"
+         style="fill-rule:evenodd;stroke-width:28.22200012;stroke-linejoin:round"><g
+           id="g5021-6"><rect
+             rx="199.99989"
+             ry="199.99989"
+             y="15066.858"
+             x="15624.897"
+             height="1050"
+             width="3150.0002"
+             id="rect5023-7"
+             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#0084d1;stroke-width:50.00000763;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" /><text
+             sodipodi:linespacing="80.000001%"
+             id="text5025-5"
+             y="15701.31"
+             x="17187.186"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:423.33337402px;line-height:80.00000119%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               y="15701.31"
+               x="17187.186"
+               id="tspan5027-7"
+               sodipodi:role="line">nft</tspan></text>
+</g></g><text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:282.22735596px;line-height:80.00000119%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#0084d1;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="13697.322"
+         y="13106.29"
+         id="text4982-2-1"
+         sodipodi:linespacing="80.000001%"
+         transform="scale(1.000018,0.999982)"><tspan
+           id="tspan4984-4-3"
+           sodipodi:role="line"
+           x="13697.322"
+           y="13106.29">0.6.0</tspan></text>
 </g></g></svg>
