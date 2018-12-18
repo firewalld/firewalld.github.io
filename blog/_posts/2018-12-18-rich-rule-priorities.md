@@ -121,7 +121,7 @@ This results in the following:
 
 ## Compatibility
 To maintain compatibility rich rules that have a **priority == 0** or an absent
-priority will behave has they've done in the past. They'll be sorted into the
+priority will behave as they've done in the past. They'll be sorted into the
 *_log*, *_deny*, and *_allow* chains based on their action.
 
 ## When will they be available?
