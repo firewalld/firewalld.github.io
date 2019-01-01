@@ -7,7 +7,7 @@ The configuration can contain these tags and attributes. Some of them are mandat
 
 ## helper
 
-The mandatory helper start and end tag defines the helper. This tag can only be used once in a helper configuration file. There is one mandatory and two optionsl attributes for helpers:
+The mandatory helper start and end tag defines the helper. This tag can only be used once in a helper configuration file. There is one mandatory and two optional attributes for helpers:
 
     module="string"
 
