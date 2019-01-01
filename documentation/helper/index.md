@@ -7,7 +7,7 @@ A firewalld helper defines the configuration that are needed to be able to use a
 
 This can be achieved with the kernel default setting for `nf_conntrack_helper`, a sysctl setting of `net.netfilter.nf_conntrack_helper` or with the `AutomaticHelpers` setting in the `firewalld.conf` file.
 
-A firewalld helper can be a list of local ports, a kernel module and a fmaily definition.
+A firewalld helper can be a list of local ports, a kernel module and a family definition.
 
 Here is more information about helpers:
 
