@@ -5,7 +5,7 @@ title: "Enable and Disable firewalld"
 
 firewalld provides an init script for systems using classic SysVinit and also a systemd service file. The following documentation is about the systemd service used in Fedora, RHEL and CentOS distributions.
 
-It is not recommended to use iptables directly while firewalld is running as this could lead into some unexpected issues. If a user for example is removing base rules or chains of the chain structure, than a firewalld reload might be needed to create them again.
+It is not recommended to use iptables directly while firewalld is running as this could lead into some unexpected issues. If a user, for example, is removing base rules or chains of the chain structure, than a firewalld reload might be needed to create them again.
 
 ## Install and enable firewalld
 

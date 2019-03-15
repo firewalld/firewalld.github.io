@@ -7,7 +7,7 @@ title: "Get firewalld State"
 
 To get the firewalld state with firewall-cmd, use the following command:
 
-    $firewall-cmd --state
+    $ firewall-cmd --state
     running
 
 It returns an exit code 0 if it is active, NOT_RUNNING otherwise (see the firewalld “Exit Codes”). The command will also print the state to STDOUT.
