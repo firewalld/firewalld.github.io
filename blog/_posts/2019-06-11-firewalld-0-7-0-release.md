@@ -37,5 +37,7 @@ Statistics since v0.6.0:
 Source available here:
 
  * Tarball: [firewalld-0.7.0.tar.gz](https://github.com/firewalld/firewalld/releases/download/v0.7.0/firewalld-0.7.0.tar.gz)
- * SHA256: bef3e555d99fba51487095e6977aed7cfd582a7ab8505e6d7335e6e833ea42a1
+ * SHA256: da872394ecdc6584fbcefb8044a9a5492f9a3176e864e31b3b082d0b79e5e755  
+   *Note*: This release tarball was updated due to missing distfiles. Old hash
+   was bef3e555d99fba51487095e6977aed7cfd582a7ab8505e6d7335e6e833ea42a1.
  * Complete changelog on github: [0.6.0 to 0.7.0](https://github.com/firewalld/firewalld/compare/v0.6.0...v0.7.0)
