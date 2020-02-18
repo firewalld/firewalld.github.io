@@ -49,6 +49,6 @@ Applications and libraries which support firewalld as a firewall management tool
  * [NetworkManager](https://wiki.gnome.org/Projects/NetworkManager)
  * [libvirt](http://libvirt.org/)
  * [podman](https://podman.io/)
- * [docker](http://docker.com/)
+ * [docker](http://docker.com/) (iptables backend only)
  * [fail2ban](http://www.fail2ban.org/)
  
