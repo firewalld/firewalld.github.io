@@ -37,8 +37,11 @@ The separation of the runtime and permanent configuration makes it possible to d
 
 firewalld is used in the following Linux distributions as the default firewall management tool:
 
- * RHEL 7, CentOS 7
+ * RHEL 7 and newer
+ * CentOS 7 and newer
  * Fedora 18 and newer
+ * SUSE 15 and newer
+ * OpenSUSE 15 and newer
  * Available for several other distributions
 
 Applications and libraries which support firewalld as a firewall management tool include:
