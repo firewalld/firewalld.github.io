@@ -11,8 +11,9 @@ A new release of firewalld, version 0.8.2, is available.
 
 This is a big fix only release.
 
-However, it does reintroduce the zone drifting bug as a feature. This behavior
-is disabled by default.
+However, it does reintroduce the [zone drifting
+bug](https://firewalld.org/2020/01/allowzonedrifting) as a feature. This
+behavior is disabled by default.
 
 - improvement: build: add an option to disable building documentation
 - Typo in firewall-config(1)
