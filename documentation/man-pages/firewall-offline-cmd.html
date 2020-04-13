@@ -3,7 +3,7 @@ layout: page
 title: firewall-offline-cmd
 ---
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewall-offline-cmd</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewall-offline-cmd"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewall-offline-cmd — firewalld offline command line client</blockquote><h2>Synopsis</h2><blockquote><div class="cmdsynopsis"><p><code class="command">firewall-offline-cmd</code>  [OPTIONS...]</p></div></blockquote><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewall-offline-cmd</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewall-offline-cmd"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewall-offline-cmd — firewalld offline command line client</blockquote><h2>Synopsis</h2><blockquote><div class="cmdsynopsis"><p><code class="command">firewall-offline-cmd</code>  [OPTIONS...]</p></div></blockquote><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
       firewall-offline-cmd is an offline command line client of the firewalld daemon. It should be used only if the firewalld service is not running. For example to migrate from system-config-firewall/lokkit or in the install environment to configure firewall settings with kickstart.
     </blockquote><blockquote>
       Some lokkit options can not be automatically converted for firewalld, they will result in an error or warning message. This tool tries to convert as much as possible, but there are limitations for example with custom rules, modules and masquerading.
@@ -12,7 +12,7 @@ title: firewall-offline-cmd
     </blockquote></div><div class="refsect1"><a name="options"></a><h2>Options</h2><blockquote>
       If no options are given, configuration from <span class="command"><strong>/etc/sysconfig/system-config-firewall</strong></span> will be migrated.
     </blockquote><blockquote>
-      For sequence options, this are the options that can be specified multiple times, the exit code is 0 if there is at least one item that succeded. The <code class="literal">ALREADY_ENABLED</code> (11), <code class="literal">NOT_ENABLED</code> (12) and also <code class="literal">ZONE_ALREADY_SET</code> (16) errors are treated as succeeded.
+      Sequence options are the options that can be specified multiple times, the exit code is 0 if there is at least one item that succeeded. The <code class="literal">ALREADY_ENABLED</code> (11), <code class="literal">NOT_ENABLED</code> (12) and also <code class="literal">ZONE_ALREADY_SET</code> (16) errors are treated as succeeded.
       If there are issues while parsing the items, then these are treated as warnings and will not change the result as long as there is a succeeded one.
       Without any succeeded item, the exit code will depend on the error codes. If there is exactly one error code, then this is used. If there are more than one then <code class="literal">UNKNOWN_ERROR</code> (254) will be used.
     </blockquote><blockquote>
@@ -23,11 +23,24 @@ title: firewall-offline-cmd
 	      Prints the version string of firewalld and exits.
 	    </p></blockquote></dd><dt><span class="term"><code class="option">-q</code>, </span><span class="term"><code class="option">--quiet</code></span></dt><dd><blockquote><p>
 	      Do not print status messages.
-	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="status_options"></a><h3>Status Options</h3><blockquote><dt><span class="term"><code class="option">--enabled</code></span></dt><dd><blockquote><p>
+	    </p></blockquote></dd><dt><span class="term"><code class="option">--default-config</code></span></dt><dd><blockquote><p>
+          Path to firewalld default configuration. This usually defaults to
+          <code class="filename">/usr/lib/firewalld</code>.
+        </p></blockquote></dd><dt><span class="term"><code class="option">--system-config</code></span></dt><dd><blockquote><p>
+          Path to firewalld system (user) configuration. This usually defaults
+          to <code class="filename">/etc/firewalld</code>.
+        </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="status_options"></a><h3>Status Options</h3><blockquote><dt><span class="term"><code class="option">--enabled</code></span></dt><dd><blockquote><p>
 	      Enable the firewall. This option is a default option and will activate the firewall if not already enabled as long as the option <code class="option">--disabled</code> is not given.
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--disabled</code></span></dt><dd><blockquote><p>
 	      Disable the firewall by disabling the firewalld service.
-	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="lokkit_options"></a><h3>Lokkit Compatibility Options</h3><blockquote>
+	    </p></blockquote></dd><dt><span class="term"><code class="option">--check-config</code></span></dt><dd><blockquote><p>
+          Run checks on the permanent (default and system) configuration. This
+          includes XML validity and semantics.
+        </p><p>
+          This is may be used with <code class="option">--system-config</code> to check
+          the validity of handwritten configuration files before copying them
+          to the standard location.
+        </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="lokkit_options"></a><h3>Lokkit Compatibility Options</h3><blockquote>
         These options are nearly identical to the options of <span class="command"><strong>lokkit</strong></span>.
       </blockquote><blockquote><dt><span class="term"><code class="option">--migrate-system-config-firewall=<em class="replaceable"><code>file</code></em></code></span></dt><dd><blockquote><p>
 	      Migrate system-config-firewall configuration from the given file. No further
@@ -83,14 +96,6 @@ title: firewall-offline-cmd
 	      Add logging rules right before reject and drop rules in the INPUT, FORWARD and OUTPUT chains for the default rules and also final reject and drop rules in zones for the configured link-layer packet type. The possible values are: <em class="replaceable"><code>all</code></em>, <em class="replaceable"><code>unicast</code></em>, <em class="replaceable"><code>broadcast</code></em>, <em class="replaceable"><code>multicast</code></em> and <em class="replaceable"><code>off</code></em>. The default setting is <em class="replaceable"><code>off</code></em>, which disables the logging.
 	    </p><p>
 	      This is a runtime and permanent change and will also reload the firewall to be able to add the logging rules.
-	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="automatic_helpers_options"></a><h3>Automatic Helpers Options</h3><blockquote><dt><span class="term"><code class="option">--get-automatic-helpers</code></span></dt><dd><blockquote><p>
-	      Print the automatic helpers setting.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--set-automatic-helpers</code>=<em class="replaceable"><code>value</code></em></span></dt><dd><blockquote><p>
-	      For the secure use of iptables and connection tracking helpers it is recommended to turn AutomaticHelpers off. But this might have side effects on other services using the netfilter helpers as the sysctl setting in <code class="filename">/proc/sys/net/netfilter/nf_conntrack_helper</code> will be changed.
-	      With the system setting, the default value set in the kernel or with sysctl will be used.
-	      Possible values are: <code class="literal">yes</code>, <code class="literal">no</code> and <code class="literal">system</code>. The default value is <code class="literal">system</code>.
-	    </p><p>
-	      This is a runtime and permanent change and will also reload the firewall to be able to make the helpers usable.
 	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="zone_options"></a><h3>Zone Options</h3><blockquote><dt><span class="term"><code class="option">--get-default-zone</code></span></dt><dd><blockquote><p>
 	      Print default zone for connections and interfaces.
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--set-default-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><blockquote><p>
@@ -140,6 +145,8 @@ title: firewall-offline-cmd
 ..</pre><p>
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--new-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><blockquote><p>
               Add a new permanent zone.
+            </p><p>
+              Zone names must be alphanumeric and may additionally include characters: '_' and '-'.
             </p></blockquote></dd><dt><span class="term"><code class="option">--new-zone-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>zone</code></em></span>]</span></dt><dd><blockquote><p>
               Add a new permanent zone from a prepared zone file with an optional name override.
             </p></blockquote></dd><dt><span class="term"><code class="option">--path-zone=<em class="replaceable"><code>zone</code></em></code></span></dt><dd><blockquote><p>
@@ -157,7 +164,20 @@ title: firewall-offline-cmd
            </p></blockquote></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--get-target</code></span></dt><dd><blockquote><p>
               Get the target of a permanent zone.
             </p></blockquote></dd><dt><span class="term"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> <code class="option">--set-target</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><blockquote><p>
-              Set the target of a permanent zone.
+              Set the target of a permanent zone. <em class="replaceable"><code>target</code></em> is one of: <code class="literal">default</code>, <code class="literal">ACCEPT</code>, <code class="literal">DROP</code>, <code class="literal">REJECT</code>
+            </p><p>
+              <code class="literal">default</code> is similar to <code class="literal">REJECT</code>, but has special meaning in the following scenarios:
+              </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>ICMP explicitly allowed</p><p>
+                  At the end of the zone's ruleset ICMP packets are explicitly allowed.
+                </p></li><li class="listitem"><p>forwarded packets follow the <em class="replaceable"><code>target</code></em> of the egress zone</p><p>
+                  In the case of forwarded packets, if the ingress zone uses <code class="literal">default</code> then whether or not the packet will be allowed is determined by the egress zone.
+                </p><p>
+                  For a forwarded packet that ingresses zoneA and egresses zoneB:
+                </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>if zoneA's <em class="replaceable"><code>target</code></em> is <code class="literal">ACCEPT</code>, <code class="literal">DROP</code>, or <code class="literal">REJECT</code> then the packet is accepted, dropped, or rejected respectively.</p></li><li class="listitem"><p>if zoneA's <em class="replaceable"><code>target</code></em> is <code class="literal">default</code>, then the packet is accepted, dropped, or rejected based on zoneB's <em class="replaceable"><code>target</code></em>. If zoneB's <em class="replaceable"><code>target</code></em> is also <code class="literal">default</code>, then the packet will be rejected by firewalld's catchall reject.</p></li></ul></div></li><li class="listitem"><p>Zone drifting from source-based zone to interface-based zone</p><p>
+                  This only applies if <code class="option">AllowZoneDrifting</code> is enabled. See <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>.
+                </p><p>
+                  If a packet ingresses a source-based zone with a <em class="replaceable"><code>target</code></em> of <code class="literal">default</code>, it may still enter an interface-based zone (including the default zone).
+                </p></li></ol></div><p>
             </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="options_to_adapt_and_query_zones"></a><h3>Options to Adapt and Query Zones</h3><blockquote>
 	Options in this section affect only one particular zone. If used with <code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em> option, they affect the zone <em class="replaceable"><code>zone</code></em>. If the option is omitted, they affect default zone (see <code class="option">--get-default-zone</code>).
       </blockquote><blockquote><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--list-all</code></span></dt><dd><blockquote><p>
@@ -213,6 +233,8 @@ title: firewall-offline-cmd
 	      The port can either be a single port number <em class="replaceable"><code>portid</code></em> or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>. The protocol can either be <code class="literal">tcp</code>, <code class="literal">udp</code>, <code class="literal">sctp</code> or <code class="literal">dccp</code>. The destination address is a simple IP address.
 	    </p><p>
 	      For <span class="emphasis"><em>IPv6</em></span> forward ports, please use the rich language.
+	    </p><p>
+	      <span class="emphasis"><em>Note:</em></span> IP forwarding will be implicitly enabled if <code class="option">toaddr</code> is specified.
 	    </p></blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-forward-port</code>=port=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:proto=<em class="replaceable"><code>protocol</code></em>[<span class="optional">:toport=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]</span>][<span class="optional">:toaddr=<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span>]</span></dt><dd><blockquote><p>
 	      Remove the <span class="emphasis"><em>IPv4</em></span> forward port from <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. This option can be specified multiple times.
 	    </p><p>
@@ -235,6 +257,8 @@ title: firewall-offline-cmd
 	      Enable <span class="emphasis"><em>IPv4</em></span> masquerade for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used. Masquerading is useful if the machine is a router and machines connected over an interface in another zone should be able to use the first connection.
 	    </p><p>
 	      For <span class="emphasis"><em>IPv6</em></span> masquerading, please use the rich language.
+	    </p><p>
+	      <span class="emphasis"><em>Note:</em></span> IP forwarding will be implicitly enabled.
 	    </p></blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--remove-masquerade</code></span></dt><dd><blockquote><p>
 	      Disable <span class="emphasis"><em>IPv4</em></span> masquerade for <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used.
 	    </p><p>
@@ -295,6 +319,8 @@ title: firewall-offline-cmd
 	      Remove binding of the source from zone <em class="replaceable"><code>zone</code></em>. If zone is omitted, default zone will be used.
 	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="ipset_options"></a><h3>IPSet Options</h3><blockquote><dt><span class="term"><code class="option">--new-ipset</code>=<em class="replaceable"><code>ipset</code></em> <code class="option">--type</code>=<em class="replaceable"><code>ipset type</code></em> [<span class="optional"><code class="option">--option</code>=<em class="replaceable"><code>ipset option</code></em>[<span class="optional">=<em class="replaceable"><code>value</code></em></span>]</span>]</span></dt><dd><blockquote><p>
               Add a new permanent ipset with specifying the type and optional options.
+            </p><p>
+              ipset names must be alphanumeric and may additionally include characters: '_' and '-'.
             </p></blockquote></dd><dt><span class="term"><code class="option">--new-ipset-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>ipset</code></em></span>]</span></dt><dd><blockquote><p>
 	      Add a new permanent ipset from a prepared ipset file with an optional name override.
             </p></blockquote></dd><dt><span class="term"><code class="option">--delete-ipset</code>=<em class="replaceable"><code>ipset</code></em></span></dt><dd><blockquote><p>
@@ -339,10 +365,12 @@ title: firewall-offline-cmd
   ports: <em class="replaceable"><code>port1</code></em> ..
   protocols: <em class="replaceable"><code>protocol1</code></em> ..
   source-ports: <em class="replaceable"><code>source-port1</code></em> ..
-  modules: <em class="replaceable"><code>module1</code></em> ..
+  helpers: <em class="replaceable"><code>helper1</code></em> ..
   destination: <em class="replaceable"><code>ipv1</code></em>:<em class="replaceable"><code>address1</code></em> ..</pre><p>
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--new-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote><p>
              Add a new permanent service.
+           </p><p>
+             Service names must be alphanumeric and may additionally include characters: '_' and '-'.
            </p></blockquote></dd><dt><span class="term"><code class="option">--new-service-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>service</code></em></span>]</span></dt><dd><blockquote><p>
               Add a new permanent service from a prepared service file with an optional name override.
            </p></blockquote></dd><dt><span class="term"><code class="option">--delete-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote><p>
@@ -381,14 +409,14 @@ title: firewall-offline-cmd
              Return wether the source port has been added to the permanent service.
            </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-source-ports</code></span></dt><dd><blockquote><p>
              List source ports added to the permanent service.
-           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--add-module</code>=<em class="replaceable"><code>module</code></em></span></dt><dd><blockquote><p>
-             Add a new module to the permanent service.
-           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-module</code>=<em class="replaceable"><code>module</code></em></span></dt><dd><blockquote><p>
-             Remove a module from the permanent service.
-           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-module</code>=<em class="replaceable"><code>module</code></em></span></dt><dd><blockquote><p>
-             Return wether the module has been added to the permanent service.
-           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-modules</code></span></dt><dd><blockquote><p>
-             List modules added to the permanent service.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--add-helper</code>=<em class="replaceable"><code>helper</code></em></span></dt><dd><blockquote><p>
+             Add a new helper to the permanent service.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-helper</code>=<em class="replaceable"><code>helper</code></em></span></dt><dd><blockquote><p>
+             Remove a helper from the permanent service.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-helper</code>=<em class="replaceable"><code>helper</code></em></span></dt><dd><blockquote><p>
+             Return wether the helper has been added to the permanent service.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-service-helpers</code></span></dt><dd><blockquote><p>
+             List helpers added to the permanent service.
            </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--set-destination</code>=<em class="replaceable"><code>ipv</code></em>:<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]</span></dt><dd><blockquote><p>
              Set destination for ipv to address[/mask] in the permanent service.
            </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-destination</code>=<em class="replaceable"><code>ipv</code></em></span></dt><dd><blockquote><p>
@@ -397,6 +425,14 @@ title: firewall-offline-cmd
              Return wether the destination ipv to address[/mask] has been set in the permanent service.
            </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-destinations</code></span></dt><dd><blockquote><p>
              List destinations added to the permanent service.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--add-include</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote><p>
+             Add a new include to the permanent service.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--remove-include</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote><p>
+             Remove a include from the permanent service.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--query-include</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote><p>
+             Return wether the include has been added to the permanent service.
+           </p></blockquote></dd><dt><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em> <code class="option">--get-includes</code></span></dt><dd><blockquote><p>
+             List includes added to the permanent service.
            </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="helper_options"></a><h3>Helper Options</h3><blockquote>
 	Options in this section affect only one particular helper.
       </blockquote><blockquote><dt><span class="term"><code class="option">--info-helper=<em class="replaceable"><code>helper</code></em></code></span></dt><dd><blockquote><p>
@@ -409,6 +445,8 @@ title: firewall-offline-cmd
 	The following options are only usable in the permanent configuration.
       </blockquote><blockquote><dt><span class="term"><code class="option">--new-helper</code>=<em class="replaceable"><code>helper</code></em> <code class="option">--module</code>=<em class="replaceable"><code>nf_conntrack_module</code></em> [<span class="optional"><code class="option">--family</code>=<code class="literal">ipv4</code>|<code class="literal">ipv6</code></span>]</span></dt><dd><blockquote><p>
              Add a new permanent helper with module and optionally family defined.
+           </p><p>
+             Helper names must be alphanumeric and may additionally include characters: '-'.
            </p></blockquote></dd><dt><span class="term"><code class="option">--new-helper-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>helper</code></em></span>]</span></dt><dd><blockquote><p>
               Add a new permanent helper from a prepared helper file with an optional name override.
            </p></blockquote></dd><dt><span class="term"><code class="option">--delete-helper</code>=<em class="replaceable"><code>helper</code></em></span></dt><dd><blockquote><p>
@@ -449,6 +487,8 @@ title: firewall-offline-cmd
   destination: <em class="replaceable"><code>ipv1</code></em> ..</pre><p>
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--new-icmptype</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><blockquote><p>
              Add a new permanent icmptype.
+           </p><p>
+             ICMP type names must be alphanumeric and may additionally include characters: '_' and '-'.
            </p></blockquote></dd><dt><span class="term"><code class="option">--new-icmptype-from-file</code>=<em class="replaceable"><code>filename</code></em> [<span class="optional"><code class="option">--name</code>=<em class="replaceable"><code>icmptype</code></em></span>]</span></dt><dd><blockquote><p>
 	     Add a new permanent icmptype from a prepared icmptype file with an optional name override.
            </p></blockquote></dd><dt><span class="term"><code class="option">--delete-icmptype</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><blockquote><p>
@@ -475,6 +515,8 @@ title: firewall-offline-cmd
 	The direct options give a more direct access to the firewall. These options require user to know basic iptables concepts, i.e. <code class="literal">table</code> (filter/mangle/nat/...), <code class="literal">chain</code> (INPUT/OUTPUT/FORWARD/...), <code class="literal">commands</code> (-A/-D/-I/...), <code class="literal">parameters</code> (-p/-s/-d/-j/...) and <code class="literal">targets</code> (ACCEPT/DROP/REJECT/...).
       </blockquote><blockquote>
 	Direct options should be used only as a last resort when it's not possible to use for example <code class="option">--add-service</code>=<em class="replaceable"><code>service</code></em> or <code class="option">--add-rich-rule</code>='<em class="replaceable"><code>rule</code></em>'.
+      </blockquote><blockquote>
+        <span class="bold"><strong>Warning</strong></span>: Direct rules behavior is different depending on the value of <code class="literal">FirewallBackend</code>. See <code class="literal">CAVEATS</code> in <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>.
       </blockquote><blockquote>
 	The first argument of each option has to be <code class="literal">ipv4</code> or <code class="literal">ipv6</code> or <code class="literal">eb</code>. With <code class="literal">ipv4</code> it will be for IPv4 (<span class="citerefentry"><span class="refentrytitle">iptables</span>(8)</span>), with <code class="literal">ipv6</code> for IPv6 (<span class="citerefentry"><span class="refentrytitle">ip6tables</span>(8)</span>) and with <code class="literal">eb</code> for ethernet bridges (<span class="citerefentry"><span class="refentrytitle">ebtables</span>(8)</span>).
       </blockquote><blockquote><dt><span class="term"><code class="option">--direct</code> <code class="option">--get-all-chains</code></span></dt><dd><blockquote><p>
@@ -583,7 +625,7 @@ title: firewall-offline-cmd
 	      Change Polkit actions to 'server'  (more restricted)
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--policy-desktop</code></span></dt><dd><blockquote><p>
 	      Change Polkit actions to 'desktop'  (less restricted)
-	    </p></blockquote></dd></blockquote></div></blockquote></div><div class="refsect1"><a name="idm139730916478304"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm139730916462256"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
+	    </p></blockquote></dd></blockquote></div></blockquote></div><div class="refsect1"><a name="idm140222203757104"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140222203741056"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://firewalld.org" target="_top">http://firewalld.org</a>
 	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
