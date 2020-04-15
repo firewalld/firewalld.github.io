@@ -6,7 +6,7 @@ date: 2015-12-01T02:47:16
 author: Thomas Woerner
 ---
 
-The support for ipsets has been added to the git repo of firewalld and will be available with the nest version. This will be version 0.4.0 and is planned to be released in the next days.
+The support for ipsets has been added to the git repo of firewalld and will be available with the next version. This will be version 0.4.0 and is planned to be released in the next days.
 
 With ipsets it is simple to create black or white lists for ip, network or mac address. An ipset can simply be used to bind zones to or also in rich rules. Witht he use in rich rules also more complex rules can be created.
 

@@ -6,7 +6,7 @@ date: 2015-12-01T02:47:16
 author: Thomas Woerner
 ---
 
-The MAC support branch has been merged into master and will be available with the nest version. This will be version 0.4.0 and is planned to be released in the next days.
+The MAC support branch has been merged into master and will be available with the next version. This will be version 0.4.0 and is planned to be released in the next days.
 
 You can use MAC addresses for zone bindings and also in rich rules. Here are two examples using the command line client:
 <pre>firewall-cmd --zone=work --add-source=00:11:22:33:44:55
