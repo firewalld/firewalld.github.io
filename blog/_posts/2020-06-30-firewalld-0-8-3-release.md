@@ -33,7 +33,7 @@ Phil Sutter (1):
 Vrinda Punj (3):
 - docs(README): add libxslt for doc generation
 - fix(cli): add --zone is an invalid option with --direct
-- fix(cli): add ipset type hash:mac is incompatible with the family parameter Fixes: rhbz1541077
+- fix(cli): add ipset type hash:mac is incompatible with the family parameter
 
 -----
 
