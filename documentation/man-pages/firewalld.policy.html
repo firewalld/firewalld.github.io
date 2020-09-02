@@ -1,24 +1,27 @@
 ---
 layout: page
-title: firewalld.zone
+title: firewalld.policy
 ---
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.zone</title><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.zone"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.zone — firewalld zone configuration files</blockquote><h2>Synopsis</h2><blockquote><p>
-        <code class="filename">/usr/etc/firewalld/zones/zone.xml</code>
-    </p><p>
-        <code class="filename">/usr/lib/firewalld/zones/zone.xml</code>
-    </p></blockquote><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
-      A firewalld zone configuration file contains the information for a zone.
-      These are the zone description, services, ports, protocols, icmp-blocks, masquerade, forward-ports and rich language rules in an XML file format.
-      The file name has to be <em class="replaceable"><code>zone_name</code></em>.xml where length of <em class="replaceable"><code>zone_name</code></em> is currently limited to 17 chars.
-    </blockquote><blockquote>
-       This is the structure of a zone configuration file:
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.policy</title><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.policy"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.policy — firewalld policy configuration files</blockquote><h2>Synopsis</h2><blockquote><p>
+            <code class="filename">/usr/etc/firewalld/policies/policy.xml</code>
+        </p><p>
+            <code class="filename">/usr/lib/firewalld/policies/policy.xml</code>
+        </p></blockquote><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
+            A firewalld policy configuration file contains the information for
+            a policy.  These are the policy descriptions, services, ports,
+            protocols, icmp-blocks, masquerade, forward-ports and rich language
+            rules in an XML file format.  The file name has to be
+            <em class="replaceable"><code>policy_name</code></em>.xml where length of
+            <em class="replaceable"><code>policy_name</code></em> is currently limited to 17
+            chars.
+        </blockquote><blockquote>
+            This is the structure of a policy configuration file:
 
-        <pre class="programlisting">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;zone [version="<em class="replaceable"><code>versionstring</code></em>"] [target="<code class="literal">ACCEPT</code>|<code class="literal">%%REJECT%%</code>|<code class="literal">DROP</code>"]&gt;
-    [ &lt;interface name="<em class="replaceable"><code>string</code></em>"/&gt; ]
-    [ &lt;source address="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]"|mac="<em class="replaceable"><code>MAC</code></em>"|ipset="<em class="replaceable"><code>ipset</code></em>"/&gt; ]
-    [ &lt;icmp-block-inversion/&gt; ]
+            <pre class="programlisting">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;policy [version="<em class="replaceable"><code>versionstring</code></em>"] [target="<code class="literal">CONTINUE</code>|<code class="literal">ACCEPT</code>|<code class="literal">REJECT</code>|<code class="literal">DROP</code>"] [priority="<em class="replaceable"><code>priority</code></em>"]&gt;
+    [ &lt;ingress-zone name="<em class="replaceable"><code>zone</code></em>"/&gt; ]
+    [ &lt;egress-zone name="<em class="replaceable"><code>zone</code></em>"/&gt; ]
 
     
 
@@ -58,38 +61,34 @@ title: firewalld.zone
     ]
 
 
-&lt;/zone&gt;</pre>
-    </blockquote><blockquote>
-      The config can contain these tags and attributes. Some of them are mandatory, others optional.
-    </blockquote><blockquote><div class="refsect2"><a name="zone"></a><h3>zone</h3><blockquote>
-	The mandatory zone start and end tag defines the zone. This tag can only be used once in a zone configuration file. There are optional attributes for zones:
-      </blockquote><blockquote><dt><span class="term">version="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
-              To give the zone a version.
-	    </p></blockquote></dd><dt><span class="term">target="<code class="literal">ACCEPT</code>|<code class="literal">%%REJECT%%</code>|<code class="literal">DROP</code>"</span></dt><dd><blockquote><p>
-	      Can be used to accept, reject or drop every packet that doesn't match any rule (port, service, etc.).
-	      The <code class="literal">ACCEPT</code> target is used in <code class="literal">trusted</code> zone to accept every packet not matching any rule.
-	      The <code class="literal">%%REJECT%%</code> target is used in <code class="literal">block</code> zone to reject (with default firewalld reject type) every packet not matching any rule.
-	      The <code class="literal">DROP</code> target is used in <code class="literal">drop</code> zone to drop every packet not matching any rule.
-	      If the target is not specified, every packet not matching any rule will be rejected.
-	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="interface"></a><h3>interface</h3><blockquote>
-	Is an optional empty-element tag and can be used several times. It can be used to bind an interface to a zone.
-	You don't need this for NetworkManager-managed interfaces, because NetworkManager binds interfaces to zones automatically.
-	See also 'How to set or change a zone for a connection?' in <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>.
-	You can use it as a fallback mechanism for interfaces that can't be managed via NetworkManager.
-	An interface entry has exactly one attribute:
-      </blockquote><blockquote><dt><span class="term">name="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
-              The name of the interface to be bound to the zone.
-	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="source"></a><h3>source</h3><blockquote>
-	Is an optional empty-element tag and can be used several times. It can be used to bind a source address, address range, a MAC address or an ipset to a zone. A source entry has exactly one of these attributes:
-      </blockquote><blockquote><dt><span class="term">address="<em class="replaceable"><code>address</code></em>[<span class="optional">/<em class="replaceable"><code>mask</code></em></span>]"</span></dt><dd><blockquote><p>
-	      The source is either an IP address or a network IP address with a mask for IPv4 or IPv6. The network family (IPv4/IPv6) will be automatically discovered. For IPv4, the mask can be a network mask or a plain number. For IPv6 the mask is a plain number. The use of host names is not supported.
-	    </p></blockquote></dd><dt><span class="term">mac="<em class="replaceable"><code>MAC</code></em>"</span></dt><dd><blockquote><p>
-	      The source is a MAC address. It must be of the form XX:XX:XX:XX:XX:XX.
-	    </p></blockquote></dd><dt><span class="term">ipset="<em class="replaceable"><code>ipset</code></em>"</span></dt><dd><blockquote><p>
-	      The source is an ipset.
-	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="icmp-block-inversion"></a><h3>icmp-block-inversion</h3><blockquote>
-	Is an optional empty-element tag and can be used only once in a zone configuration. This flag inverts the icmp block handling. Only enabled ICMP types are accepted and all others are rejected in the zone.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="short"></a><h3>short</h3><blockquote>
+&lt;/policy&gt;</pre>
+        </blockquote><blockquote>
+            The config can contain these tags and attributes. Some of them are
+            mandatory, others optional.
+        </blockquote><blockquote><div class="refsect2"><a name="policy"></a><h3>policy</h3><blockquote>
+                The mandatory policy start and end tag defines the policy. This
+                tag can only be used once in a policy configuration file. There
+                are optional attributes for policy:
+            </blockquote><blockquote><dt><span class="term">version="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
+                            To give the policy a version.
+                        </p></blockquote></dd><dt><span class="term">target="<code class="literal">CONTINUE</code><code class="literal">ACCEPT</code>|<code class="literal">REJECT</code>|<code class="literal">DROP</code>"</span></dt><dd><blockquote><p>
+                            Can be used to accept, reject or drop every packet
+                            that doesn't match any rule (port, service, etc.).
+                            The <code class="literal">CONTINUE</code> is the default and
+                            used for policies that an non-terminal.
+                        </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="ingress-zone"></a><h3>ingress-zone</h3><blockquote>
+                An optional element that can be used several times. It can be
+                the name of a firewalld zone or one of the symbolic zones:
+                HOST, ANY. See
+                <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>
+                for information about symbolic zones.
+            </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="egress-zone"></a><h3>egress-zone</h3><blockquote>
+                An optional element that can be used several times. It can be
+                the name of a firewalld zone or one of the symbolic zones:
+                HOST, ANY. See
+                <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>
+                for information about symbolic zones.
+            </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="short"></a><h3>short</h3><blockquote>
         Is an optional start and end tag and is used to give a more readable
         name.
     </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="options_description"></a><h3>description</h3><blockquote>
@@ -136,7 +135,7 @@ title: firewalld.zone
         Is an optional empty-element tag and can be used several times to have
         more than one port or packet forward entry. There are mandatory and
         also optional attributes for forward ports:
-    </blockquote><blockquote><div class="refsect3"><a name="idm139931602452544"></a><h4>Mandatory attributes:</h4><blockquote>
+    </blockquote><blockquote><div class="refsect3"><a name="idm140409319418928"></a><h4>Mandatory attributes:</h4><blockquote>
             The local port and protocol to be forwarded.
         </blockquote><blockquote><dt><span class="term">port="<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]"</span></dt><dd><blockquote><p>
                         The port can either be a single port number
@@ -146,7 +145,7 @@ title: firewalld.zone
                         The protocol can either be <code class="literal">tcp</code>,
                         <code class="literal">udp</code>, <code class="literal">sctp</code> or
                         <code class="literal">dccp</code>.
-                    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect3"><a name="idm139931602440784"></a><h4>Optional attributes:</h4><blockquote>
+                    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect3"><a name="idm140409319407168"></a><h4>Optional attributes:</h4><blockquote>
             The destination of the forward. For local forwarding add
             <code class="option">to-port</code> only. For remote forwarding add
             <code class="option">to-addr</code> and use <code class="option">to-port</code>
@@ -212,7 +211,7 @@ title: firewalld.zone
     </blockquote><blockquote>
         For a full description on rich language rules, please have a look at
         <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>.
-    </blockquote></div></blockquote></div><div class="refsect1"><a name="idm139931602288736"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm139931602270800"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
+    </blockquote></div></blockquote></div><div class="refsect1"><a name="idm140409319255392"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm140409319237552"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://firewalld.org" target="_top">http://firewalld.org</a>
 	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
