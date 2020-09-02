@@ -9,7 +9,7 @@ category: feature
 
 A new feature, policy objects, will be part of the next firewalld feature
 release (v0.9.0). This is a major feature that has been in the works for
-almost a full year. It also significant because it closes one of the long
+almost a full year. It is significant because it closes one of the long
 standing gaps in firewalld's functionality: forward and output filtering.
 
 ## Motivation
@@ -60,8 +60,9 @@ allow-host-ipv6 (active)
 ```
 
 ## Relationship to Zones
-Policies are applied to traffic flowing between zones in a unidirectional
-manner. This allows different policies depending on the direction of traffic.
+Policies are applied to traffic flowing between zones in a stateful
+unidirectional manner. This allows different policies depending on the
+direction of traffic.
 
 ```
 +----------+     policyA     +----------+
