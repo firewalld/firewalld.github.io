@@ -7,8 +7,6 @@ author: Eric Garver
 category: feature
 ---
 
-# Intra Zone Forwarding
-
 A new feature, intra zone forwarding, is coming to firewalld. This feature
 allows packets to freely forward between interfaces or sources with in a zone.
 

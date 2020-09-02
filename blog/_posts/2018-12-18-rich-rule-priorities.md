@@ -7,7 +7,6 @@ author: Eric Garver
 category: feature
 ---
 
-# Rich Rule Priorities
 Recently firewalld gained support for a priority field in the rich rule syntax.
 It allows fine grained control over rich rules and their execution order. This
 enables using rich rules in ways not possible before.

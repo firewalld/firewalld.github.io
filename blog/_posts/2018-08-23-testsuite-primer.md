@@ -7,8 +7,6 @@ author: Eric Garver
 category: development
 ---
 
-# Firewalld Testsuite Primer
-
 Over the past two major releases firewalld has seen vast improvements to its
 testsuite. This post will discuss how to run the testsuite, how to debug a
 failure, and finally we'll go through an exercise of adding a new test case.

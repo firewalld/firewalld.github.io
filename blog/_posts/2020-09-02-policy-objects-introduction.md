@@ -7,7 +7,6 @@ author: Eric Garver
 category: feature
 ---
 
-# Policy Objects: Introduction
 A new feature, policy objects, will be part of the next firewalld feature
 release (v0.9.0). This is a major feature that has been in the works for
 almost a full year. It also significant because it closes one of the long

@@ -7,8 +7,6 @@ author: Eric Garver
 category: feature
 ---
 
-# Allowing Zone Drifting
-
 A future release of firewalld will contain a behavioral change that may affect
 some users. Older version of firewalld had undocumented behavior that has come
 to be known as **zone drifting**.

@@ -7,8 +7,6 @@ author: Eric Garver
 category: feature
 ---
 
-# libnftables JSON
-
 A future firewalld feature release (0.8.0) will contain a significant change to
 the nftables backend. In the past firewalld has always called the `nft` binary.
 As of git commit
