@@ -68,12 +68,12 @@ ACCEPT     all  --  anywhere             10.88.0.0/16         /* name: "podman" 
 MASQUERADE  all  --  anywhere            !224.0.0.0/4          /* name: "podman" id: "7b9e4aef72c4cf188df65589f43bf4256488959700557163f57e96920d18ec2a" */
 ```
 
-### What's missing?
+### What's Missing?
 What's missing from all the above is filtering. Podman has no method of
 filtering incoming or outgoing traffic on behalf of the container. Later in
 this post we'll see that's now possible in firewalld.
 
-## Creating a podman zone
+## Creating a Podman Zone
 To make things easier to reason about we'll create a new zone called `podman`.
 This will make it clear that the zone is intended for containers.
 
@@ -161,7 +161,7 @@ selectively open the specific things you need.
 the `podman` zone and setting `--set-target=reject`. This is because most, but
 not all (e.g. masquerade), features added to a zone filter on the INPUT chain.
 
-## Move the container to the podman zone
+## Move the Container to the Podman Zone
 The last step is to reload firewalld and move the container to the new podman
 zone. This will cause all the policies we created to become active.
 
@@ -172,6 +172,18 @@ zone. This will cause all the policies we created to become active.
 
 Note that this is a *runtime* configuration change. That's because podman adds
 the container's IP address to the runtime only.
+
+## Removing Podman's iptables Rules
+Now that firewalld is handling the masquerading we can flush the iptables
+rules created by Podman. After this there will be no Podman related rules in
+iptables. Everything is being handled by firewalld.
+
+```
+# iptables -t nat -F
+```
+
+*Disclaimer*: This command is a flush of all NAT rules. If there are other
+rules not installed by Podman they'll also be deleted.
 
 ## Conclusion
 Hopefully this post illustrated the flexibility of policy objects and how you
