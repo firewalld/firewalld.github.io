@@ -118,7 +118,7 @@ egress zone lists.
 # firewall-cmd --policy mypolicy --add-ingress-zone external
 ```
 
-Making a policy got inactive is done by emptying the ingress and/or the egress
+Making a policy go inactive is done by emptying the ingress and/or the egress
 zone list.
 
 ```
