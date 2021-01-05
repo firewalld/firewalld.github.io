@@ -28,5 +28,5 @@ diegoe (1):
 Source available here:
 
  * Tarball: [firewalld-0.9.2.tar.gz](https://github.com/firewalld/firewalld/releases/download/v0.9.2/firewalld-0.9.2.tar.gz)
- * SHA256: d2e3498daf734dd2572afdb215360d0cc816a67a4984f412785e20bdaea6616b
+ * SHA256: f982c72d640b0677d510b73d9b05d377b4615c5ef36a3710c62350b39fb62efe
  * Complete changelog on github: [0.9.1 to 0.9.2](https://github.com/firewalld/firewalld/compare/v0.9.1...v0.9.2)

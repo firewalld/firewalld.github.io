@@ -26,5 +26,5 @@ diegoe (1):
 Source available here:
 
  * Tarball: [firewalld-0.8.5.tar.gz](https://github.com/firewalld/firewalld/releases/download/v0.8.5/firewalld-0.8.5.tar.gz)
- * SHA256: 770e452079aee8bac13a52a7a558ed8fe644a12bce6ddb4039fb4c3082c89159
+ * SHA256: fae8e1b45ff88fb6190fa71e8a8cece210ee2995f1a267504d74bbeddb4f933c
  * Complete changelog on github: [0.8.4 to 0.8.5](https://github.com/firewalld/firewalld/compare/v0.8.4...v0.8.5)
