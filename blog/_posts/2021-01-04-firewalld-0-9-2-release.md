@@ -7,6 +7,10 @@ author: Eric Garver
 category: release
 ---
 
+**Warning**: This release introduced a regression that caused a significant
+increase in memory usage. However, functionality appears okay. If memory usage
+is a concern then this release should be avoided.
+
 A new release of firewalld, version 0.9.2, is available.
 
 This is a bug fix only release.
