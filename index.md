@@ -29,7 +29,7 @@ The separation of the runtime and permanent configuration makes it possible to d
  * Lockdown: Whitelisting of applications that may modify the firewall
  * Automatic loading of Linux kernel modules
  * Integration with Puppet
- * Command line clints for online and offline configuration
+ * Command line clients for online and offline configuration
  * Graphical configuration tool using gtk3
  * Applet using Qt4
 
