@@ -22,4 +22,4 @@ The preferred place to file issues and contribute to the project.
 
 ## matrix
 
-#firewalld:matrix.org
+#firewalld:matrix.org ([Web client](https://matrix.to/#/#firewalld:matrix.org))
