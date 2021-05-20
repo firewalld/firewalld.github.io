@@ -13,3 +13,7 @@ Do you need help solving a firewalld related problem? Do you want to discuss an 
 ## IRC
 
 #firewalld@freenode.org ([Web IRC](https://webchat.freenode.net/?channels=#firewalld))
+
+## matrix
+
+#firewalld:matrix.org
