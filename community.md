@@ -18,7 +18,7 @@ The preferred place to file issues and contribute to the project.
 
 ## IRC
 
-#firewalld@freenode.org ([Web IRC](https://webchat.freenode.net/?channels=#firewalld))
+#firewalld@irc.libera.chat ([Web IRC](https://web.libera.chat/?channels=#firewalld))
 
 ## matrix
 
