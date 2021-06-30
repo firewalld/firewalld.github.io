@@ -40,5 +40,5 @@ Ye Shu (1):
 Source available here:
 
  * Tarball: [firewalld-0.9.4.tar.gz](https://github.com/firewalld/firewalld/releases/download/v0.9.4/firewalld-0.9.4.tar.gz)
- * SHA256: 5998894db976d77996ca0a6b700a2f4125b9f283465fb255da9bddfb1640cb27
+ * SHA256: 52c5e3d5b1e2efc0e86c22b2bc1f7fd80908cc2d8130157dc2a3517a59b0a760
  * Complete changelog on github: [0.9.3 to 0.9.4](https://github.com/firewalld/firewalld/compare/v0.9.3...v0.9.4)
