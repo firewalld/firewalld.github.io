@@ -31,7 +31,7 @@ This is the list of ipset types that can now be managed by firewalld:
  * hash:net,iface
  * hash:mac
 
-To speed up the generation and to simplifay the ipset generation in transactions, new checks have been added to be able to verify ipset entries according to the the ipset type.
+To speed up the generation and to simplifay the ipset generation in transactions, new checks have been added to be able to verify ipset entries according to the ipset type.
 
 Currently there is no way to define how ipsets are used as sources, therefore only a limited list of ipset types can be used as sources in zones at the moment. These are:
 
