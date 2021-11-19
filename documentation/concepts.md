@@ -16,4 +16,4 @@ firewalld does not depend on NetworkManager, but the use is recommended. If Netw
 
 firewalld provides support for [zones](zone/), [services](service/), [IPSets](ipset/) and [ICMP types](icmptype/).
 
-There is also a so called [direct interface](direct-interface.html) for use in daemons and applications and also to be able to add firewall rules, that are not supported yet in firewalld directly.
+There is also a so called [direct interface](direct/) for use in daemons and applications and also to be able to add firewall rules, that are not supported yet in firewalld directly.
