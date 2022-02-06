@@ -31,7 +31,7 @@ After much research and troubleshooting I learned that firewalld was rejecting i
 
 ## How do we fix it?
 
-This tells me that the FedoraServer zone is rejecting my request.  Why?  It turns out that the Firewalld+nftables filter_FORWARD chain prevents non-NATed routing.  However, forwarding is possible using the "Policy Objects" feature that was implemented in firewalld around 2020.
+This tells me that the FedoraServer zone is rejecting my request.  Why?  It turns out that the Firewalld+nftables filter_FORWARD chain prevents non-NATed routing, and firewalld will deny by default.  However, forwarding is possible using the "Policy Objects" feature that was implemented in firewalld around 2020.
 
 You can read more here:
 
