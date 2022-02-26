@@ -68,7 +68,8 @@ Host to VMs
 firewall-cmd --permanent --new-policy hostToLibvirt
 firewall-cmd --permanent --policy hostToLibvirt --add-ingress-zone FedoraServer
 firewall-cmd --permanent --policy hostToLibvirt --add-egress-zone libvirt
-firewall-cmd --permanent --policy hostToLibvirt --set-target ACCEPT
+firewall-cmd --permanent --policy hostToLibvirt --add-service ssh
+firewall-cmd --permanent --policy hostToLibvirt --add-protocol icmp
 ```
 
 Reload the config
