@@ -9,7 +9,7 @@ title: firewalld.dbus
       <pre class="programlisting">/org/fedoraproject/FirewallD1
   Interfaces
     <a class="link" href="#FirewallD1" title="org.fedoraproject.FirewallD1">org.fedoraproject.FirewallD1</a>
-    <a class="link" href="#FirewallD1.direct" title="org.fedoraproject.FirewallD1.direct">org.fedoraproject.FirewallD1.direct</a>
+    <a class="link" href="#FirewallD1.direct" title="org.fedoraproject.FirewallD1.direct">org.fedoraproject.FirewallD1.direct</a> (deprecated)
     <a class="link" href="#FirewallD1.ipset" title="org.fedoraproject.FirewallD1.ipset">org.fedoraproject.FirewallD1.ipset</a>
     <a class="link" href="#FirewallD1.policies" title="org.fedoraproject.FirewallD1.policies">org.fedoraproject.FirewallD1.policies</a>
     <a class="link" href="#FirewallD1.zone" title="org.fedoraproject.FirewallD1.zone">org.fedoraproject.FirewallD1.zone</a>
@@ -19,7 +19,7 @@ title: firewalld.dbus
 /org/fedoraproject/FirewallD1/config
   Interfaces
     <a class="link" href="#FirewallD1.config" title="org.fedoraproject.FirewallD1.config">org.fedoraproject.FirewallD1.config</a>
-    <a class="link" href="#FirewallD1.config.direct" title="org.fedoraproject.FirewallD1.config.direct">org.fedoraproject.FirewallD1.config.direct</a>
+    <a class="link" href="#FirewallD1.config.direct" title="org.fedoraproject.FirewallD1.config.direct">org.fedoraproject.FirewallD1.config.direct</a> (deprecated)
     <a class="link" href="#FirewallD1.config.policies" title="org.fedoraproject.FirewallD1.config.policies">org.fedoraproject.FirewallD1.config.policies</a>
     org.freedesktop.DBus.Introspectable
     org.freedesktop.DBus.Properties
@@ -121,7 +121,7 @@ title: firewalld.dbus
 		i.e. all runtime only changes done until reload are lost with
 		reload if they have not been also in permanent configuration.
               </p></blockquote></dd><dt><a name="FirewallD1.Methods.runtimeToPermanent"></a><span class="term"><code class="methodname">runtimeToPermanent</code>() → Nothing</span></dt><dd><blockquote><p>
-		Make runtime settings permanent. Replaces permanent settings with runtime settings for zones, services, icmptypes, direct and policies (lockdown whitelist).
+		Make runtime settings permanent. Replaces permanent settings with runtime settings for zones, services, icmptypes, direct (deprecated) and policies (lockdown whitelist).
               </p><p>
 		Possible errors: RT_TO_PERM_FAILED
 	      </p></blockquote></dd><dt><a name="FirewallD1.Methods.checkPermanentConfig"></a><span class="term"><code class="methodname">checkPermanentConfig</code>() → Nothing</span></dt><dd><blockquote><p>
@@ -153,7 +153,7 @@ title: firewalld.dbus
               </p></blockquote></dd><dt><a name="FirewallD1.Signals.Reloaded"></a><span class="term"><code class="methodname">Reloaded</code>()</span></dt><dd><blockquote><p>
 		Emitted when firewalld has been reloaded. Also emitted for a complete reload.
               </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect3"><a name="FirewallD1.Properties"></a><h4>Properties</h4><blockquote><dt><a name="FirewallD1.Properties.BRIDGE"></a><span class="term"><em class="parameter"><code>BRIDGE</code></em> - b - (ro)</span></dt><dd><blockquote><p>Indicates whether the firewall has ethernet bridge support.</p></blockquote></dd><dt><a name="FirewallD1.Properties.IPSet"></a><span class="term"><em class="parameter"><code>IPSet</code></em> - b - (ro)</span></dt><dd><blockquote><p>Indicates whether the firewall has IPSet support.</p></blockquote></dd><dt><a name="FirewallD1.Properties.IPSetTypes"></a><span class="term"><em class="parameter"><code>IPSetTypes</code></em> - as - (ro)</span></dt><dd><blockquote><p>The supported IPSet types by ipset and firewalld.</p></blockquote></dd><dt><a name="FirewallD1.Properties.IPv4"></a><span class="term"><em class="parameter"><code>IPv4</code></em> - b - (ro)</span></dt><dd><blockquote><p>Indicates whether the firewall has IPv4 support.</p></blockquote></dd><dt><a name="FirewallD1.Properties.IPv4ICMPTypes"></a><span class="term"><em class="parameter"><code>IPv4ICMPTypes</code></em> - as - (ro)</span></dt><dd><blockquote><p>The list of supported IPv4 ICMP types.</p></blockquote></dd><dt><a name="FirewallD1.Properties.IPv6"></a><span class="term"><em class="parameter"><code>IPv6</code></em> - b - (ro)</span></dt><dd><blockquote><p>Indicates whether the firewall has IPv6 support.</p></blockquote></dd><dt><a name="FirewallD1.Properties.IPv6_rpfilter"></a><span class="term"><em class="parameter"><code>IPv6_rpfilter</code></em> - b - (ro)</span></dt><dd><blockquote><p>Indicates whether the reverse path filter test on a packet for IPv6 is enabled. If a reply to the packet would be sent via the same interface that the packet arrived on, the packet will match and be accepted, otherwise dropped.</p></blockquote></dd><dt><a name="FirewallD1.Properties.IPv6ICMPTypes"></a><span class="term"><em class="parameter"><code>IPv6ICMPTypes</code></em> - as - (ro)</span></dt><dd><blockquote><p>The list of supported IPv6 ICMP types.</p></blockquote></dd><dt><a name="FirewallD1.Properties.nf_conntrack_helper_setting"></a><span class="term"><em class="parameter"><code>nf_conntrach_helper_setting</code></em> - b - (ro)</span></dt><dd><blockquote><p>Deprecated. Always False.</p></blockquote></dd><dt><a name="FirewallD1.Properties.nf_conntrack_helpers"></a><span class="term"><em class="parameter"><code>nf_conntrack_helpers</code></em> - a{sas} - (ro)</span></dt><dd><blockquote><p>Deprecated. Always returns an empty dictionary.</p></blockquote></dd><dt><a name="FirewallD1.Properties.nf_nat_helpers"></a><span class="term"><em class="parameter"><code>nf_nat_helpers</code></em> - a{sas} - (ro)</span></dt><dd><blockquote><p>Deprecated. Always returns an empty dictionary.</p></blockquote></dd><dt><a name="FirewallD1.Properties.interface_version"></a><span class="term"><em class="parameter"><code>interface_version</code></em> - s - (ro)</span></dt><dd><blockquote><p>firewalld D-Bus interface version string.</p></blockquote></dd><dt><a name="FirewallD1.Properties.state"></a><span class="term"><em class="parameter"><code>state</code></em> - s - (ro)</span></dt><dd><blockquote><p>firewalld state. This can be either <code class="literal">INIT</code>, <code class="literal">FAILED</code>, or <code class="literal">RUNNING</code>. In <code class="literal">INIT</code> state, firewalld is starting up and initializing. In <code class="literal">FAILED</code> state, firewalld completely started but experienced a failure.</p></blockquote></dd><dt><a name="FirewallD1.Properties.version"></a><span class="term"><em class="parameter"><code>version</code></em> - s - (ro)</span></dt><dd><blockquote><p>firewalld version string.</p></blockquote></dd></blockquote></div></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="FirewallD1.ipset"></a><h3>org.fedoraproject.FirewallD1.ipset</h3><blockquote>
-	Operations in this interface allows to get, add, remove and query runtime ipset settings.
+	Operations in this interface allows one to get, add, remove and query runtime ipset settings.
 	For permanent configuration see <a class="link" href="#FirewallD1.config.ipset" title="org.fedoraproject.FirewallD1.config.ipset">org.fedoraproject.FirewallD1.config.ipset</a> interface.
       </blockquote><blockquote><div class="refsect3"><a name="FirewallD1.ipset.Methods"></a><h4>Methods</h4><blockquote><dt><a name="FirewallD1.ipset.Methods.addEntry"></a><span class="term"><code class="methodname">addEntry</code>(s: ipset, s: entry) → as</span></dt><dd><blockquote><p>
 		Add a new <em class="replaceable"><code>entry</code></em> to <em class="replaceable"><code>ipset</code></em>.
@@ -179,12 +179,12 @@ title: firewalld.dbus
 	      </p></blockquote></dd><dt><a name="FirewallD1.ipset.Methods.getIPSets"></a><span class="term"><code class="methodname">getIPSets</code>() → as</span></dt><dd><blockquote><p>
 		Return array of ipset names (s) in runtime configuration.
 		For permanent configuration see <a class="link" href="#FirewallD1.config.Methods.listIPSets">org.fedoraproject.FirewallD1.config.Methods.listIPSets</a>.
-              </p></blockquote></dd><dt><a name="FirewallD1.ipset.Methods.queryEntry"></a><span class="term"><code class="methodname">queryService</code>(s: ipset, s: entry) → b</span></dt><dd><blockquote><p>
+              </p></blockquote></dd><dt><a name="FirewallD1.ipset.Methods.queryEntry"></a><span class="term"><code class="methodname">queryEntry</code>(s: ipset, s: entry) → b</span></dt><dd><blockquote><p>
 		Return whether <em class="replaceable"><code>entry</code></em> has been added to <em class="replaceable"><code>ipset</code></em>.
 		For permanent operation see <a class="link" href="#FirewallD1.config.ipset.Methods.queryEntry">org.fedoraproject.FirewallD1.config.ipset.Methods.queryEntry</a>.
               </p><p>
 		Possible errors: INVALID_IPSET
-	      </p></blockquote></dd><dt><a name="FirewallD1.ipset.Methods.queryIPSet"></a><span class="term"><code class="methodname">queryService</code>(s: ipset) → b</span></dt><dd><blockquote><p>
+	      </p></blockquote></dd><dt><a name="FirewallD1.ipset.Methods.queryIPSet"></a><span class="term"><code class="methodname">queryIPSet</code>(s: ipset) → b</span></dt><dd><blockquote><p>
 		Return whether <em class="replaceable"><code>ipset</code></em> is defined in runtime configuration.
               </p></blockquote></dd><dt><a name="FirewallD1.ipset.Methods.removeEntry"></a><span class="term"><code class="methodname">removeEntry</code>(s: ipset, s: entry) → as</span></dt><dd><blockquote><p>
 		Removes an <em class="replaceable"><code>entry</code></em> from <em class="replaceable"><code>ipset</code></em>.
@@ -199,7 +199,11 @@ title: firewalld.dbus
 		Emitted when <em class="replaceable"><code>entry</code></em> has been added to <em class="replaceable"><code>ipset</code></em>.
               </p></blockquote></dd><dt><a name="FirewallD1.ipset.Signals.EntryRemoved"></a><span class="term">EntryRemoved(s: ipset, s: entry)</span></dt><dd><blockquote><p>
 		Emitted when <em class="replaceable"><code>entry</code></em> has been removed from <em class="replaceable"><code>ipset</code></em>.
-              </p></blockquote></dd></blockquote></div></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="FirewallD1.direct"></a><h3>org.fedoraproject.FirewallD1.direct</h3><blockquote>
+              </p></blockquote></dd></blockquote></div></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="FirewallD1.direct"></a><h3>org.fedoraproject.FirewallD1.direct</h3><blockquote><div class="refsect3"><a name="idm93821919084608"></a><h4>DEPRECATED</h4><blockquote>
+          The direct interface has been deprecated. It will be removed in a future
+          release. It is superseded by policies, see
+          <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>.
+        </blockquote></div></blockquote><blockquote>
 	This interface enables more direct access to the firewall.
 	It enables runtime manipulation with chains and rules.
 	For permanent configuration see <a class="link" href="#FirewallD1.config.direct" title="org.fedoraproject.FirewallD1.config.direct">org.fedoraproject.FirewallD1.config.direct</a> interface.
@@ -439,7 +443,7 @@ title: firewalld.dbus
               </p></blockquote></dd><dt><a name="FirewallD1.policies.Signals.LockdownWhitelistUserRemoved"></a><span class="term">LockdownWhitelistUserRemoved(s: user)</span></dt><dd><blockquote><p>
 		Emitted when <em class="replaceable"><code>user</code></em> has been removed from whitelist.
               </p></blockquote></dd></blockquote></div></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="FirewallD1.zone"></a><h3>org.fedoraproject.FirewallD1.zone</h3><blockquote>
-	Operations in this interface allows to get, add, remove and query runtime zone's settings.
+	Operations in this interface allows one to get, add, remove and query runtime zone's settings.
 	For permanent settings see <a class="link" href="#FirewallD1.config.zone" title="org.fedoraproject.FirewallD1.config.zone">org.fedoraproject.FirewallD1.config.zone</a> interface.
       </blockquote><blockquote><div class="refsect3"><a name="FirewallD1.zone.Methods"></a><h4>Methods</h4><blockquote><dt><a name="FirewallD1.zone.Methods.getZoneSettings2"></a><span class="term"><code class="methodname">getZoneSettings2</code>(s: <em class="parameter"><code>zone</code></em>) → a{sv}</span></dt><dd><blockquote><p>
                 Return runtime settings of given <em class="replaceable"><code>zone</code></em>.
@@ -875,7 +879,7 @@ title: firewalld.dbus
               </p></blockquote></dd><dt><a name="FirewallD1.zone.Signals.ZoneUpdated2"></a><span class="term">ZoneUpdated2(s: zone, a{sv}: settings)</span></dt><dd><blockquote><p>
                 Emitted when a zone's settings are updated via <a class="link" href="#FirewallD1.zone.Methods.setZoneSettings2">org.fedoraproject.FirewallD1.zone.Methods.setZoneSettings2</a>
               </p></blockquote></dd></blockquote></div></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="FirewallD1.policy"></a><h3>org.fedoraproject.FirewallD1.policy</h3><blockquote>
-        Operations in this interface allows to get, add, remove and query runtime policy settings.
+        Operations in this interface allows one to get, add, remove and query runtime policy settings.
         For permanent settings see <a class="link" href="#FirewallD1.config.policy" title="org.fedoraproject.FirewallD1.config.policy">org.fedoraproject.FirewallD1.config.policy</a> interface.
       </blockquote><blockquote><div class="refsect3"><a name="FirewallD1.policy.Methods"></a><h4>Methods</h4><blockquote><dt><a name="FirewallD1.policy.Methods.getActivePolicies"></a><span class="term"><code class="methodname">getActivePolicies</code>() → a{sa{sas}}</span></dt><dd><blockquote><p>
                 Return dictionary of currently active policies altogether with ingress zones and egress zones used in these policies.
@@ -903,7 +907,7 @@ title: firewalld.dbus
               </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect3"><a name="FirewallD1.policy.Signals"></a><h4>Signals</h4><blockquote><dt><a name="FirewallD1.policy.Signals.PolicyUpdated"></a><span class="term">ForwardPortAdded(s: policy, a{sv}: settings)</span></dt><dd><blockquote><p>
                 Emitted when a policy's settings are updated via <a class="link" href="#FirewallD1.policy.Methods.setPolicySettings">org.fedoraproject.FirewallD1.policy.Methods.setPolicySettings</a>
               </p></blockquote></dd></blockquote></div></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="FirewallD1.config"></a><h3>org.fedoraproject.FirewallD1.config</h3><blockquote>
-	Allows to permanently add, remove and query zones, services and icmp types.
+	Allows one to permanently add, remove and query zones, services and icmp types.
       </blockquote><blockquote><div class="refsect3"><a name="FirewallD1.config.Methods"></a><h4>Methods</h4><blockquote><dt><a name="FirewallD1.config.Methods.addIPSet"></a><span class="term"><code class="methodname">addIPSet</code>(s: ipset, (ssssa{ss}as): settings) → o</span></dt><dd><blockquote><p>
 		Add <em class="replaceable"><code>ipset</code></em> with given <em class="replaceable"><code>settings</code></em> into permanent configuration.
 		Settings are in format: <em class="parameter"><code>version</code></em>, <em class="parameter"><code>name</code></em>, <em class="parameter"><code>description</code></em>, <em class="parameter"><code>type</code></em>, dictionary of <em class="parameter"><code>options</code></em> and array of <em class="parameter"><code>entries</code></em>.
@@ -1017,19 +1021,12 @@ title: firewalld.dbus
               </p></blockquote></dd><dt><a name="FirewallD1.config.Signals.ZoneAdded"></a><span class="term">ZoneAdded(s: zone)</span></dt><dd><blockquote><p>
 		Emitted when <em class="replaceable"><code>zone</code></em> has been added.
               </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect3"><a name="FirewallD1.config.Properties"></a><h4>Properties</h4><blockquote><dt><a name="FirewallD1.config.Properties.AllowZoneDrifting"></a><span class="term"><em class="parameter"><code>AllowZoneDrifting</code></em> - s - (rw)</span></dt><dd><blockquote><p>
-                Older versions of firewalld had undocumented behavior known
-                as "zone drifting". This allowed packets to ingress multiple
-                zones - this is a violation of zone based firewalls. However,
-                some users rely on this behavior to have a "catch-all" zone,
-                e.g. the default zone. You can enable this if you desire such
-                behavior. It's disabled by default for security reasons.
-                Note: If "yes" packets will only drift from source based zones
-                to interface based zones (including the default zone). Packets
-                never drift from interface based zones to other interfaces
-                based zones (including the default zone).
-                Valid values; "yes", "no". Defaults to "no".
+                Deprecated. Getting this value always returns "no". Setting this value is ignored.
             </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.AutomaticHelpers"></a><span class="term">AutomaticHelpers - s - (rw)</span></dt><dd><blockquote><p>
                 Deprecated. Getting this value always returns "no". Setting this value is ignored.
+              </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.CleanupModulesOnExit"></a><span class="term">CleanupModulesOnExit - s - (rw)</span></dt><dd><blockquote><p>
+                Setting this option to yes or true unloads all firewall-related
+                kernel modules when firewalld is stopped.
               </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.CleanupOnExit"></a><span class="term">CleanupOnExit - s - (rw)</span></dt><dd><blockquote><p>
 		If firewalld stops, it cleans up all firewall rules. Setting this option to no or false leaves the current firewall rules untouched.
               </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.DefaultZone"></a><span class="term">DefaultZone - s - (ro)</span></dt><dd><blockquote><p>
@@ -1038,7 +1035,10 @@ title: firewalld.dbus
                 Selects the firewalld backend for all rules except the direct
                 interface. Valid options are; nftables, iptables. Default in
                 nftables.
-              </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.FlushAllOnReload"></a><span class="term">FirewallBackend - s - (rw)</span></dt><dd><blockquote><p>
+              </p><p>
+                <span class="bold"><strong>Note</strong></span>: The iptables backend
+                is deprecated. It will be removed in a future release.
+              </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.FlushAllOnReload"></a><span class="term">FlushAllOnReload - s - (rw)</span></dt><dd><blockquote><p>
                 Flush all runtime rules on a reload. Valid options are; yes, no.
               </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.IPv6_rpfilter"></a><span class="term"><em class="parameter"><code>IPv6_rpfilter</code></em> - s - (rw)</span></dt><dd><blockquote><p>Indicates whether the reverse path filter test on a packet for IPv6 is enabled. If a reply to the packet would be sent via the same interface that the packet arrived on, the packet will match and be accepted, otherwise dropped.</p></blockquote></dd><dt><a name="FirewallD1.config.Properties.IndividualCalls"></a><span class="term"><em class="parameter"><code>IndividualCalls</code></em> - s - (ro)</span></dt><dd><blockquote><p>Indicates whether individual calls combined -restore calls are used. If enabled, this increases the time that is needed to apply changes and to start the daemon, but is good for debugging.
 	    </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.Lockdown"></a><span class="term">Lockdown - s - (rw)</span></dt><dd><blockquote><p>
@@ -1048,11 +1048,15 @@ title: firewalld.dbus
 		Possible values are: <code class="literal">all</code>, <code class="literal">unicast</code>, <code class="literal">broadcast</code>, <code class="literal">multicast</code> and <code class="literal">off</code>.
               </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.MinimalMark"></a><span class="term">MinimalMark - i - (rw)</span></dt><dd><blockquote><p>
         Deprecated. This option is ignored and no longer used. Marks are no longer used internally.
-              </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.RFC3964_IPv4"></a><span class="term">FirewallBackend - s - (rw)</span></dt><dd><blockquote><p>
+              </p></blockquote></dd><dt><a name="FirewallD1.config.Properties.RFC3964_IPv4"></a><span class="term">RFC3964_IPv4 - s - (rw)</span></dt><dd><blockquote><p>
                 As per RFC 3964, filter IPv6 traffic with 6to4 destination
                 addresses that correspond to IPv4 addresses that should not be
                 routed over the public internet. Valid options are; yes, no.
-              </p></blockquote></dd></blockquote></div></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="FirewallD1.config.direct"></a><h3>org.fedoraproject.FirewallD1.config.direct</h3><blockquote>
+              </p></blockquote></dd></blockquote></div></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="FirewallD1.config.direct"></a><h3>org.fedoraproject.FirewallD1.config.direct</h3><blockquote><div class="refsect3"><a name="idm93821918062720"></a><h4>DEPRECATED</h4><blockquote>
+          The direct interface has been deprecated. It will be removed in a future
+          release. It is superseded by policies, see
+          <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>.
+        </blockquote></div></blockquote><blockquote>
 	Interface for permanent direct configuration, see also <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>.
 	For runtime direct configuration see <a class="link" href="#FirewallD1.direct" title="org.fedoraproject.FirewallD1.direct">org.fedoraproject.FirewallD1.direct</a> interface.
       </blockquote><blockquote><div class="refsect3"><a name="FirewallD1.config.direct.Methods"></a><h4>Methods</h4><blockquote><dt><a name="FirewallD1.config.direct.Methods.addChain"></a><span class="term"><code class="methodname">addChain</code>(s: ipv, s: table, s: chain) → Nothing</span></dt><dd><blockquote><p>
@@ -2065,7 +2069,7 @@ title: firewalld.dbus
 		Name of icmp type.
               </p></blockquote></dd><dt><a name="FirewallD1.config.icmptype.Properties.path"></a><span class="term">path - s - (ro)</span></dt><dd><blockquote><p>
 		Path to directory where the icmp type configuration is stored. Should be either /usr/lib/firewalld/icmptypes or /etc/firewalld/icmptypes.
-              </p></blockquote></dd></blockquote></div></blockquote></div></blockquote></div><div class="refsect1"><a name="idm139746279704544"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm139746279686480"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
+              </p></blockquote></dd></blockquote></div></blockquote></div></blockquote></div><div class="refsect1"><a name="idm93821916518464"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm93821916498704"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://firewalld.org" target="_top">http://firewalld.org</a>
 	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
