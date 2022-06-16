@@ -12,9 +12,9 @@ A new release of firewalld, version 0.9.0, is available.
 This is a feature release. It also includes all bug fixes since v0.8.0.
 
 New features:
-- [AllowZoneDrifting]({% post_url 2020-01-31-allowzonedrifting %})
-- [Intra Zone Forwarding]({% post_url 2020-04-29-intra-zone-forwarding %})
-- [Policy Objects]({% post_url 2020-09-02-policy-objects-introduction %})
+- [AllowZoneDrifting]({% post_url /blog/2020-01-31-allowzonedrifting %})
+- [Intra Zone Forwarding]({% post_url /blog/2020-04-29-intra-zone-forwarding %})
+- [Policy Objects]({% post_url /blog/2020-09-02-policy-objects-introduction %})
 
 Statistics since v0.8.0:
 - 178 commits
