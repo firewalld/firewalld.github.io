@@ -24,7 +24,7 @@ kramdown:
 
 destination: _site
 
-gems:
+plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
