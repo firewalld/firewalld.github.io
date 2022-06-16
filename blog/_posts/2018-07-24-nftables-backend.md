@@ -10,7 +10,7 @@ category: nftables
 Introduction
 ------------
 As noted in the [v0.6.0 release announcement]({% post_url
-2018-07-12-firewalld-0-6-0-release %}), firewalld recently gained support for
+/blog/2018-07-12-firewalld-0-6-0-release %}), firewalld recently gained support for
 using nftables as a firewall backend. This post will highlight why that's a
 good thing, how it affects firewalld, and how to start using it. The content
 here may be interesting to intermediate to advanced users of firewalld or
