@@ -4,7 +4,7 @@ title: firewalld.conf
 ---
 
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.conf</title><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.conf"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.conf — firewalld configuration file</blockquote><h2>Synopsis</h2><blockquote><p>
-      </p><pre class="programlisting"><code class="filename">/usr/etc/firewalld/firewalld.conf</code></pre><p>
+      </p><pre class="programlisting"><code class="filename">/etc/firewalld/firewalld.conf</code></pre><p>
     </p></blockquote><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote>
       firewalld.conf is loaded by firewalld during the initialization process. The file contains the basic configuration options for firewalld.
     </blockquote></div><div class="refsect1"><a name="options"></a><h2>Options</h2><blockquote>
@@ -13,7 +13,11 @@ title: firewalld.conf
 	    This sets the default zone for connections or interfaces if the zone is not selected or specified by NetworkManager, initscripts or command line tool. The default zone is public.
 	  </p></blockquote></dd><dt><span class="term"><code class="option">MinimalMark</code></span></dt><dd><blockquote><p>
         Deprecated. This option is ignored and no longer used. Marks are no longer used internally.
-	  </p></blockquote></dd><dt><span class="term"><code class="option">CleanupOnExit</code></span></dt><dd><blockquote><p>
+	  </p></blockquote></dd><dt><span class="term"><code class="option">CleanupModulesOnExit</code></span></dt><dd><blockquote><p>
+            Setting this option to yes or true unloads all firewall-related
+            kernel modules when firewalld is stopped. The default value is no
+            or false.
+          </p></blockquote></dd><dt><span class="term"><code class="option">CleanupOnExit</code></span></dt><dd><blockquote><p>
             If firewalld stops, it cleans up all firewall rules. Setting this option to no or false leaves the current firewall rules untouched. The default value is yes or true.
 	  </p></blockquote></dd><dt><span class="term"><code class="option">Lockdown</code></span></dt><dd><blockquote><p>
 	    If this option is enabled, firewall changes with the D-Bus interface will be limited to applications that are listed in the lockdown whitelist (see <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>). The default value is no or false.
@@ -21,7 +25,15 @@ title: firewalld.conf
 	    If this option is enabled (it is by default), reverse path filter test on a packet for IPv6 is performed.
 	    If a reply to the packet would be sent via the same interface that the packet arrived on, the packet will match and be accepted, otherwise dropped.
             For IPv4 the rp_filter is controlled using sysctl.
-	  </p></blockquote></dd><dt><span class="term"><code class="option">IndividualCalls</code></span></dt><dd><blockquote><p>
+	  </p><p>
+        <span class="bold"><strong>Note</strong></span>: This feature has a performance
+        impact. In most cases the impact is not enough to cause a noticeable
+        difference. It requires route lookups and its execution occurs before
+        the established connections fast path. As such it can have a
+        significant performance impact if there is a lot of traffic. It's
+        enabled by default for security, but can be disabled if performance is
+        a concern.
+      </p></blockquote></dd><dt><span class="term"><code class="option">IndividualCalls</code></span></dt><dd><blockquote><p>
 	    If this option is disabled (it is by default), combined -restore calls are used and not individual calls to apply changes to the firewall. The use of individiual calls increases the time that is needed to apply changes and to start the daemon, but is good for debugging as error messages are more specific.
 	  </p></blockquote></dd><dt><span class="term"><code class="option">LogDenied</code></span></dt><dd><blockquote><p>
 	    Add logging rules right before reject and drop rules in the INPUT, FORWARD and OUTPUT chains for the default rules and also final reject and drop rules in zones for the configured link-layer packet type. The possible values are: <em class="replaceable"><code>all</code></em>, <em class="replaceable"><code>unicast</code></em>, <em class="replaceable"><code>broadcast</code></em>, <em class="replaceable"><code>multicast</code></em> and <em class="replaceable"><code>off</code></em>. The default setting is <em class="replaceable"><code>off</code></em>, which disables the logging.
@@ -34,6 +46,9 @@ title: firewalld.conf
                 firewalld primitives. The only exception is direct and
                 passthrough rules which always use the traditional iptables,
                 ip6tables, and ebtables backends.
+                </p><p>
+                  <span class="bold"><strong>Note</strong></span>: The iptables backend
+                  is deprecated. It will be removed in a future release.
                 </p></blockquote></dd><dt><span class="term"><code class="option">FlushAllOnReload</code></span></dt><dd><blockquote><p>
                 Flush all runtime rules on a reload. In previous releases some
                 runtime configuration was retained during a reload, namely;
@@ -46,18 +61,8 @@ title: firewalld.conf
                 be routed over the public internet.
                 Defaults to "yes".
                 </p></blockquote></dd><dt><span class="term"><code class="option">AllowZoneDrifting</code></span></dt><dd><blockquote><p>
-                Older versions of firewalld had undocumented behavior known
-                as "zone drifting". This allowed packets to ingress multiple
-                zones - this is a violation of zone based firewalls. However,
-                some users rely on this behavior to have a "catch-all" zone,
-                e.g. the default zone. You can enable this if you desire such
-                behavior. It's disabled by default for security reasons.
-                Note: If "yes" packets will only drift from source based zones
-                to interface based zones (including the default zone). Packets
-                never drift from interface based zones to other interfaces
-                based zones (including the default zone).
-                Valid values; "yes", "no". Defaults to "no".
-                </p></blockquote></dd></blockquote></div><div class="refsect1"><a name="idm139658823914496"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm139658818802592"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
+                  Deprecated. This option is ignored and no longer used.
+                </p></blockquote></dd></blockquote></div><div class="refsect1"><a name="idm93822767052064"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm93822762124304"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://firewalld.org" target="_top">http://firewalld.org</a>
 	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
