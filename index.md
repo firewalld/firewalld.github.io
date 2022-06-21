@@ -31,7 +31,7 @@ The separation of the runtime and permanent configuration makes it possible to d
  * Integration with Puppet
  * Command line clients for online and offline configuration
  * Graphical configuration tool using gtk3
- * Applet using Qt4
+ * Applet using Qt5
 
 ## Who is using it?
 

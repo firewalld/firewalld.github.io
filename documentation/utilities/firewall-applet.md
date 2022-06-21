@@ -7,7 +7,7 @@ firewall-applet is a tray applet for firewalld. It provides information about th
 
 There is a left and also right mouse button menu and also a tooltip with the active settings when moving the mouse over the icon.
 
-The applet has been ported over to Qt4 as the StatusIcon support in Gtk3 has been deprecated.
+The applet has been ported over to Qt5 as the StatusIcon support in Gtk3 has been deprecated.
 
 ## Limitations with Gnome3
 
