@@ -151,7 +151,10 @@ The general rule structure:
         <forward-port port="portid[-portid]" protocol="tcp|udp" [to-port="portid[-portid]"] [to-addr="address"]/> |
         <source-port port="portid[-portid]" protocol="tcp|udp"/> |
       ]
-      [ <log [prefix="prefixtext"] [level="emerg|alert|crit|err|warn|notice|info|debug"]/> [<limit value="rate/duration"/>] </log> ]
+      [ 
+        <log [prefix="prefixtext"] [level="emerg|alert|crit|err|warn|notice|info|debug"]/> [<limit value="rate/duration"/>] </log> |
+        <nflog [prefix="prefixtext"] [group="group id"] [queue-size="threshold"]/> [<limit value="rate/duration"/>] </nflog>
+      ]
       [ <audit> [<limit value="rate/duration"/>] </audit> ]
       [
         <accept> [<limit value="rate/duration"/>] </accept> |
@@ -165,7 +168,10 @@ Rule structure for source black or white listing:
 
     <rule [family="ipv4|ipv6"]>
       <source address="address[/mask]" [invert="True"]/>
-      [ <log [prefix="prefixtext"] [level="emerg|alert|crit|err|warn|notice|info|debug"]/> [<limit value="rate/duration"/>] </log> ]
+      [ 
+        <log [prefix="prefixtext"] [level="emerg|alert|crit|err|warn|notice|info|debug"]/> [<limit value="rate/duration"/>] </log> |
+        <nflog [prefix="prefixtext"] [group="group id"] [queue-size="threshold"]/> [<limit value="rate/duration"/>] </nflog>
+      ]
       [ <audit> [<limit value="rate/duration"/>] </audit> ]
       <accept> [<limit value="rate/duration"/>] </accept> |
       <reject [type="rejecttype"]> [<limit value="rate/duration"/>] </reject> |
