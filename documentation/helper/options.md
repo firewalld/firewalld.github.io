@@ -39,4 +39,4 @@ The port string can be a single port number or a port range portid-portid or als
 
     protocol="string"
 
-The protocol value can either be tcp or udp.
+The protocol value can either be tcp, udp, sctp, or dccp.
