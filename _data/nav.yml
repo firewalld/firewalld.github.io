@@ -21,6 +21,8 @@
   path: "documentation/"
 
   subitems:
+  - title: "Concepts"
+    path: "concepts.html"
   - title: "Architecture"
     path: "architecture.html"
   - title: "Configuration"
