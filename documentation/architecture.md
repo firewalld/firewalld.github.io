@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Concepts"
+title: "Architecture"
 --- 
 
 firewalld has a two layer design: The core layer and the D-Bus layer on top. The core layer is responsible for handling the configuration and the back ends like iptables, ip6tables, ebtables, ipset and the module loader.
@@ -13,7 +13,3 @@ The firewalld D-Bus interface is the primary way to alter and create the firewal
 More information on the firewalld D-Bus API is available [here](man-pages/firewalld.dbus.html).
 
 firewalld does not depend on NetworkManager, but the use is recommended. If NetworkManager is not used, there are some limitations: firewalld will not get notified about network device renames. If firewalld gets started after the network is already up, the connections and manually created interfaces are not bound to a zone. You can add them to a zone with `firewall-cmd [--permanent] --zone=zone --add-interface=interface`, but make sure that if there's a `/etc/sysconfig/network-scripts/ifcfg-<interface>`, the zone specified there with `ZONE=zone` is the same (or both are empty/missing for default zone), otherwise the behaviour would be undefined.
-
-firewalld provides support for [zones](zone/), [services](service/), [IPSets](ipset/) and [ICMP types](icmptype/).
-
-There is also a so called [direct interface](direct-interface.html) for use in daemons and applications and also to be able to add firewall rules, that are not supported yet in firewalld directly.
