@@ -16,3 +16,11 @@ layout: default
   </article>
 
 </div>
+
+<!-- For rendering mermaid diagrams. -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({ startOnLoad: true,
+                       theme: 'base'});
+  window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+</script>
