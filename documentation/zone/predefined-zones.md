@@ -19,7 +19,7 @@ For use in public areas. You do not trust the other computers on networks to not
 
 ## external
 
-For use on external networks with masquerading enabled especially for routers. You do not trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.
+For use on external networks with IPv4 masquerading enabled especially for routers. You do not trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.
 
 ## dmz
 
