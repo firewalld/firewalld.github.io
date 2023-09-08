@@ -20,10 +20,11 @@ until now.
 
 ## What does it look like?
 
-This feature doesn't bring many CLI additions. Only a couple knobs to enable or
-disable it for the zone.
+This feature does not bring many CLI additions; only a couple knobs to
+enable or disable it for the zone.
 
-Lets say we have our `home` zone with two interfaces: dummy1, and dummy2
+Let's say we have our `home` zone with two interfaces: dummy1, and
+dummy2
 
 ```
 # firewall-cmd --zone=home --add-interface=dummy1 --add-interface=dummy2
