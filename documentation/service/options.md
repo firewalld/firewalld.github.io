@@ -33,7 +33,7 @@ The port string can be a single port number or a port range portid-portid or als
 
     protocol="string"
 
-The protocol value can either be tcp or udp. 
+The protocol value can either be tcp, udp, sctp, or dccp.
 
 For compatibility with older firewalld versions, it is possible to add protocols with the port option where the port is empty. With the addition of native protocol support in the service, this it not needed anymore. These entries will automatically be converted to protocols. With the next modification of the service file, the entries will be listed as protocols. 
 
@@ -55,7 +55,7 @@ The port string can be a single port number or a port range portid-portid.
 
     protocol="string"
 
-The protocol value can either be tcp or udp. 
+The protocol value can either be tcp, udp, sctp, or dccp.
 
 ## module
 
