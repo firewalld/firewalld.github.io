@@ -125,7 +125,7 @@ We can also use a policy to forward ports from the host to the container.
 ```
 # firewall-cmd --permanent --new-policy fwdPortsPodman
 # firewall-cmd --permanent --policy fwdPortsPodman --add-ingress-zone ANY
-# firewall-cmd --permanent --policy fwdPortsPodman --add-egress-zone ANY
+# firewall-cmd --permanent --policy fwdPortsPodman --add-egress-zone HOST
 ```
 
 Now add the forward ports.
