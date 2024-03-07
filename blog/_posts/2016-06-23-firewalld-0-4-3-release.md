@@ -13,7 +13,7 @@ The main changes are
 
 **Add and remove several ipset entries with firewall-config**
 
-The graphical configuration tool firewall-config now also has the ability to add and remove ipset entries loaded from a file. This is the same as the the command line options --add-entries-from-file and --remove-entries-from-file. This is possible in the runtime and also to the permanent environment.
+The graphical configuration tool firewall-config now also has the ability to add and remove ipset entries loaded from a file. This is the same as the command line options --add-entries-from-file and --remove-entries-from-file. This is possible in the runtime and also to the permanent environment.
 
 **Create backup on removal of zones, services, ipsets and icmptypes**
 
