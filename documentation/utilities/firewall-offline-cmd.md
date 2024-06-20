@@ -7,7 +7,7 @@ This is the command line tool to be able to configure firewalld if it is not run
 
 You need to be root to use firewall-offline-cmd.
 
-firewall-offline-cmd is only able to provide information about the permanent convironment and also to alter it. It uses the the firewalld core with the file IO handlers. firewall-offline-cmd can be used while firewalld is running, but it is not recommended. Changes made with firewall-offline-cmd are visible in firewall after about five seconds.
+firewall-offline-cmd is only able to provide information about the permanent convironment and also to alter it. It uses the firewalld core with the file IO handlers. firewall-offline-cmd can be used while firewalld is running, but it is not recommended. Changes made with firewall-offline-cmd are visible in firewall after about five seconds.
 
 ## Examples of the firewall-offline-cmd usage
 
