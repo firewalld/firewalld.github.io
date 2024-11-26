@@ -11,7 +11,7 @@ A service is a combination of port and/or protocol entries. Optionally netfilter
 
 ### Ports, source ports and protocols
 
-Definition of tcp or udp ports, where ports can be a single port or a port range.
+Definition of tcp, udp, sctp, or dccp ports, where ports can be a single port or a port range.
 
 ### ICMP blocks
 
