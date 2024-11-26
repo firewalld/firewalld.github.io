@@ -74,7 +74,7 @@ direction of traffic.
 
 This diagram shows `policyA` that applies to traffic flowing from the `public`
 zone to the `libvirt` zone. `policyB` applies to traffic flowing from the
-`internal` zone to the `public` zone.
+`libvirt` zone to the `public` zone.
 
 The configuration changes necessary to result in the diagram above are:
 
@@ -96,7 +96,7 @@ Policies must be created by the user.
 ```
 
 ### Ingress and Egress Zones
-As shown in the diagram above policies exists between zones. This means a set
+As shown in the diagram above policies exist between zones. This means a set
 of ingress and egress zones must be defined before the policy becomes active.
 In this context an ingress zone is the zone from which the packet originated.
 The egress zone is the zone to which the packet is destined.
@@ -159,8 +159,8 @@ originating from or destined to the host running firewalld. `ANY` is used to
 apply a policy to all current and future zones. `ANY` is effectively a wildcard
 for all zones.
 
-This example, creates a policy that applies to traffic originating from the
-host running firewalld and is destined to any zone. Or said differently
+This example creates a policy that applies to traffic originating from the
+host running firewalld and destined to any zone. Or said differently
 traffic in the `OUTPUT` chain.
 
 ```
