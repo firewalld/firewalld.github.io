@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Policy Set: Gateway"
+title: "Policy Sets: A Home Router in Four commands"
 section: Blog
 date: 2025-10-07T17:00:00
 author: Eric Garver
@@ -48,6 +48,9 @@ reload the firewall.
 
 That's it. Congratulations! You now have an easy to use line rate home
 router!
+
+Note: A full gateway would require local DHCP and DNS servers which
+could be provided by `dnsmasq`. This is out of scope for this blog post.
 
 ### Adding a Forward Port
 
