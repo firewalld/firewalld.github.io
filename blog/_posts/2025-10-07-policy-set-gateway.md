@@ -76,4 +76,4 @@ set man page is `man firewalld.policy-set-gateway`.
 
 ## Availability
 
-Policy sets are available in firewalld v2.3.0 and later.
+Policy sets are available in firewalld v2.4.0 and later.
