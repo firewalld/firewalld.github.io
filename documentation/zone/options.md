@@ -65,9 +65,9 @@ Is an optional empty-element tag and can be used several times to have more than
 
 The port can either be a single port number portid or a port range portid-portid.
 
-    protocol="tcp|udp"
+    protocol="tcp|udp|sctp|dccp"
 
-The protocol can either be tcp or udp.
+The protocol can either be tcp, udp, sctp, or dccp.
 
 ## protocol
 
@@ -105,9 +105,9 @@ The local port and protocol to be forwarded.
 
 The port can either be a single port number portid or a port range portid-portid.
 
-    protocol="tcp|udp"
+    protocol="tcp|udp|sctp|dccp"
 
-The protocol can either be tcp or udp.
+The protocol can either be tcp, udp, sctp, or dccp.
 
 ### Optional attributes:
 
@@ -129,9 +129,9 @@ Is an optional empty-element tag and can be used several times to have more than
 
 The port can either be a single port number portid or a port range portid-portid.
 
-    protocol="tcp|udp"
+    protocol="tcp|udp|sctp|dccp"
 
-The protocol can either be tcp or udp.
+The protocol can either be tcp, udp, sctp, or dccp.
 
 ## rule
 
@@ -144,12 +144,12 @@ The general rule structure:
       [ <destination address="address[/mask]" [invert="True"]/> ]
       [
         <service name="string"/> |
-        <port port="portid[-portid]" protocol="tcp|udp"/> |
+        <port port="portid[-portid]" protocol="tcp|udp|sctp|dccp"/> |
         <protocol value="protocol"/> |
         <icmp-block name="icmptype"/> |
         <masquerade/> |
-        <forward-port port="portid[-portid]" protocol="tcp|udp" [to-port="portid[-portid]"] [to-addr="address"]/> |
-        <source-port port="portid[-portid]" protocol="tcp|udp"/> |
+        <forward-port port="portid[-portid]" protocol="tcp|udp|sctp|dccp" [to-port="portid[-portid]"] [to-addr="address"]/> |
+        <source-port port="portid[-portid]" protocol="tcp|udp|sctp|dccp"/> |
       ]
       [ 
         <log [prefix="prefixtext"] [level="emerg|alert|crit|err|warn|notice|info|debug"]/> [<limit value="rate/duration"/>] </log> |
