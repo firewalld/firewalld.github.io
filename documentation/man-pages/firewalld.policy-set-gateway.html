@@ -1,0 +1,71 @@
+---
+layout: page
+title: firewalld.policy-set-gateway
+---
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.policy-set-gateway</title><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.policy-set-gateway"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.policy-set-gateway — Firewalld Policy Set Gateway</blockquote><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote><div class="refsect2"><a name="set-gateway"></a><h3>Policy Set: Gateway</h3><blockquote>
+                The Gateway policy set is a useful starting point for a home
+                router. It enables masquerading, conntrack helpers, and
+                forwarding between zones.
+            </blockquote><blockquote>
+                Zones used by this set are logically grouped. These groups name
+                are used by the predefined policies.
+            </blockquote><pre class="programlisting">+-----------+                  +-----------+
+            |    LAN    |                  |   WORLD   |
+            |-----------|                  |-----------|
+            | zones:    |                  | zones:    |
+            |  internal |                  |  external |
+            |  home     |                  |  public   |
+            |  trusted  |                  |           |
+            +-----------+                  +-----------+
+                  |                              |
+                  |                              |
+                  |         +-----------+        |
+                  +---------|   HOST    |--------+
+                            |-----------|
+                            | zones:    |
+                  +---------|  HOST     |--------+
+                  |         +-----------+        |
+                  |                              |
+                  |                              |
+            +-----------+                  +-----------+
+            |   WORK    |                  |    DMZ    |
+            |-----------|                  |-----------|
+            | zones:    |                  | zones:    |
+            |  work     |                  |  dmz      |
+            +-----------+                  +-----------+</pre></div></blockquote><blockquote><div class="refsect2"><a name="policies-in-set"></a><h3>Policies in the Gateway set</h3><blockquote><dt><span class="term">gateway-dmz-to-HOST</span></dt><dd><blockquote><p>
+                        Enables services commonly needed for a gateway,
+                        e.g. dns, dhcp.
+                    </p><p>
+                        File location: <code class="filename">/usr/lib/firewalld/policies/gateway-dmz-to-HOST.xml</code>
+                    </p></blockquote></dd><dt><span class="term">gateway-lan-to-work</span></dt><dd><blockquote><p>
+                        Allows all traffic from LAN to work. Enables
+                        masquerading and common connection tracking helpers.
+                    </p><p>
+                        File location: <code class="filename">/usr/lib/firewalld/policies/gateway-lan-to-work.xml</code>
+                    </p></blockquote></dd><dt><span class="term">gateway-lan-to-world</span></dt><dd><blockquote><p>
+                        Allows all traffic from LAN to world. If an
+                        interface is added to the "external" zone then the
+                        traffic will be masqueraded. Also enables connection
+                        tracking helpers for common services, e.g. ftp.
+                    </p><p>
+                        File location: <code class="filename">/usr/lib/firewalld/policies/gateway-lan-to-world.xml</code>
+                    </p></blockquote></dd><dt><span class="term">gateway-lan-to-HOST</span></dt><dd><blockquote><p>
+                        Enables services commonly needed for a gateway,
+                        e.g. dns, dhcp.
+                    </p><p>
+                        File location: <code class="filename">/usr/lib/firewalld/policies/gateway-lan-to-HOST.xml</code>
+                    </p></blockquote></dd><dt><span class="term">gateway-world-to-HOST</span></dt><dd><blockquote><p>
+                        May be used to expose internal/dmz services to the world
+                        by adding a forward port to this policy.
+                    </p><p>
+                        Here is an example for adding a forward port. It forward
+                        port 8080 to 10.1.1.42:80.
+                        </p><pre class="programlisting"># firewall-cmd --permanent --policy gateway-world-to-HOST \
+               --add-forward-port=port=8080:proto=tcp:toport=80:toaddr=10.1.1.42
+# firewall-cmd --reload</pre><p>
+                    </p><p>
+                        File location: <code class="filename">/usr/lib/firewalld/policies/gateway-world-to-HOST.xml</code>
+                    </p></blockquote></dd></blockquote></div></blockquote></div><div class="refsect1"><a name="id1337"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="id1338"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
+	  <a class="ulink" href="http://firewalld.org" target="_top">http://firewalld.org</a>
+	</p></blockquote></dd></blockquote></div></div></body></html>

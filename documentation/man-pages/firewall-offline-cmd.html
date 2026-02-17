@@ -40,6 +40,8 @@ title: firewall-offline-cmd
           This is may be used with <code class="option">--system-config</code> to check
           the validity of handwritten configuration files before copying them
           to the standard location.
+        </p></blockquote></dd><dt><span class="term"><code class="option">--reset-to-defaults</code></span></dt><dd><blockquote><p>
+          Reset configuration to firewalld's default configuration
         </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="lokkit_options"></a><h3>Lokkit Compatibility Options</h3><blockquote>
         These options are nearly identical to the options of <span class="command"><strong>lokkit</strong></span>.
       </blockquote><blockquote><dt><span class="term"><code class="option">--migrate-system-config-firewall=<em class="replaceable"><code>file</code></em></code></span></dt><dd><blockquote><p>
@@ -53,11 +55,11 @@ title: firewall-offline-cmd
 	    </p><p>
 	      Handling of netfilter helpers has been merged into services completely. Adding or removing netfilter helpers outside of services is therefore not needed anymore. For more information on handling netfilter helpers in services, please have a look at <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>.
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--remove-service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote><p>
-	      Remove a service from the default zone. This option can be specified multiple times. 
+	      Remove a service from the default zone. This option can be specified multiple times.
 	    </p><p>
 	      The service is one of the firewalld provided services. To get a list of the supported services, use <span class="command"><strong>firewall-cmd --get-services</strong></span>.
 	    </p></blockquote></dd><dt><span class="term"><code class="option">-s</code> <em class="replaceable"><code>service</code></em>, </span><span class="term"><code class="option">--service</code>=<em class="replaceable"><code>service</code></em></span></dt><dd><blockquote><p>
-	      Add a service to the default zone. This option can be specified multiple times. 
+	      Add a service to the default zone. This option can be specified multiple times.
 	    </p><p>
 	      The service is one of the firewalld provided services. To get a list of the supported services, use <span class="command"><strong>firewall-cmd --get-services</strong></span>.
 	    </p></blockquote></dd><dt><span class="term"><code class="option">-p</code> <em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:<em class="replaceable"><code>protocol</code></em>, </span><span class="term"><code class="option">--port</code>=<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]:<em class="replaceable"><code>protocol</code></em></span></dt><dd><blockquote><p>
@@ -81,7 +83,7 @@ title: firewall-offline-cmd
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--forward-port</code>=if=<em class="replaceable"><code>interface</code></em>:port=<em class="replaceable"><code>port</code></em>:proto=<em class="replaceable"><code>protocol</code></em>[<span class="optional">:toport=<em class="replaceable"><code>destination port</code></em>:</span>][<span class="optional">:toaddr=<em class="replaceable"><code>destination address</code></em></span>]</span></dt><dd><blockquote><p>
 	      This option will result in a warning message.
 	    </p><p>
-	      Add the <span class="emphasis"><em>IPv4</em></span> forward port in the default zone. This option can be specified multiple times. 
+	      Add the <span class="emphasis"><em>IPv4</em></span> forward port in the default zone. This option can be specified multiple times.
 	    </p><p>
 	      The port can either be a single port number <em class="replaceable"><code>portid</code></em> or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>. The protocol can either be <code class="literal">tcp</code>, <code class="literal">udp</code>, <code class="literal">sctp</code> or <code class="literal">dccp</code>. The destination address is an IP address.
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--block-icmp</code>=<em class="replaceable"><code>icmptype</code></em></span></dt><dd><blockquote><p>
@@ -186,6 +188,8 @@ title: firewall-offline-cmd
             For policies <em class="replaceable"><code>target</code></em> is one of: <code class="literal">CONTINUE</code>, <code class="literal">ACCEPT</code>, <code class="literal">DROP</code>, <code class="literal">REJECT</code>
           </p><p>
             <code class="literal">default</code> is similar to <code class="literal">REJECT</code>, but it implicitly allows ICMP packets.
+          </p><p>
+            <code class="literal">ACCEPT</code> allows traffic to be forwarded from the zone, either to the same zone or other zones.
           </p></blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] [<span class="optional"><code class="option">--policy</code>=<em class="replaceable"><code>policy</code></em></span>] <code class="option">--set-description</code>=<em class="replaceable"><code>description</code></em></span></dt><dd><blockquote><p>
             Set description.
           </p></blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] [<span class="optional"><code class="option">--policy</code>=<em class="replaceable"><code>policy</code></em></span>] <code class="option">--get-description</code></span></dt><dd><blockquote><p>
@@ -322,6 +326,19 @@ title: firewall-offline-cmd
             Disable intra zone forwarding.
           </p></blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--query-forward</code></span></dt><dd><blockquote><p>
             Return whether intra zone forwarding is enabled. Returns 0 if true, 1 otherwise.
+          </p></blockquote></dd><dt><span class="term"> [<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--get-priority</code></span></dt><dd><blockquote><p>
+	    Get the priority of the zone.
+          </p></blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--set-priority</code></span></dt><dd><blockquote><p>
+            Set the zone's priority for packet classification. This will set
+            both the ingress and egress priority.
+          </p></blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--get-ingress-priority</code></span></dt><dd><blockquote><p>
+	    Get the ingress priority of the zone.
+          </p></blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--set-ingress-priority</code></span></dt><dd><blockquote><p>
+            Set the zone's ingress priority for packet classification.
+          </p></blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--get-egress-priority</code></span></dt><dd><blockquote><p>
+	    Get the egress priority of the zone.
+          </p></blockquote></dd><dt><span class="term">[<span class="optional"><code class="option">--zone</code>=<em class="replaceable"><code>zone</code></em></span>] <code class="option">--set-egress-priority</code></span></dt><dd><blockquote><p>
+            Set the zone's egress priority for packet classification.
           </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="options_to_adapt_and_query_policies"></a><h3>Options to Adapt and Query Policies</h3><blockquote>
         Options in this section affect only one particular policy. It's required to specify <code class="option">--policy</code>=<em class="replaceable"><code>policy</code></em> with these options.
       </blockquote><blockquote><dt><span class="term"><code class="option">--policy</code>=<em class="replaceable"><code>policy</code></em> <code class="option">--get-priority</code></span></dt><dd><blockquote><p>
@@ -366,6 +383,13 @@ title: firewall-offline-cmd
             Remove an egress zone. This option can be specified multiple times.
           </p></blockquote></dd><dt><span class="term"><code class="option">--policy</code>=<em class="replaceable"><code>policy</code></em> <code class="option">--query-egress-zone</code>=<em class="replaceable"><code>zone</code></em></span></dt><dd><blockquote><p>
             Return whether <em class="replaceable"><code>zone</code></em> has been added. Returns 0 if true, 1 otherwise.
+          </p></blockquote></dd><dt><span class="term"><code class="option">--policy</code>=<em class="replaceable"><code>policy</code></em>|<code class="option">--policy-set</code>=<em class="replaceable"><code>policy-set</code></em> <code class="option">--add-disable</code></span></dt><dd><blockquote><p>
+            Administratively disable a policy. A disabled policy will not activate.
+          </p></blockquote></dd><dt><span class="term"><code class="option">--policy</code>=<em class="replaceable"><code>policy</code></em>|<code class="option">--policy-set</code>=<em class="replaceable"><code>policy-set</code></em> <code class="option">--remove-disable</code></span></dt><dd><blockquote><p>
+            Remove the administratively disable from a policy. Allows a policy
+            to activate.
+          </p></blockquote></dd><dt><span class="term"><code class="option">--policy</code>=<em class="replaceable"><code>policy</code></em> <code class="option">--query-disable</code></span></dt><dd><blockquote><p>
+            Return if the policy is administratively disabled.
           </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="options_to_handle_bindings_of_interfaces"></a><h3>Options to Handle Bindings of Interfaces</h3><blockquote>
 	Binding an interface to a zone means that this zone settings are used to restrict traffic via the interface.
       </blockquote><blockquote>
@@ -596,7 +620,7 @@ title: firewall-offline-cmd
               List destinations in permanent icmptype.
            </p></blockquote></dd><dt><span class="term"><code class="option">--path-icmptype=<em class="replaceable"><code>icmptype</code></em></code></span></dt><dd><blockquote><p>
 	      Print path of the icmptype configuration file.
-	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="direct_options"></a><h3>Direct Options</h3><blockquote><div class="refsect3"><a name="idm93822433854544"></a><h4>DEPRECATED</h4><blockquote>
+	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="direct_options"></a><h3>Direct Options</h3><blockquote><div class="refsect3"><a name="id1337"></a><h4>DEPRECATED</h4><blockquote>
           The direct interface has been deprecated. It will be removed in a future
           release. It is superseded by policies, see
           <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>.
@@ -653,69 +677,10 @@ title: firewall-offline-cmd
 	      Remove a permanent passthrough rule with the arguments <em class="replaceable"><code>args</code></em> for the ipv value.
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--direct</code> <code class="option">--query-passthrough</code> { <code class="literal">ipv4</code> | <code class="literal">ipv6</code> | <code class="literal">eb</code> } <em class="replaceable"><code>args</code></em></span></dt><dd><blockquote><p>
 	      Return whether a permanent passthrough rule with the arguments <em class="replaceable"><code>args</code></em> exists for the ipv value. Returns 0 if true, 1 otherwise.
-	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="lockdown_options"></a><h3>Lockdown Options</h3><blockquote>
-	Local applications or services are able to change the firewall configuration if they are running as root (example: libvirt) or are authenticated using PolicyKit. With this feature administrators can lock the firewall configuration so that only applications on lockdown whitelist are able to request firewall changes.
-      </blockquote><blockquote>
-	The lockdown access check limits D-Bus methods that are changing firewall rules. Query, list and get methods are not limited.
-      </blockquote><blockquote>
-	The lockdown feature is a very light version of user and application policies for firewalld and is turned off by default.
-      </blockquote><blockquote><dt><span class="term"><code class="option">--lockdown-on</code></span></dt><dd><blockquote><p>
-	      Enable lockdown. Be careful - if firewall-cmd is not on lockdown whitelist when you enable lockdown you won't be able to disable it again with firewall-cmd, you would need to edit firewalld.conf.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--lockdown-off</code></span></dt><dd><blockquote><p>
-	      Disable lockdown.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--query-lockdown</code></span></dt><dd><blockquote><p>
-	      Query whether lockdown is enabled. Returns 0 if lockdown is enabled, 1 otherwise.
-	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="lockdown_whitelist_options"></a><h3>Lockdown Whitelist Options</h3><blockquote>
-	The lockdown whitelist can contain <em class="replaceable"><code>commands</code></em>, <em class="replaceable"><code>contexts</code></em>, <em class="replaceable"><code>users</code></em> and <em class="replaceable"><code>user ids</code></em>.
-      </blockquote><blockquote>
-	If a command entry on the whitelist ends with an asterisk '*', then all command lines starting with the command will match. If the '*' is not there the absolute command inclusive arguments must match.
-      </blockquote><blockquote>
-	Commands for user root and others is not always the same. Example: As root <span class="command"><strong>/bin/firewall-cmd</strong></span> is used, as a normal user <span class="command"><strong>/usr/bin/firewall-cmd</strong></span> is be used on Fedora. 
-      </blockquote><blockquote>
-	The context is the security (SELinux) context of a running application or service. To get the context of a running application use <span class="command"><strong>ps -e --context</strong></span>.
-      </blockquote><blockquote>
-	<span class="bold"><strong>Warning:</strong></span> If the context is unconfined, then this will open access for more than the desired application. 
-      </blockquote><blockquote>
-	The lockdown whitelist entries are checked in the following order:
-	<table border="0" summary="Simple list" class="simplelist"><tr><td>1. <em class="replaceable"><code>context</code></em></td></tr><tr><td>2. <em class="replaceable"><code>uid</code></em></td></tr><tr><td>3. <em class="replaceable"><code>user</code></em></td></tr><tr><td>4. <em class="replaceable"><code>command</code></em></td></tr></table>
-      </blockquote><blockquote><dt><span class="term"><code class="option">--list-lockdown-whitelist-commands</code></span></dt><dd><blockquote><p>
-	      List all command lines that are on the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-command</code>=<em class="replaceable"><code>command</code></em></span></dt><dd><blockquote><p>
-	      Add the <em class="replaceable"><code>command</code></em> to the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-command</code>=<em class="replaceable"><code>command</code></em></span></dt><dd><blockquote><p>
-	      Remove the <em class="replaceable"><code>command</code></em> from the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-command</code>=<em class="replaceable"><code>command</code></em></span></dt><dd><blockquote><p>
-	      Query whether the <em class="replaceable"><code>command</code></em> is on the whitelist. Returns 0 if true, 1 otherwise.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--list-lockdown-whitelist-contexts</code></span></dt><dd><blockquote><p>
-	      List all contexts that are on the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-context</code>=<em class="replaceable"><code>context</code></em></span></dt><dd><blockquote><p>
-	      Add the context <em class="replaceable"><code>context</code></em> to the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-context</code>=<em class="replaceable"><code>context</code></em></span></dt><dd><blockquote><p>
-	      Remove the <em class="replaceable"><code>context</code></em> from the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-context</code>=<em class="replaceable"><code>context</code></em></span></dt><dd><blockquote><p>
-	      Query whether the <em class="replaceable"><code>context</code></em> is on the whitelist. Returns 0 if true, 1 otherwise.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--list-lockdown-whitelist-uids</code></span></dt><dd><blockquote><p>
-	      List all user ids that are on the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-uid</code>=<em class="replaceable"><code>uid</code></em></span></dt><dd><blockquote><p>
-	      Add the user id <em class="replaceable"><code>uid</code></em> to the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-uid</code>=<em class="replaceable"><code>uid</code></em></span></dt><dd><blockquote><p>
-	      Remove the user id <em class="replaceable"><code>uid</code></em> from the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-uid</code>=<em class="replaceable"><code>uid</code></em></span></dt><dd><blockquote><p>
-	      Query whether the user id <em class="replaceable"><code>uid</code></em> is on the whitelist. Returns 0 if true, 1 otherwise.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--list-lockdown-whitelist-users</code></span></dt><dd><blockquote><p>
-	      List all user names that are on the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--add-lockdown-whitelist-user</code>=<em class="replaceable"><code>user</code></em></span></dt><dd><blockquote><p>
-	      Add the user name <em class="replaceable"><code>user</code></em> to the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--remove-lockdown-whitelist-user</code>=<em class="replaceable"><code>user</code></em></span></dt><dd><blockquote><p>
-	      Remove the user name <em class="replaceable"><code>user</code></em> from the whitelist.
-	    </p></blockquote></dd><dt><span class="term"><code class="option">--query-lockdown-whitelist-user</code>=<em class="replaceable"><code>user</code></em></span></dt><dd><blockquote><p>
-	      Query whether the user name <em class="replaceable"><code>user</code></em> is on the whitelist. Returns 0 if true, 1 otherwise.
 	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="polkit_options"></a><h3>Policy Options</h3><blockquote><dt><span class="term"><code class="option">--policy-server</code></span></dt><dd><blockquote><p>
 	      Change Polkit actions to 'server'  (more restricted)
 	    </p></blockquote></dd><dt><span class="term"><code class="option">--policy-desktop</code></span></dt><dd><blockquote><p>
 	      Change Polkit actions to 'desktop'  (less restricted)
-	    </p></blockquote></dd></blockquote></div></blockquote></div><div class="refsect1"><a name="idm93822433687696"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm93822433668304"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
+	    </p></blockquote></dd></blockquote></div></blockquote></div><div class="refsect1"><a name="id1338"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="id1339"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://firewalld.org" target="_top">http://firewalld.org</a>
-	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
-	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
 	</p></blockquote></dd></blockquote></div></div></body></html>

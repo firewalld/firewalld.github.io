@@ -3,7 +3,7 @@ layout: page
 title: firewalld.richlanguage
 ---
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.richlanguage</title><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.richlanguage"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.richlanguage — Rich Language Documentation</blockquote><div class="refsect1"><a name="idm93821535435760"></a><h2>Description</h2><blockquote>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.richlanguage</title><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.richlanguage"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.richlanguage — Rich Language Documentation</blockquote><div class="refsect1"><a name="id1337"></a><h2>Description</h2><blockquote>
       With the rich language more complex firewall rules can be created in an easy to understand way. The language uses keywords with values and is an abstract representation of ip*tables rules.
     </blockquote><blockquote>
       The rich language extends the current zone elements (service, port, icmp-block, icmp-type, masquerade, forward-port and source-port) with additional source and destination addresses, logging, actions and limits for logs and actions.
@@ -32,13 +32,13 @@ title: firewalld.richlanguage
     </blockquote><blockquote>
       <span class="bold"><strong>Important information about element options:</strong></span>
 	Options for elements in a rule need to be added exactly after the element. If the option is placed somewhere else it might be used for another element as far as it matches the options of the other element or will result in a rule error.
-    </blockquote><blockquote><div class="refsect2"><a name="idm93821539321600"></a><h3>Rule</h3><blockquote>
+    </blockquote><blockquote><div class="refsect2"><a name="id1338"></a><h3>Rule</h3><blockquote>
 	  <pre class="programlisting">rule [family="ipv4|ipv6"] [priority="priority"]</pre>
       </blockquote><blockquote>
       If the rule family is provided, it can be either "ipv4" or "ipv6", which limits the rule to IPv4 or IPv6. If the rule family is not provided, the rule will be added for IPv4 and IPv6. If source or destination addresses are used in a rule, then the rule family need to be provided. This is also the case for port/packet forwarding.
       </blockquote><blockquote>
       If the rule priority is provided, it can be in the range of -32768 to 32767 where lower values have higher precedence. Rich rules are sorted by priority. Ordering for rules with the same priority value is undefined. A negative priority value will be executed before other firewalld primitives. A positive priority value will be executed after other firewalld primitives. A priority value of 0 will place the rule in a chain based on the action as per the "Information about logging and actions" below.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821539318992"></a><h3>Source</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1339"></a><h3>Source</h3><blockquote>
 	  <pre class="programlisting">source [not] address="address[/mask]"|mac="mac-address"|ipset="ipset"</pre>
 	With the source address the origin of a connection attempt can be limited to the source address.
 	An address is either a single IP address, or a network IP address, a MAC address or an IPSet.
@@ -46,40 +46,40 @@ title: firewalld.richlanguage
 	Subnet mask is expressed in either dot-decimal (/x.x.x.x) or prefix (/x) notations for IPv4, and in prefix notation (/x) for IPv6 network addresses.
 	It is possible to invert the sense of an address by adding <code class="option">not</code> before <code class="option">address</code>.
 	All but the specified address will match then.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821539316320"></a><h3>Destination</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1340"></a><h3>Destination</h3><blockquote>
 	<pre class="programlisting">destination [not] address="address[/mask]"|ipset="ipset"</pre>
 	With the destination address the target can be limited to the destination address. The destination address is using the same syntax as the source address.
       </blockquote><blockquote>
 	The use of source and destination addresses is optional and the use of a destination addresses is not possible with all elements. This depends on the use of destination addresses for example in service entries.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821539313872"></a><h3>Service</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1341"></a><h3>Service</h3><blockquote>
 	<pre class="programlisting">service name="service name"</pre>
       </blockquote><blockquote>
 	The service <em class="replaceable"><code>service name</code></em> will be added to the rule. The service name is one of the firewalld provided services. To get a list of the supported services, use <span class="command"><strong>firewall-cmd --get-services</strong></span>.
       </blockquote><blockquote>
 	If a service provides a destination address, it will conflict with a destination address in the rule and will result in an error. The services using destination addresses internally are mostly services using multicast.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821539294016"></a><h3>Port</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1342"></a><h3>Port</h3><blockquote>
 	<pre class="programlisting">port port="port value" protocol="tcp|udp|sctp|dccp"</pre>
       </blockquote><blockquote>
-	The port <em class="replaceable"><code>port value</code></em> can either be a single port number <em class="replaceable"><code>portid</code></em> or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>. 
+	The port <em class="replaceable"><code>port value</code></em> can either be a single port number <em class="replaceable"><code>portid</code></em> or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>.
       The protocol can either be <code class="literal">tcp</code>, <code class="literal">udp</code>, <code class="literal">sctp</code> or <code class="literal">dccp</code>.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821539287072"></a><h3>Protocol</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1343"></a><h3>Protocol</h3><blockquote>
 	<pre class="programlisting">protocol value="protocol value"</pre>
       </blockquote><blockquote>
 	The protocol value can be either a protocol id number or a protocol name. For allowed protocol entries, please have a look at <code class="filename">/etc/protocols</code>.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821539283664"></a><h3>Tcp-Mss-Clamp</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1344"></a><h3>Tcp-Mss-Clamp</h3><blockquote>
         <pre class="programlisting">tcp-mss-clamp="value=pmtu|value=number &gt;= 536|None"</pre>
       </blockquote><blockquote>
         The tcp-mss-clamp sets the maximum segment size in the rule.
       </blockquote><blockquote>
         The tcp-mss-clamp has an optional attribute value can be either be set to "pmtu" or a number greater than or equal to 536. If attribute
 	value is not present then the maximum segment size is automatically set to "pmtu".
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821539280752"></a><h3>ICMP-Block</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1345"></a><h3>ICMP-Block</h3><blockquote>
 	<pre class="programlisting">icmp-block name="icmptype name"</pre>
       </blockquote><blockquote>
 	The icmptype is the one of the icmp types firewalld supports. To get a listing of supported icmp types: <span class="command"><strong>firewall-cmd --get-icmptypes</strong></span>
       </blockquote><blockquote>
 	It is not allowed to specify an action here. icmp-block uses the action reject internally.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821539277152"></a><h3>Masquerade</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1346"></a><h3>Masquerade</h3><blockquote>
 	<pre class="programlisting">masquerade</pre>
       </blockquote><blockquote>
 	Turn on masquerading in the rule. A source and also a destination address can be provided to limit masquerading to this area.
@@ -87,27 +87,27 @@ title: firewalld.richlanguage
 	It is not allowed to specify an action here.
       </blockquote><blockquote>
         <span class="emphasis"><em>Note:</em></span> IP forwarding will be implicitly enabled.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821539273568"></a><h3>ICMP-Type</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1347"></a><h3>ICMP-Type</h3><blockquote>
 	<pre class="programlisting">icmp-type name="icmptype name"</pre>
       </blockquote><blockquote>
 	The icmptype is the one of the icmp types firewalld supports. To get a listing of supported icmp types: <span class="command"><strong>firewall-cmd --get-icmptypes</strong></span>
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534373072"></a><h3>Forward-Port</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1348"></a><h3>Forward-Port</h3><blockquote>
 	<pre class="programlisting">forward-port port="port value" protocol="tcp|udp|sctp|dccp" to-port="port value" to-addr="address"</pre>
       </blockquote><blockquote>
 	Forward port/packets from local port value with protocol "tcp" or "udp" to either another port locally or to another machine or to another port on another machine.
       </blockquote><blockquote>
-	The port value can either be a single port number or a port range <em class="replaceable"><code>portid-portid</code></em>. The <code class="option">to-addr</code> is an IP address. 
+	The port value can either be a single port number or a port range <em class="replaceable"><code>portid-portid</code></em>. The <code class="option">to-addr</code> is an IP address.
       The protocol can either be <code class="literal">tcp</code>, <code class="literal">udp</code>, <code class="literal">sctp</code> or <code class="literal">dccp</code>.
       </blockquote><blockquote>
 	It is not allowed to specify an action here. forward-port uses the action accept internally.
       </blockquote><blockquote>
         <span class="emphasis"><em>Note:</em></span> IP forwarding will be implicitly enabled if <code class="option">to-addr</code> is specified.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534365312"></a><h3>Source-Port</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1349"></a><h3>Source-Port</h3><blockquote>
 	<pre class="programlisting">source-port port="port value" protocol="tcp|udp|sctp|dccp"</pre>
       </blockquote><blockquote>
-	The source-port <em class="replaceable"><code>port value</code></em> can either be a single port number <em class="replaceable"><code>portid</code></em> or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>. 
+	The source-port <em class="replaceable"><code>port value</code></em> can either be a single port number <em class="replaceable"><code>portid</code></em> or a port range <em class="replaceable"><code>portid</code></em>-<em class="replaceable"><code>portid</code></em>.
       The protocol can either be <code class="literal">tcp</code>, <code class="literal">udp</code>, <code class="literal">sctp</code> or <code class="literal">dccp</code>.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534359120"></a><h3>Log</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1350"></a><h3>Log</h3><blockquote>
 	<pre class="programlisting">log [prefix="prefix text"] [level="log level"] [limit value="rate/duration"]</pre>
       </blockquote><blockquote>
 	Log new connection attempts to the rule with kernel logging for example in syslog.
@@ -116,7 +116,7 @@ title: firewalld.richlanguage
 	See Limit section for description of <code class="option">limit</code> tag.
       </blockquote><blockquote>
         <span class="emphasis"><em>Note:</em></span> The iptables backend truncates prefix to 29 characters.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534351088"></a><h3>NFLog</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1351"></a><h3>NFLog</h3><blockquote>
 	<pre class="programlisting">nflog [group="group id"] [prefix="prefix text"] [queue-size="threshold"] [limit value="rate/duration"]</pre>
       </blockquote><blockquote>
 	Log new connection attempts to the rule using kernel logging to pass the packets through a 'netlink' socket to users or applications monitoring the multicast <code class="option">group</code>.
@@ -126,18 +126,18 @@ title: firewalld.richlanguage
       You can define a prefix text with a maximum length of 127 characters that will be added to the log message as a prefix.
       The <code class="option">queue-size</code> option can be set to increase the queue threshold which can help limit context switching.
       The default value for <code class="option">queue-size</code> is 1, maximum value is 65535.
-	See <span class="citerefentry"><span class="refentrytitle">iptables-extensions</span>(8)</span> and <span class="citerefentry"><span class="refentrytitle">nft</span>(8)</span> for more details. 
+	See <span class="citerefentry"><span class="refentrytitle">iptables-extensions</span>(8)</span> and <span class="citerefentry"><span class="refentrytitle">nft</span>(8)</span> for more details.
       </blockquote><blockquote>
       See Limit section for description of <code class="option">limit</code> tag.
       </blockquote><blockquote>
         <span class="emphasis"><em>Note:</em></span> The iptables backend truncates prefix to 63 characters.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534340880"></a><h3>Audit</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1352"></a><h3>Audit</h3><blockquote>
 	<pre class="programlisting">audit [limit value="rate/duration"]</pre>
       </blockquote><blockquote>
 	Audit provides an alternative way for logging using audit records sent to the service auditd.
 	Audit type will be discovered from the rule action automatically. Use of audit is optional.
 	See Limit section for description of <code class="option">limit</code> tag.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534338096"></a><h3>Action</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1353"></a><h3>Action</h3><blockquote>
 	An action can be one of <code class="option">accept</code>, <code class="option">reject</code>, <code class="option">drop</code> or <code class="option">mark</code>.
       </blockquote><blockquote>
 	The rule can either contain an element or also a source only. If the rule contains an element, then new connection matching the element will be handled with the action. If the rule does not contain an element, then everything from the source address will be handled with the action.
@@ -158,7 +158,7 @@ title: firewalld.richlanguage
 	With <code class="option">drop</code> all packets will be dropped immediately, there is no information sent to the source.
 	With <code class="option">mark</code> all packets will be marked in the <code class="option">PREROUTING</code> chain in the <code class="option">mangle</code> table with the mark and mask combination.
 	See Limit section for description of <code class="option">limit</code> tag.
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534326144"></a><h3>Limit</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1354"></a><h3>Limit</h3><blockquote>
 	<pre class="programlisting">limit value="rate/duration"</pre>
       </blockquote><blockquote>
 	 It is possible to limit Log, NFLog, Audit and Action.
@@ -166,7 +166,7 @@ title: firewalld.richlanguage
 	 The rate is a natural positive number [1, ..]
 	 The duration is of "s", "m", "h", "d". "s" means seconds, "m" minutes, "h" hours and "d" days.
 	 Maximum limit value is "2/d", which means at maximum two matches per day.
-       </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534323616"></a><h3>Information about logging and actions</h3><blockquote>
+       </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1355"></a><h3>Information about logging and actions</h3><blockquote>
 	Logging can be done with the log, nflog and audit actions. A new chain is added to all zones: zone_log. This will be jumped into before the deny chain to be able to have a proper ordering.
       </blockquote><blockquote>
 	The rules or parts of them are placed in separate chains according to the priority and action of the rule:
@@ -182,47 +182,45 @@ title: firewalld.richlanguage
         When <span class="emphasis"><em>priority == 0</em></span> Then all logging rules will be placed in the <em class="replaceable"><code>zone</code></em>_log chain. All reject and drop rules will be placed in the <em class="replaceable"><code>zone</code></em>_deny chain, which will be walked after the log chain. All accept rules will be placed in the <em class="replaceable"><code>zone</code></em>_allow chain, which will be walked after the deny chain. If a rule contains log and also deny or allow actions, the parts are placed in the matching chains.
       </blockquote><blockquote>
         When <span class="emphasis"><em>priority &gt; 0</em></span>, the rich rule will be placed in the <em class="replaceable"><code>zone</code></em>_post chain.
-      </blockquote></div></blockquote></div><div class="refsect1"><a name="idm93821534314304"></a><h2>Examples</h2><blockquote>
+      </blockquote></div></blockquote></div><div class="refsect1"><a name="id1356"></a><h2>Examples</h2><blockquote>
 	These are examples of how to specify rich language rules.
 	This format (i.e. one string that specifies whole rule) uses
 	for example <code class="option">firewall-cmd --add-rich-rule</code> (see
 	<a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>)
 	as well as D-Bus interface.
-      </blockquote><blockquote><div class="refsect2"><a name="idm93821534311984"></a><h3>Example 1</h3><blockquote>
+      </blockquote><blockquote><div class="refsect2"><a name="id1357"></a><h3>Example 1</h3><blockquote>
 	Enable new IPv4 and IPv6 connections for protocol 'ah'
       </blockquote><blockquote>
 	<pre class="programlisting">rule protocol value="ah" accept</pre>
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534309744"></a><h3>Example 2</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1358"></a><h3>Example 2</h3><blockquote>
 	Allow new IPv4 and IPv6 connections for service ftp and log 1 per minute using audit
       </blockquote><blockquote>
 	<pre class="programlisting">rule service name="ftp" log limit value="1/m" audit accept</pre>
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534307392"></a><h3>Example 3</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1359"></a><h3>Example 3</h3><blockquote>
 	Allow new IPv4 connections from address 192.168.0.0/24 for service tftp and log 1 per minutes using syslog
       </blockquote><blockquote>
 	<pre class="programlisting">rule family="ipv4" source address="192.168.0.0/24" service name="tftp" log prefix="tftp" level="info" limit value="1/m" accept</pre>
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534304960"></a><h3>Example 4</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1360"></a><h3>Example 4</h3><blockquote>
 	New IPv6 connections from 1:2:3:4:6:: to service radius are all rejected and logged at a rate of 3 per minute. New IPv6 connections from other sources are accepted.
       </blockquote><blockquote>
 	<pre class="programlisting">rule family="ipv6" source address="1:2:3:4:6::" service name="radius" log prefix="dns" level="info" limit value="3/m" reject
 rule family="ipv6" service name="radius" accept</pre>
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534302416"></a><h3>Example 5</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1361"></a><h3>Example 5</h3><blockquote>
 	Forward IPv6 port/packets receiving from 1:2:3:4:6:: on port 4011 with protocol tcp to 1::2:3:4:7 on port 4012
       </blockquote><blockquote>
 	<pre class="programlisting">rule family="ipv6" source address="1:2:3:4:6::" forward-port to-addr="1::2:3:4:7" to-port="4012" protocol="tcp" port="4011"</pre>
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534299984"></a><h3>Example 6</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1362"></a><h3>Example 6</h3><blockquote>
 	White-list source address to allow all connections from 192.168.2.2
       </blockquote><blockquote>
 	<pre class="programlisting">rule family="ipv4" source address="192.168.2.2" accept</pre>
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534297648"></a><h3>Example 7</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1363"></a><h3>Example 7</h3><blockquote>
 	Black-list source address to reject all connections from 192.168.2.3
       </blockquote><blockquote>
 	<pre class="programlisting">rule family="ipv4" source address="192.168.2.3" reject type="icmp-admin-prohibited"</pre>
-      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="idm93821534295296"></a><h3>Example 8</h3><blockquote>
+      </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="id1364"></a><h3>Example 8</h3><blockquote>
 	Black-list source address to drop all connections from 192.168.2.4
       </blockquote><blockquote>
 	<pre class="programlisting">rule family="ipv4" source address="192.168.2.4" drop</pre>
-      </blockquote></div></blockquote></div><div class="refsect1"><a name="idm93821534291040"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm93821534271920"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
+      </blockquote></div></blockquote></div><div class="refsect1"><a name="id1365"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="id1366"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://firewalld.org" target="_top">http://firewalld.org</a>
-	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
-	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
 	</p></blockquote></dd></blockquote></div></div></body></html>

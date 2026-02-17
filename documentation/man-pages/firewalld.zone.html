@@ -15,7 +15,7 @@ title: firewalld.zone
        This is the structure of a zone configuration file:
 
         <pre class="programlisting">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;zone [version="<em class="replaceable"><code>versionstring</code></em>"] [target="<code class="literal">ACCEPT</code>|<code class="literal">%%REJECT%%</code>|<code class="literal">DROP</code>"]&gt;
+&lt;zone [version="<em class="replaceable"><code>versionstring</code></em>"] [target="<code class="literal">ACCEPT</code>|<code class="literal">%%REJECT%%</code>|<code class="literal">DROP</code>"] [ingress-priority="<em class="replaceable"><code>priority</code></em>"] [egress-priority="<em class="replaceable"><code>priority</code></em>"]&gt;
     [ &lt;interface name="<em class="replaceable"><code>string</code></em>"/&gt; ]
     [ &lt;source address="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]"|mac="<em class="replaceable"><code>MAC</code></em>"|ipset="<em class="replaceable"><code>ipset</code></em>"/&gt; ]
     [ &lt;icmp-block-inversion/&gt; ]
@@ -70,11 +70,25 @@ title: firewalld.zone
       </blockquote><blockquote><dt><span class="term">version="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
               To give the zone a version.
 	    </p></blockquote></dd><dt><span class="term">target="<code class="literal">ACCEPT</code>|<code class="literal">%%REJECT%%</code>|<code class="literal">DROP</code>"</span></dt><dd><blockquote><p>
-	      Can be used to accept, reject or drop every packet that doesn't match any rule (port, service, etc.).
-	      The <code class="literal">ACCEPT</code> target is used in <code class="literal">trusted</code> zone to accept every packet not matching any rule.
-	      The <code class="literal">%%REJECT%%</code> target is used in <code class="literal">block</code> zone to reject (with default firewalld reject type) every packet not matching any rule.
-	      The <code class="literal">DROP</code> target is used in <code class="literal">drop</code> zone to drop every packet not matching any rule.
-	      If the target is not specified, every packet not matching any rule will be rejected.
+              Can be used to accept, reject or drop every packet that doesn't
+              match any rule (port, service, etc.).
+            </p><p>
+              <code class="literal">ACCEPT</code>
+              is special: packets which are not addressed to the host
+              will be forwarded to their destination regardless of the
+              zone's
+              forward
+              setting, or any policies attached to the zone.
+            </p><p>
+              If unspecified, the default behavior applies: ICMP will be
+              accepted and everything else will be rejected.
+            </p></blockquote></dd><dt><span class="term">ingress-priority="<em class="replaceable"><code>priority</code></em>"</span></dt><dd><blockquote><p>
+              Ingress priority for classifying traffic into a zone. A zone with
+              a lower priority value will be considered before a zone with a
+              higher priority value. This allows custom ordering of zone
+              dispatch.
+	    </p></blockquote></dd><dt><span class="term">egress-priority="<em class="replaceable"><code>priority</code></em>"</span></dt><dd><blockquote><p>
+	      Same as ingress-priority, but for egress classification.
 	    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="interface"></a><h3>interface</h3><blockquote>
 	Is an optional empty-element tag and can be used several times. It can be used to bind an interface to a zone.
 	You don't need this for NetworkManager-managed interfaces, because NetworkManager binds interfaces to zones automatically.
@@ -135,20 +149,14 @@ title: firewalld.zone
                     type to be blocked. To get a list of valid ICMP types
                     <span class="command"><strong>firewall-cmd --get-icmptypes</strong></span> can be
                     used.
-                </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="tcp-mss-clamp"></a><h3>tcp-mss-clamp</h3><blockquote>
-        Is an optional empty-element tag and can be used several times. If left empty
-	maximum segment size is set to 'pmtu'. This tag has exactly one optional attribute:
-      </blockquote><blockquote><dt><span class="term">value="<em class="replaceable"><code>string</code></em>"</span></dt><dd><blockquote><p>
-              Value can set maximum segment size to 'pmtu' (Path Maximum Transmission Unit) or
-	      a user-defined value that is greater than or equal to 536.
-            </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="masquerade"></a><h3>masquerade</h3><blockquote>
+                </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="masquerade"></a><h3>masquerade</h3><blockquote>
         Is an optional empty-element tag. It can be used only once. If it's
         present masquerading is enabled.
     </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="forward-port"></a><h3>forward-port</h3><blockquote>
         Is an optional empty-element tag and can be used several times to have
         more than one port or packet forward entry. There are mandatory and
         also optional attributes for forward ports:
-    </blockquote><blockquote><div class="refsect3"><a name="idm93823191881072"></a><h4>Mandatory attributes:</h4><blockquote>
+    </blockquote><blockquote><div class="refsect3"><a name="id1613"></a><h4>Mandatory attributes:</h4><blockquote>
             The local port and protocol to be forwarded.
         </blockquote><blockquote><dt><span class="term">port="<em class="replaceable"><code>portid</code></em>[<span class="optional">-<em class="replaceable"><code>portid</code></em></span>]"</span></dt><dd><blockquote><p>
                         The port can either be a single port number
@@ -158,7 +166,7 @@ title: firewalld.zone
                         The protocol can either be <code class="literal">tcp</code>,
                         <code class="literal">udp</code>, <code class="literal">sctp</code> or
                         <code class="literal">dccp</code>.
-                    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect3"><a name="idm93823191869232"></a><h4>Optional attributes:</h4><blockquote>
+                    </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect3"><a name="id1639"></a><h4>Optional attributes:</h4><blockquote>
             The destination of the forward. For local forwarding add
             <code class="option">to-port</code> only. For remote forwarding add
             <code class="option">to-addr</code> and use <code class="option">to-port</code>
@@ -184,7 +192,7 @@ title: firewalld.zone
                     <code class="literal">dccp</code>.
                 </p></blockquote></dd></blockquote></div></blockquote><blockquote><div class="refsect2"><a name="rule"></a><h3>rule</h3><blockquote>
         Is an optional element tag and can be used several times to have more
-        than one rich language rule entry. 
+        than one rich language rule entry.
     </blockquote><blockquote>
         The general rule structure:
     </blockquote><blockquote>
@@ -201,7 +209,7 @@ title: firewalld.zone
         &lt;forward-port port="<em class="replaceable"><code>portid</code></em>[-<em class="replaceable"><code>portid</code></em>]" protocol="<code class="literal">tcp</code>|<code class="literal">udp</code>|<code class="literal">sctp</code>|<code class="literal">dccp</code>" [to-port="<em class="replaceable"><code>portid</code></em>[-<em class="replaceable"><code>portid</code></em>]"] [to-addr="<em class="replaceable"><code>address</code></em>"]/&gt; |
         &lt;source-port port="<em class="replaceable"><code>portid</code></em>[-<em class="replaceable"><code>portid</code></em>]" protocol="<code class="literal">tcp</code>|<code class="literal">udp</code>|<code class="literal">sctp</code>|<code class="literal">dccp</code>"/&gt; |
     ]
-    [ 
+    [
         &lt;log [prefix="<em class="replaceable"><code>prefix text</code></em>"] [level="<code class="literal">emerg</code>|<code class="literal">alert</code>|<code class="literal">crit</code>|<code class="literal">err</code>|<code class="literal">warn</code>|<code class="literal">notice</code>|<code class="literal">info</code>|<code class="literal">debug</code>"]&gt; [&lt;limit value="<em class="replaceable"><code>rate</code></em>/<em class="replaceable"><code>duration</code></em>"/&gt;] &lt;/log&gt; |
         &lt;nflog [group="<em class="replaceable"><code>group id</code></em>"] [prefix="<em class="replaceable"><code>prefix text</code></em>"] [queue-size="<em class="replaceable"><code>threshold</code></em>"]&gt; [&lt;limit value="<em class="replaceable"><code>rate</code></em>/<em class="replaceable"><code>duration</code></em>"/&gt;] &lt;/nflog&gt;
     ]
@@ -218,7 +226,7 @@ title: firewalld.zone
     </blockquote><blockquote>
         <pre class="programlisting">&lt;rule [family="<code class="literal">ipv4</code>|<code class="literal">ipv6</code>"] [priority="<em class="replaceable"><code>priority</code></em>"]&gt;
     &lt;source address="<em class="replaceable"><code>address</code></em>[/<em class="replaceable"><code>mask</code></em>]"|mac="<em class="replaceable"><code>MAC</code></em>"|ipset="<em class="replaceable"><code>ipset</code></em>" [invert="<em class="replaceable"><code>True</code></em>"]/&gt;
-    [ 
+    [
         &lt;log [prefix="<em class="replaceable"><code>prefix text</code></em>"] [level="<code class="literal">emerg</code>|<code class="literal">alert</code>|<code class="literal">crit</code>|<code class="literal">err</code>|<code class="literal">warn</code>|<code class="literal">notice</code>|<code class="literal">info</code>|<code class="literal">debug</code>"]&gt; [&lt;limit value="<em class="replaceable"><code>rate</code></em>/<em class="replaceable"><code>duration</code></em>"/&gt;] &lt;/log&gt; |
         &lt;nflog [group="<em class="replaceable"><code>group id</code></em>"] [prefix="<em class="replaceable"><code>prefix text</code></em>"] [queue-size="<em class="replaceable"><code>threshold</code></em>"]&gt; [&lt;limit value="<em class="replaceable"><code>rate</code></em>/<em class="replaceable"><code>duration</code></em>"/&gt;] &lt;/nflog&gt;
     ]
@@ -230,8 +238,6 @@ title: firewalld.zone
     </blockquote><blockquote>
         For a full description on rich language rules, please have a look at
         <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>.
-    </blockquote></div></blockquote></div><div class="refsect1"><a name="idm93823191712848"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm93823191693696"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
+    </blockquote></div></blockquote></div><div class="refsect1"><a name="id1796"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="id1867"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://firewalld.org" target="_top">http://firewalld.org</a>
-	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
-	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
 	</p></blockquote></dd></blockquote></div></div></body></html>

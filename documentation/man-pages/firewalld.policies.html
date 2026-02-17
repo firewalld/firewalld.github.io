@@ -4,22 +4,48 @@ title: firewalld.policies
 ---
 
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>firewalld.policies</title><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry"><a name="firewalld.policies"></a><div class="titlepage"></div><h2>Name</h2><blockquote>firewalld.policies — firewalld policies</blockquote><div class="refsect1"><a name="description"></a><h2>Description</h2><blockquote><div class="refsect2"><a name="whatisapolicy"></a><h3>What is a policy?</h3><blockquote>
-                A policy applies a set of rules to traffic flowing between
+                A policy applies a set of rules to traffic flowing
                 between zones (see zones (see <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>). The policy affects
                 traffic in a stateful unidirectional manner, e.g. zoneA to
-                zoneB. This allows asynchronous filtering policies.
+                zoneB. This allows asymmetric filtering policies.
             </blockquote><blockquote>
                 A policy's relationship to zones is defined by assigning
                 a set of ingress zones and a set of egress zones.
-                For example, if the set of ingress zones contains "public" and
-                the set of egress zones contains "internal" then the policy will
-                affect all traffic flowing from the "public" zone to the "internal"
+                For example, if the set of ingress zones contains "internal" and
+                the set of egress zones contains "external" then the policy will
+                affect all traffic flowing from the "internal" zone to the "external"
                 zone. However, since policies are unidirectional it will not
-                apply to traffic flowing from "internal" to "public". Note that
-                the ingress set and egress set can contain multiple zones.
-            </blockquote></div></blockquote><blockquote><div class="refsect2"><a name="activepolicies"></a><h3>Active Policies</h3><blockquote>
+                apply to traffic flowing from "external" to "internal".
+                The ingress set and egress set may contain multiple zones.
+            </blockquote><blockquote>
+                Below as a visual representation of policy foobar followed by
+                the CLI commands to create it. This policy would affect traffic
+                flowing from the internal zone to the external zone. Initially,
+                the target is set to ACCEPT to allow all traffic. This is common
+                if the internal network is trusted.
+            </blockquote><pre class="programlisting">+----------+           +----------+
+                |          |  policy   |          |
+                | internal | --------&gt; | external |
+                |   zone   |  foobar   |   zone   |
+                |          |           |          |
+                +----------+           +----------+</pre><pre class="programlisting"># firewall-cmd --permanent --new-policy foobar
+                # firewall-cmd --permanent --policy foobar --add-ingress-zone internal
+                # firewall-cmd --permanent --policy foobar --add-egress-zone external
+                # firewall-cmd --permanent --policy foobar --set-target ACCEPT
+                # firewall-cmd --reload</pre><blockquote>
+                Perhaps it makes sense to be more restrictive. This example
+                changes foobar so that it only allows: dns, http, and https
+                traffic. Everything else is blocked. Clients would only be
+                allowed to surf the web.
+            </blockquote><pre class="programlisting"># firewall-cmd --permanent --policy foobar --set-target REJECT
+                # firewall-cmd --permanent --policy foobar --add-service dns
+                # firewall-cmd --permanent --policy foobar --add-service http
+                # firewall-cmd --permanent --policy foobar --add-service https
+                # firewall-cmd --reload</pre></div></blockquote><blockquote><div class="refsect2"><a name="activepolicies"></a><h3>Active Policies</h3><blockquote>
                 Policies only become active if all of the following are true.
             </blockquote><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+                        The policy is not disabled.
+                    </p></li><li class="listitem"><p>
                         The ingress zones list contain at least one regular zone
                         or a single symbolic zone.
                     </p></li><li class="listitem"><p>
@@ -82,8 +108,6 @@ title: firewalld.policies
                 However, for network level filtering or filtering on behalf of
                 virtual machines and containers something more flexible, i.e.
                 policies, are needed.
-            </blockquote></div></blockquote></div><div class="refsect1"><a name="idm93822172858368"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewalld.lockdown-whitelist.html"><span class="citerefentry"><span class="refentrytitle">firewalld.lockdown-whitelist</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="idm93822167769088"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
+            </blockquote></div></blockquote></div><div class="refsect1"><a name="id1337"></a><h2>See Also</h2><blockquote><a href="firewall-applet.html"><span class="citerefentry"><span class="refentrytitle">firewall-applet</span>(1)</span></a>, <a href="firewalld.html"><span class="citerefentry"><span class="refentrytitle">firewalld</span>(1)</span></a>, <a href="firewall-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-cmd</span>(1)</span></a>, <a href="firewall-config.html"><span class="citerefentry"><span class="refentrytitle">firewall-config</span>(1)</span></a>, <a href="firewalld.conf.html"><span class="citerefentry"><span class="refentrytitle">firewalld.conf</span>(5)</span></a>, <a href="firewalld.direct.html"><span class="citerefentry"><span class="refentrytitle">firewalld.direct</span>(5)</span></a>, <a href="firewalld.dbus.html"><span class="citerefentry"><span class="refentrytitle">firewalld.dbus</span>(5)</span></a>, <a href="firewalld.icmptype.html"><span class="citerefentry"><span class="refentrytitle">firewalld.icmptype</span>(5)</span></a>, <a href="firewall-offline-cmd.html"><span class="citerefentry"><span class="refentrytitle">firewall-offline-cmd</span>(1)</span></a>, <a href="firewalld.richlanguage.html"><span class="citerefentry"><span class="refentrytitle">firewalld.richlanguage</span>(5)</span></a>, <a href="firewalld.service.html"><span class="citerefentry"><span class="refentrytitle">firewalld.service</span>(5)</span></a>, <a href="firewalld.zone.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zone</span>(5)</span></a>, <a href="firewalld.zones.html"><span class="citerefentry"><span class="refentrytitle">firewalld.zones</span>(5)</span></a>, <a href="firewalld.policy.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policy</span>(5)</span></a>, <a href="firewalld.policies.html"><span class="citerefentry"><span class="refentrytitle">firewalld.policies</span>(5)</span></a>, <a href="firewalld.ipset.html"><span class="citerefentry"><span class="refentrytitle">firewalld.ipset</span>(5)</span></a>, <a href="firewalld.helper.html"><span class="citerefentry"><span class="refentrytitle">firewalld.helper</span>(5)</span></a></blockquote></div><div class="refsect1"><a name="id1338"></a><h2>Notes</h2><blockquote><dt><span class="term">firewalld home page:</span></dt><dd><blockquote><p>
 	  <a class="ulink" href="http://firewalld.org" target="_top">http://firewalld.org</a>
-	</p></blockquote></dd><dt><span class="term">More documentation with examples:</span></dt><dd><blockquote><p>
-	  <a class="ulink" href="http://fedoraproject.org/wiki/FirewallD" target="_top">http://fedoraproject.org/wiki/FirewallD</a>
 	</p></blockquote></dd></blockquote></div></div></body></html>
