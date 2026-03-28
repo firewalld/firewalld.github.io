@@ -16,7 +16,7 @@ Here are some example services:
     </service>
 
 
-## ipset
+## ipsec
 
     <?xml version="1.0" encoding="utf-8"?>
     <service>
