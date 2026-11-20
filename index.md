@@ -11,7 +11,7 @@ Changes can be done immediately in the runtime environment. No restart of the se
 
 With the firewalld D-Bus interface it is simple for services, applications and also users to adapt firewall settings. The interface is complete and is used for the firewall configuration tools firewall-cmd, firewall-config and firewall-applet.
 
-The separation of the runtime and permanent configuration makes it possible to do evaulation and tests in runtime. The runtime configuration is only valid up to the next service reload and restart or to a system reboot. Then the permanent configuration will be loaded again. With the runtime environment it is possible to use runtime for settings that should only be active for a limited amount of time. If the runtime configuration has been used for evaluation, and it is complete and working, then it is possible to save this configuration to the permanent environment.
+The separation of the runtime and permanent configuration makes it possible to do evaluation and tests in runtime. The runtime configuration is only valid up to the next service reload and restart or to a system reboot. Then the permanent configuration will be loaded again. With the runtime environment it is possible to use runtime for settings that should only be active for a limited amount of time. If the runtime configuration has been used for evaluation, and it is complete and working, then it is possible to save this configuration to the permanent environment.
 
 ## Features
 
@@ -20,7 +20,7 @@ The separation of the runtime and permanent configuration makes it possible to d
  * IPv4 and IPv6 NAT support
  * Firewall zones
  * Predefined list of zones, services and icmptypes
- * Simple service, port, protocol, source port, masquerading, port forwarding, icmp filter, rich rule, interface and source address handlig in zones
+ * Simple service, port, protocol, source port, masquerading, port forwarding, icmp filter, rich rule, interface and source address handling in zones
  * Simple service definition with ports, protocols, source ports, modules (netfilter helpers) and destination address handling
  * Rich Language for more flexible and complex rules in zones
  * Timed firewall rules in zones
